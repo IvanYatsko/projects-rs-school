@@ -3,6 +3,7 @@ window.onload = function() {
     const PIANOKEY = document.querySelectorAll('.piano-key');
     const CHANGE = document.querySelectorAll('.btn-container .btn');
     const BUTTONTOGGLE = document.querySelector('.fullscreen');
+    let press = false;
 
     const toggleFullScreen = () => {
         if (!document.fullscreenElement) {
@@ -75,28 +76,34 @@ window.onload = function() {
     }
 
     const clickKeyboard = (event) => {
-        PIANOKEY.forEach((item) => {
-            if (item.getAttribute('data-letter') == event.code.slice(3)) {
-                item.classList.add('piano-key-active');
-                playSound(item.getAttribute('data-note'));
-            }
-        })
+        if (press == false) {
+            press = true;
+            PIANOKEY.forEach((item) => {
+                if (item.getAttribute('data-letter') == event.code.slice(3)) {
+                    item.classList.add('piano-key-active');
+                    playSound(item.getAttribute('data-note'));
+                }
+            })
+        }
     }
     const unclickKeyboard = (event) => {
-        PIANOKEY.forEach((item) => {
-            item.classList.remove('piano-key-active');
-        })
+        if (press == true) {
+            press = false
+            PIANOKEY.forEach((item) => {
+                item.classList.remove('piano-key-active');
+            })
+        }
     }
 
     changeButton();
     CHANGE.forEach((item) => {
         item.addEventListener('click', clickButton);
     })
+
     BUTTONTOGGLE.addEventListener('click', toggleFullScreen);
     PIANO.addEventListener('mousedown', clickPiano, false);
     window.addEventListener('mouseup', unclickPiano);
-
-    window.addEventListener('keydown', clickKeyboard);
+    window.addEventListener('keydown', clickKeyboard,);
     window.addEventListener('keyup', unclickKeyboard);
 
 
