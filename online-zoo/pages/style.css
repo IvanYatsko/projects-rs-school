@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+button {
+  outline: none;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.text {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  color: #000000;
+}
+
+.text_white {
+  color: #fff;
+}
+
+.text_turquoise {
+  color: #00A092;
+}
+
+.text_orange {
+  color: #F58021;
+}
+
+.text_blue {
+  color: #20113D;
+}
+
+.text_semi-bold {
+  font-weight: 600;
+}
+
+.text_size_s {
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.text_size_m {
+  font-size: 26px;
+  line-height: 34px;
+}
+
+.text_uppercase {
+  text-transform: uppercase;
+}
+
+.text_button {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.wrapper {
+  max-width: 1400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.wrapper_row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.page-heading {
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.header {
+  height: 110px;
+  background: #f58021;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header-menu__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.contacts__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+/*# sourceMappingURL=style.css.map */
