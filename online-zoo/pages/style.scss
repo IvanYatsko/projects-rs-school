@@ -122,15 +122,42 @@ input[type="number"] {
 
   &_border_white {
     border: 1px solid #ffffff;
+
+    &:hover {
+      background: #00a092;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
   }
 
   &_border_blue {
     border: 1px solid #20113D;
-    ;
+
+    &:hover {
+      background: #20113D;
+      border: 1px solid #ffffff;
+
+      & .text_blue {
+        color: #ffffff;
+      }
+    }
   }
 
   &_orange {
     background: #f58021;
+
+    &:hover {
+      background: #D26004;
+    }
+  }
+
+  &_turquoise {
+    background: #00A092;
+
+    &:hover {
+      background: #05786E;
+      ;
+    }
   }
 
   &__image {
@@ -187,6 +214,11 @@ input[type="number"] {
 .menu {
   display: flex;
   flex-direction: row;
+
+  &__item_active {
+    color: #00A092;
+    pointer-events: none;
+  }
 }
 
 .logo {
@@ -194,6 +226,7 @@ input[type="number"] {
     width: 96px;
     height: 50px;
   }
+
 }
 
 .menu__item:not(:first-child) {
@@ -306,6 +339,12 @@ input[type="number"] {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 1s;
+  }
 
   &:not(:last-child) {
     margin-right: 40px;
@@ -347,5 +386,16 @@ input[type="number"] {
     margin-bottom: 49px;
     position: absolute;
     bottom: 0px;
+    padding-left: 28px;
+    padding-right: 28px;
+
+    &:hover {
+
+      background-color: #f58021;
+
+      & .text_orange {
+        color: #ffffff;
+      }
+    }
   }
 }
