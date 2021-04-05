@@ -2,6 +2,11 @@
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  padding: 0;
+}
+
+body {
+  background-color: #fff;
 }
 
 a {
@@ -14,8 +19,70 @@ button {
   padding: 0;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 ul {
   list-style: none;
+}
+
+.slider-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 440px;
+  background-color: #20113D;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.slider-item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.slider-item__image {
+  position: relative;
+  width: 100%;
+  height: 436px;
+  margin-bottom: 30px;
+}
+
+.slider-item__image-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-item__image-text {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: #20113D;
+  border-radius: 5px 0px;
+  padding: 12.5px 19px;
+}
+
+.slider-item__title {
+  margin-bottom: 20px;
+}
+
+.slider-item__text {
+  margin-bottom: 54px;
+  width: 100%;
+  max-width: 380px;
 }
 
 .text {
@@ -62,6 +129,91 @@ ul {
 .text_button {
   font-size: 18px;
   line-height: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.title {
+  text-transform: uppercase;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.title_h2 {
+  font-size: 54px;
+  line-height: 66px;
+}
+
+.title_h3 {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 51px;
+}
+
+.button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+.button_orange {
+  background: #F58021;
+}
+
+.button_border_white {
+  border: 1px solid #ffffff;
+}
+
+.button_border_blue {
+  border: 1px solid #20113D;
+}
+
+.button__image {
+  margin-left: 10px;
+}
+
+.slider__arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.slider__button {
+  background-color: transparent;
+  padding: 19px 18px;
+  margin-right: 60px;
+}
+
+.page_center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .wrapper {
@@ -137,5 +289,155 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+.watch-online {
+  background-image: url(/online-zoo/assets/images/main/Background.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.watch-online__title {
+  margin-top: 129px;
+  margin-bottom: 50px;
+  font-weight: 800;
+  font-size: 82px;
+  line-height: 100px;
+  letter-spacing: 0.01em;
+  width: 100%;
+  max-width: 890px;
+}
+
+.watch-online__text {
+  width: 100%;
+  max-width: 430px;
+  margin-bottom: 50px;
+}
+
+.watch-online__button {
+  padding: 0;
+  margin-bottom: 74px;
+}
+
+.online-zoo_wrapper {
+  margin: 150px 0px;
+}
+
+.online-zoo__article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.online-zoo__article:not(:last-child) {
+  margin-bottom: 150px;
+}
+
+.article-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.article-description__title {
+  max-width: 523px;
+  width: 100%;
+}
+
+.article-description__text {
+  margin-top: 50px;
+  max-width: 560px;
+  width: 100%;
+}
+
+.article-image {
+  width: 800px;
+  height: 531px;
+}
+
+.meet-pets_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin-top: 136px;
+  margin-bottom: 150px;
+}
+
+.meet-pets__title {
+  margin-bottom: 50px;
+}
+
+.meet-pets__text {
+  width: 100%;
+  max-width: 920px;
+  margin-bottom: 100px;
+}
+
+.meet-pets-slider {
+  margin-top: 50px;
+}
+
+.meet-pets-slider__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.meet-pets-slider__items:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.animals-love_wrapper {
+  margin-top: 136px;
+  margin-bottom: 150px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.animals-love__title {
+  max-width: 665px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.animals-love__text {
+  max-width: 537px;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.animals-love__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.animals-love__main-image {
+  margin-right: 40px;
 }
 /*# sourceMappingURL=style.css.map */
