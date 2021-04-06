@@ -131,14 +131,22 @@ input[type="number"] {
   }
 
   &_border_blue {
-    border: 1px solid #20113D;
+    border: 1px solid #20113d;
 
     &:hover {
-      background: #20113D;
+      background: #20113d;
       border: 1px solid #ffffff;
 
       & .text_blue {
         color: #ffffff;
+      }
+
+      & .arrows__button_white {
+        display: block;
+      }
+
+      & .arrows__button_blue {
+        display: none;
       }
     }
   }
