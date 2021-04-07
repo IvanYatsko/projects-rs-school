@@ -131,14 +131,30 @@ input[type="number"] {
   }
 
   &_border_blue {
-    border: 1px solid #20113D;
+    border: 1px solid #20113d;
 
     &:hover {
-      background: #20113D;
+      background: #20113d;
       border: 1px solid #ffffff;
 
       & .text_blue {
         color: #ffffff;
+      }
+
+      & .arrows__button_white {
+        display: block;
+      }
+
+      & .arrows__button_blue {
+        display: none;
+      }
+
+      & .slider-item__button_blue {
+        display: none;
+      }
+
+      & .slider-item__button_white {
+        display: block;
       }
     }
   }
@@ -173,6 +189,10 @@ input[type="number"] {
     background-color: transparent;
     padding: 19px 18px;
     margin-right: 60px;
+    
+    &_white {
+      display: none;
+    }
   }
 }
 
@@ -341,8 +361,15 @@ input[type="number"] {
   position: relative;
   cursor: pointer;
 
+  &__elem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.07);
     transition: all 1s;
   }
 
@@ -389,12 +416,23 @@ input[type="number"] {
     padding-left: 28px;
     padding-right: 28px;
 
-    &:hover {
+    &_white {
+      display: none;
+    }
 
-      background-color: #f58021;
+    &:hover {
+      background: #f58021;
 
       & .text_orange {
         color: #ffffff;
+      }
+
+      & .slider-item__button_white {
+        display: block;
+      }
+
+      & .item__button_orrange {
+        display: none;
       }
     }
   }

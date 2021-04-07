@@ -110,54 +110,6 @@
           />
         </div>
         <div class="sidebar__animals">
-          <a href="../../../pages/zoos/panda/index.html">
-            <div class="sidebar__animals-item">
-              <img
-                class="sidebar__circle sidebar__circle_active"
-                src="../../../assets/icons/zoos/animals/circle.svg"
-                alt="circle"
-              />
-              <img
-                class="sidebar__circle"
-                src="../../../assets/icons/zoos/animals/circle-white.svg"
-                alt="circle"
-              />
-              <img
-                class="sidebar__circle"
-                src="../../../assets/icons/zoos/animals/circle-white-1.svg"
-                alt="circle"
-              />
-              <img
-                class="sidebar__animal"
-                src="../../../assets/icons/zoos/animals/Panda.svg"
-                alt="animal"
-              />
-            </div>
-          </a>
-          <a href="../../../pages/zoos/eagle/index.html">
-            <div class="sidebar__animals-item">
-              <img
-                class="sidebar__circle sidebar__circle_active"
-                src="../../../assets/icons/zoos/animals/circle.svg"
-                alt="circle"
-              />
-              <img
-                class="sidebar__circle"
-                src="../../../assets/icons/zoos/animals/circle-white.svg"
-                alt="circle"
-              />
-              <img
-                class="sidebar__circle"
-                src="../../../assets/icons/zoos/animals/circle-white-1.svg"
-                alt="circle"
-              />
-              <img
-                class="sidebar__animal"
-                src="../../../assets/icons/zoos/animals/Eagle.svg"
-                alt="animal"
-              />
-            </div>
-          </a>
           <a href="../../../pages/zoos/gorilla/index.html">
             <div class="sidebar__animals-item sidebar__animals-active">
               <img
@@ -202,6 +154,54 @@
               <img
                 class="sidebar__animal"
                 src="../../../assets/icons/zoos/animals/Lemur.svg"
+                alt="animal"
+              />
+            </div>
+          </a>
+          <a href="../../../pages/zoos/panda/index.html">
+            <div class="sidebar__animals-item">
+              <img
+                class="sidebar__circle sidebar__circle_active"
+                src="../../../assets/icons/zoos/animals/circle.svg"
+                alt="circle"
+              />
+              <img
+                class="sidebar__circle"
+                src="../../../assets/icons/zoos/animals/circle-white.svg"
+                alt="circle"
+              />
+              <img
+                class="sidebar__circle"
+                src="../../../assets/icons/zoos/animals/circle-white-1.svg"
+                alt="circle"
+              />
+              <img
+                class="sidebar__animal"
+                src="../../../assets/icons/zoos/animals/Panda.svg"
+                alt="animal"
+              />
+            </div>
+          </a>
+          <a href="../../../pages/zoos/eagle/index.html">
+            <div class="sidebar__animals-item">
+              <img
+                class="sidebar__circle sidebar__circle_active"
+                src="../../../assets/icons/zoos/animals/circle.svg"
+                alt="circle"
+              />
+              <img
+                class="sidebar__circle"
+                src="../../../assets/icons/zoos/animals/circle-white.svg"
+                alt="circle"
+              />
+              <img
+                class="sidebar__circle"
+                src="../../../assets/icons/zoos/animals/circle-white-1.svg"
+                alt="circle"
+              />
+              <img
+                class="sidebar__animal"
+                src="../../../assets/icons/zoos/animals/Eagle.svg"
                 alt="animal"
               />
             </div>
@@ -337,6 +337,7 @@
                   class="donation-form__input text text_button text_white"
                   type="number"
                   placeholder="Donation Amount"
+                  onkeypress="this.value=this.value.substring(0,3);"
                 />
               </div>
               <button
@@ -364,10 +365,17 @@
             </p>
           </div>
           <div class="did-you-know__information">
-            <a class="button did-you-know__button">
+            <a href="../../map/index.html" class="button did-you-know__button">
               <span class="text text_button text_orange">VIEW map</span>
               <img
-                src="../../../assets/icons/zoos/arrow.svg"
+                class="slider-item__button_orrange button__image"
+                src="../../../assets/images/main/arrow-orange.svg"
+                alt="arrow"
+                class="button__image"
+              />
+              <img
+                class="slider-item__button_white button__image"
+                src="../../../assets/images/main/arrow.svg"
                 alt="arrow"
                 class="button__image"
               />
