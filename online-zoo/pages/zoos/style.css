@@ -1,3 +1,17 @@
+.for-stycky {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.page-content {
+  width: 100%;
+  margin-left: -259px;
+}
+
 .zoos {
   background-color: #ffffff;
 }
@@ -33,8 +47,8 @@
 }
 
 .zoos__video-slider {
-  margin-top: 100px;
-  margin-bottom: 150px;
+  margin-top: 94px;
+  margin-bottom: 146px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -50,8 +64,12 @@
 
 .sidebar {
   background-color: #20113d;
-  position: fixed;
-  top: 110px;
+  position: -webkit-sticky;
+  position: sticky;
+  margin-right: 39px;
+  top: 30px;
+  max-height: 846px;
+  z-index: 1;
 }
 
 .sidebar__undraw {
@@ -200,6 +218,10 @@
   margin-bottom: 50px;
 }
 
+.donation-form {
+  margin-top: -28px;
+}
+
 .donation-form__form {
   margin-top: 10px;
   width: 320px;
@@ -261,7 +283,7 @@
 }
 
 .description__text {
-  max-width: 610px;
+  max-width: 880px;
   margin-top: 20px;
 }
 
@@ -294,12 +316,12 @@
 }
 
 .did-you-know__information {
-  margin-top: 148px;
+  margin-top: 153px;
   position: relative;
 }
 
 .did-you-know__information-string:not(:last-child) {
-  margin-bottom: 25px;
+  margin-bottom: 21px;
 }
 
 .did-you-know_text {
@@ -336,7 +358,8 @@
 }
 
 .did-you-know__description {
-  margin-top: 110px;
+  margin-top: 127px;
   margin-bottom: 150px;
+  max-width: 1160px;
 }
 /*# sourceMappingURL=style.css.map */

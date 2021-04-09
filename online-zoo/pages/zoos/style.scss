@@ -1,3 +1,13 @@
+.for-stycky {
+  display: flex;
+  justify-content: center;
+}
+
+.page-content {
+  width: 100%;
+  margin-left: -259px;
+}
+
 .zoos {
   background-color: #ffffff;
 
@@ -29,8 +39,8 @@
     }
 
     &-slider {
-      margin-top: 100px;
-      margin-bottom: 150px;
+      margin-top: 94px;
+      margin-bottom: 146px;
       width: 100%;
 
       display: flex;
@@ -42,8 +52,12 @@
 
 .sidebar {
   background-color: #20113d;
-  position: fixed;
-  top: 110px;
+  position: sticky;
+  margin-right: 39px;
+  top: 30px;
+  max-height: 846px;
+  z-index: 1;
+
 
   &__undraw {
     position: relative;
@@ -164,6 +178,10 @@
     margin-bottom: 50px;
   }
 
+  &-form {
+    margin-top: -28px;
+  }
+
   &-form__form {
     margin-top: 10px;
     width: 320px;
@@ -208,7 +226,7 @@
 
 .description {
   &__text {
-    max-width: 610px;
+    max-width: 880px;
     margin-top: 20px;
   }
 }
@@ -233,11 +251,11 @@
   }
 
   &__information {
-    margin-top: 148px;
+    margin-top: 153px;
     position: relative;
 
     &-string:not(:last-child) {
-      margin-bottom: 25px;
+      margin-bottom: 21px;
     }
   }
 
@@ -275,7 +293,8 @@
   }
 
   &__description {
-    margin-top: 110px;
+    margin-top: 127px;
     margin-bottom: 150px;
+    max-width: 1160px;
   }
 }
