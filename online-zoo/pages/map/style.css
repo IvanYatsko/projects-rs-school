@@ -11,6 +11,7 @@
 .map__title {
   margin-top: 40px;
   max-width: 600px;
+  text-align: center;
 }
 
 .map__block-image {
