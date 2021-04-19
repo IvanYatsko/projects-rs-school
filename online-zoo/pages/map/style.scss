@@ -38,6 +38,22 @@
       left: 15px;
     }
 
+    &:hover:not(.anchor_active) {
+      cursor: pointer;
+
+      & .tooltiptext {
+        visibility: visible;
+      }
+
+      & .map__active {
+        display: none;
+      }
+
+      & .map__display_none {
+        display: block;
+      }
+    }
+
     &:hover .tooltiptext {
       visibility: visible;
     }

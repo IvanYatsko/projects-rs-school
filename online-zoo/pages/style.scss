@@ -194,7 +194,7 @@ input[type="number"] {
     &:not(:last-child) {
       margin-right: 57.5px;
     }
-    
+
     &_white {
       display: none;
     }
@@ -204,6 +204,14 @@ input[type="number"] {
 .page_center {
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
+  padding-left: 3.3vw;
+  padding-right: 3.3vw;
+
+  @media (max-width: 640px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .wrapper {
@@ -233,6 +241,69 @@ input[type="number"] {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 2px;
+
+    @media (max-width: 1200px) {
+      margin-right: 5.5%;
+    }
+
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  &-burger {
+    display: none;
+
+    @media (max-width: 640px) {
+      display: block;
+      position: relative;
+      width: 30px;
+      height: 30px;
+      margin-right: 20px;
+
+      &__span {
+        position: absolute;
+        background-color: #000000;
+        width: 100%;
+        height: 3px;
+        left: 0;
+        top: 14px;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: #000000;
+        width: 100%;
+        height: 2px;
+        left: 0;
+      }
+
+      &::before {
+        top: 0;
+      }
+
+      &::after {
+        bottom: 0;
+      }
+    }
+
+    @media (max-width: 320px) {
+      margin-right: 16px;
+    }
+  }
+}
+
+.logo {
+  @media (max-width: 1200px) {
+    margin-left: 5.3%;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 640px) {
+    margin-left: 0;
   }
 }
 
@@ -244,36 +315,33 @@ input[type="number"] {
     color: #00A092;
     pointer-events: none;
   }
+
+  &__item:hover {
+    & .menu__link {
+      color: #00a092;
+    }
+  }
 }
-
-// .logo {
-//   &__image {
-//     &-online-zoo {
-//       width: 96px;
-//       height: 50px;
-//     }
-
-//     &-yem-digital {
-//       width: 50px;
-//       height: 50px;
-//     }
-
-//     &-rs {
-//       width: 138px;
-//       height: 50px;
-//     }
-//   }
-// }
 
 .menu__item:not(:first-child) {
   margin-left: 50px;
+
+  @media (max-width: 1200px) {
+    margin-left: 2.5vw;
+  }
 }
 
 .social-media {
+  margin-top: 3px;
+
   &__list {
     margin-left: 65px;
     display: flex;
     flex-direction: row;
+
+    @media (max-width: 1200px) {
+      margin-left: 6.6vw;
+    }
   }
 
   &__item:not(:first-child) {
@@ -289,6 +357,10 @@ input[type="number"] {
 .line {
   border-top: 1px solid #ffffff;
   width: 100%;
+
+  @media (max-width: 1200px) {
+    border-top: 2px solid #ffffff;
+  }
 }
 
 .footer {
@@ -377,11 +449,24 @@ input[type="number"] {
   position: relative;
   cursor: pointer;
 
+  @media (max-width:1200px) {
+    width: 455px;
+  }
+
+  @media (max-width:640px) {
+    width: 290px;
+    height: 600px;
+  }
+
   &__elem {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    @media (max-width:1200px) {
+      width: 100%;
+    }
   }
 
   &:hover {
@@ -391,6 +476,10 @@ input[type="number"] {
 
   &:not(:last-child) {
     margin-right: 40px;
+
+    @media (max-width:1200px) {
+      margin-right: 20px;
+    }
   }
 
   &__image {
@@ -398,6 +487,16 @@ input[type="number"] {
     width: 100%;
     height: 436px;
     margin-bottom: 30px;
+
+    @media (max-width:1200px) {
+      margin-bottom: 14px;
+    }
+
+    @media (max-width:640px) {
+      width: 290px;
+      height: 333px;
+      margin-bottom: 16px;
+    }
 
     &-img {
       object-fit: cover;
@@ -412,17 +511,37 @@ input[type="number"] {
       background: #20113D;
       border-radius: 5px 0px;
       padding: 12.5px 29px;
+
+      @media (max-width:1200px) {
+        padding: 12.5px 22px;
+      }
     }
   }
 
   &__title {
     margin-bottom: 17px;
+
+    @media (max-width:1200px) {
+      margin-bottom: 15px;
+    }
+    @media (max-width:640px) {
+      margin-bottom: 11px;
+    }
   }
+  
 
   &__text {
     margin-bottom: 149px;
     width: 100%;
     max-width: 380px;
+
+    @media (max-width:1200px) {
+      margin-bottom: 136px;
+      max-width: 373px;
+    }
+    @media (max-width:640px) {
+      max-width: 238px;
+    }
   }
 
   &__button {
@@ -431,6 +550,17 @@ input[type="number"] {
     bottom: 0px;
     padding-left: 28px;
     padding-right: 28px;
+
+    @media (max-width:1200px) {
+      margin-bottom: 34px;
+
+      & span {
+        font-size: 20.3px;
+      }
+    }
+    @media (max-width:640px) {
+      margin-bottom: 10px;
+    }
 
     &_white {
       display: none;

@@ -42,6 +42,22 @@
   left: 15px;
 }
 
+.map__anchor:hover:not(.anchor_active) {
+  cursor: pointer;
+}
+
+.map__anchor:hover:not(.anchor_active) .tooltiptext {
+  visibility: visible;
+}
+
+.map__anchor:hover:not(.anchor_active) .map__active {
+  display: none;
+}
+
+.map__anchor:hover:not(.anchor_active) .map__display_none {
+  display: block;
+}
+
 .map__anchor:hover .tooltiptext {
   visibility: visible;
 }
