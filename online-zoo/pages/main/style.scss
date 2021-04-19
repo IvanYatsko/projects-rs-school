@@ -184,6 +184,12 @@ section.online-zoo {
       margin-top: 100px;
       margin-bottom: 149px;
     }
+
+    @media (max-width:640px) {
+      position: static;
+      margin-bottom: 100px;
+    }
+
   }
 
   &__title {
@@ -192,6 +198,11 @@ section.online-zoo {
     @media (max-width:1200px) {
       margin-left: 8vw;
       margin-bottom: 32px;
+    }
+
+    @media (max-width:640px) {
+      margin-left: 0;
+      max-width: 75vw;
     }
   }
 
@@ -204,6 +215,11 @@ section.online-zoo {
       width: auto;
       max-width: 69vw;
     }
+
+    @media (max-width:640px) {
+      max-width: 95vw;
+      margin-bottom: 50px;
+    }
   }
 
   &-slider {
@@ -211,12 +227,34 @@ section.online-zoo {
     top: 428px;
     left: 0px;
 
-    @media (max-width:1200px) {
-      top: 422px;
+    @media (max-width:640px) {
+      position: static;
+      margin-bottom: 50px;
     }
 
     &__items {
       display: flex;
+
+      @media (max-width:640px) {
+        &:not(:nth-child(2)) {
+          display: none;
+        }
+
+        & .slider-item {
+
+          &:nth-child(3) {
+            margin-right: 0px;
+          }
+
+          &:first-child {
+            display: none;
+          }
+
+          &:last-child {
+            display: none;
+          }
+        }
+      }
 
       &:not(:last-child) {
         margin-bottom: 40px;
@@ -231,6 +269,11 @@ section.online-zoo {
   &__button {
     padding-left: 36px;
     padding-right: 36px;
+
+    @media (max-width:640px) {
+      padding-left: 28px;
+      padding-right: 26px;
+    }
   }
 
   &__arrows {
@@ -239,6 +282,16 @@ section.online-zoo {
     @media (max-width:1200px) {
       margin-bottom: 1531px;
     }
+
+    @media (max-width:640px) {
+      display: none;
+    }
+  }
+}
+
+.blok-image {
+  @media (max-width:640px) {
+    display: none;
   }
 }
 
@@ -253,6 +306,10 @@ section.online-zoo {
     @media (max-width:1200px) {
       margin-top: 149.5px;
     }
+
+    @media (max-width:640px) {
+      margin-top: 81px;
+    }
   }
 
   &__title {
@@ -264,6 +321,10 @@ section.online-zoo {
       margin-left: 48px;
       margin-bottom: 31px;
     }
+
+    @media (max-width:1200px) {
+      margin-left: 0px;
+    }
   }
 
   &__text {
@@ -274,6 +335,12 @@ section.online-zoo {
     @media (max-width:1200px) {
       margin-left: 115px;
       margin-bottom: 48px;
+    }
+
+    @media (max-width:640px) {
+      max-width: 100%;
+      margin-left: 0px;
+      margin-bottom: 66px;
     }
   }
 
@@ -299,11 +366,22 @@ section.online-zoo {
     &_mod {
       margin-bottom: 40px;
 
-      @media (max-width:1200px) {
-        margin-bottom: 16px;
+      @media (max-width:640px) {
+        width: 600px;
+        height: 297px;
+
+        & .slider-item__elem {
+          flex-direction: row;
+        }
+
+        &:not(:nth-child(2)) {
+          display: none;
+        }
       }
 
       @media (max-width:1200px) {
+        margin-bottom: 16px;
+
         &:nth-child(2) {
           order: 0;
         }
@@ -344,10 +422,17 @@ section.online-zoo {
   }
 
   &__slider-item-image {
-    height: 373px !important;
+    height: 373px;
 
     @media (max-width:1200px) {
       margin-bottom: 32px !important;
+    }
+
+    @media (max-width:6400px) {
+      & .slider-item__image-img {
+        width: 300px;
+        height: 297px;
+      }
     }
   }
 
@@ -359,6 +444,13 @@ section.online-zoo {
     @media (max-width:1200px) {
       margin-left: -15px;
       margin-bottom: 156px !important;
+    }
+
+    @media (max-width:1200px) {
+      max-width: 248px !important;
+      margin-left: auto;
+      margin-right: 27px;
+      margin-bottom: 196px !important;
     }
   }
 
@@ -375,6 +467,10 @@ section.online-zoo {
       margin-bottom: 41px !important;
     }
 
+    @media (max-width:640px) {
+      right: 76px;
+      bottom: -7px;
+    }
   }
 }
 
@@ -494,17 +590,26 @@ section.online-zoo {
 
   @media (max-width:1200px) {
 
-    :nth-child(4) {
-      margin-top: 85px;
-    }
-
     :nth-child(5) {
       margin-top: 19px;
+
+      @media (max-width:640px) {
+        margin-top: 7px;
+      }
     }
 
     :nth-child(7) {
       margin-top: 19px;
+
+      @media (max-width:640px) {
+        margin-top: 7px;
+      }
     }
+  }
+
+  @media (max-width:640px) {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   &__title {
@@ -513,7 +618,11 @@ section.online-zoo {
     @media (max-width:1200px) {
       margin-top: 150px;
       margin-left: 60px;
+    }
 
+    @media (max-width:640px) {
+      margin-top: 80px;
+      margin-left: 15.5vw;
     }
   }
 }
@@ -528,9 +637,19 @@ section.online-zoo {
     margin-top: 100px;
   }
 
+  @media (max-width:640px) {
+    margin-top: 49px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   &__last {
     @media (max-width:1200px) {
       margin-top: 89px;
+    }
+
+    @media (max-width:640px) {
+      margin-top: 50px;
     }
   }
 
@@ -542,7 +661,11 @@ section.online-zoo {
 
     @media (max-width:1200px) {
       margin-top: 63px;
+    }
 
+    @media (max-width:640px) {
+      flex-direction: column;
+      margin-top: 7px;
     }
 
     &__block {
@@ -557,13 +680,28 @@ section.online-zoo {
         margin-left: 1.6vw;
       }
 
+      @media (max-width:640px) {
+        margin: auto;
+        width: 95vw;
+        margin-top: 50px;
+        max-width: none;
+      }
+
       @media (max-width:1200px) {
         &-middle {
           margin-top: 68px;
+
+          @media (max-width:640px) {
+            margin-top: 50px;
+          }
         }
 
         &-last {
           margin-top: 62px;
+
+          @media (max-width:640px) {
+            margin-top: 52px;
+          }
         }
       }
     }
@@ -577,6 +715,10 @@ section.online-zoo {
         margin-bottom: 32px;
         max-width: 546px;
       }
+
+      @media (max-width:640px) {
+        max-width: none;
+      }
     }
 
     &__image {
@@ -587,6 +729,13 @@ section.online-zoo {
         height: 358px;
         margin-top: 44px;
       }
+
+      @media (max-width:640px) {
+        width: 640px;
+        height: 417px;
+        margin-top: 44px;
+        margin-bottom: 0px;
+      }
     }
 
     &__button {
@@ -596,9 +745,16 @@ section.online-zoo {
       padding-right: 35px;
 
       @media (max-width:1200px) {
-        margin-top: 124px !important;
+        margin-top: 124px;
         padding-left: 49px;
         padding-right: 47px;
+      }
+
+      @media (max-width:640px) {
+        margin: 55px auto 61px;
+        padding-left: 58px;
+        padding-right: 58px;
+
       }
     }
   }
@@ -608,6 +764,10 @@ section.online-zoo {
 
     @media (max-width:1200px) {
       margin-left: 69px;
+    }
+
+    @media (max-width:640px) {
+      margin-left: 10px;
     }
   }
 }
@@ -647,6 +807,14 @@ section.online-zoo {
       margin-top: 1269px;
       margin-left: 94px;
     }
+
+    @media (max-width:1200px) {
+      margin-top: 477px;
+      margin-left: 0px;
+      margin-bottom: 751px;
+      padding-left: 80px;
+      padding-right: 80px;
+    }
   }
 }
 
@@ -662,9 +830,20 @@ section.online-zoo {
     left: 101px;
   }
 
+  @media (max-width:640px) {
+    top: 442px;
+    left: 0px;
+  }
+
   &__line {
     display: flex;
     flex-direction: row;
+
+    @media (max-width:1200px) {
+      &:nth-child(2) {
+        display: none;
+      }
+    }
   }
 
   &__buttons {
@@ -692,25 +871,54 @@ section.online-zoo {
 
   @media (max-width:1200px) {
     padding: 46px 51px 0;
+    text-align: center;
+    margin-right: 20px;
+  }
+
+  @media (max-width:640px) {
+    width: 523px;
+    height: 371px;
+    padding: 51px 0 0;
+  }
+
+  &__commas {
+    @media (max-width:1200px) {
+      position: absolute;
+      top: 46px;
+      left: 36px;
+    }
   }
 
   &__title {
     margin-top: 34px;
     margin-bottom: 20px;
 
-    @media (max-width:1200px) {
-      margin-top: 43px;
+    @media (max-width:640px) {
+      max-width: 290px;
+      margin: auto;
+      margin-bottom: 32px;
     }
   }
 
   &__text {
     width: 415px;
     margin-bottom: 46px;
+
+    @media (max-width:640px) {
+      width: auto;
+      max-width: 463px;
+      margin: auto;
+      margin-bottom: 43px;
+    }
   }
 
   &__author {
     margin-bottom: 20px;
     position: absolute;
     bottom: 50px;
+
+    @media (max-width:1200px) {
+      position: static;
+    }
   }
 }
