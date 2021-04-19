@@ -357,6 +357,10 @@ input[type="number"] {
 .line {
   border-top: 1px solid #ffffff;
   width: 100%;
+
+  @media (max-width: 1200px) {
+    border-top: 2px solid #ffffff;
+  }
 }
 
 .footer {
@@ -445,11 +449,19 @@ input[type="number"] {
   position: relative;
   cursor: pointer;
 
+  @media (max-width:1200px) {
+    width: 455px;
+  }
+
   &__elem {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    @media (max-width:1200px) {
+      width: 100%;
+    }
   }
 
   &:hover {
@@ -459,6 +471,10 @@ input[type="number"] {
 
   &:not(:last-child) {
     margin-right: 40px;
+
+    @media (max-width:1200px) {
+      margin-right: 20px;
+    }
   }
 
   &__image {
@@ -466,6 +482,10 @@ input[type="number"] {
     width: 100%;
     height: 436px;
     margin-bottom: 30px;
+
+    @media (max-width:1200px) {
+      margin-bottom: 14px;
+    }
 
     &-img {
       object-fit: cover;
@@ -480,6 +500,10 @@ input[type="number"] {
       background: #20113D;
       border-radius: 5px 0px;
       padding: 12.5px 29px;
+
+      @media (max-width:1200px) {
+        padding: 12.5px 22px;
+      }
     }
   }
 
@@ -491,6 +515,11 @@ input[type="number"] {
     margin-bottom: 149px;
     width: 100%;
     max-width: 380px;
+
+    @media (max-width:1200px) {
+      margin-bottom: 136px;
+      max-width: 373px
+    }
   }
 
   &__button {
@@ -499,6 +528,14 @@ input[type="number"] {
     bottom: 0px;
     padding-left: 28px;
     padding-right: 28px;
+
+    @media (max-width:1200px) {
+      margin-bottom: 34px;
+
+      & span {
+        font-size: 20.3px;
+      }
+    }
 
     &_white {
       display: none;
