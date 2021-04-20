@@ -1,8 +1,30 @@
+@media (max-width: 320px) {
+  .page_center {
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+
+  .header {
+    padding-left: 6vw;
+    padding-right: 6.3vw;
+  }
+
+  .footer {
+    padding: 0;
+  }
+}
+
+
 .watch-online {
   background-image: url(../../assets/images/main/Background.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media (max-width:320px) {
+    background-position: -165px 397px;
+    background-size: 164% 42%;
+  }
 
   &__title {
     margin-top: 129px;
@@ -26,6 +48,13 @@
       margin-top: 50px;
       margin-bottom: 13px;
     }
+
+    @media (max-width:320px) {
+      font-size: 40px;
+      line-height: 49px;
+      margin-top: 21px;
+      margin-bottom: 11px;
+    }
   }
 
   &__text {
@@ -40,6 +69,11 @@
 
     @media (max-width:640px) {
       width: 52vw;
+    }
+
+    @media (max-width:320px) {
+      width: 95vw;
+      margin-bottom: 29px;
     }
   }
 
@@ -56,6 +90,14 @@
       padding-left: 52px;
       padding-right: 51px;
       margin-bottom: 49px;
+    }
+
+    @media (max-width:320px) {
+      padding-left: 60px;
+      padding-right: 58px;
+      padding-top: 12px;
+      padding-bottom: 11px;
+      margin-bottom: 279px;
     }
   }
 }
@@ -74,6 +116,11 @@ section.online-zoo {
 
     @media (max-width:1200px) {
       margin-top: 100px;
+      margin-bottom: 99px;
+    }
+
+    @media (max-width:320px) {
+      margin-top: 49px;
       margin-bottom: 99px;
     }
   }
@@ -127,11 +174,19 @@ section.online-zoo {
     @media (max-width:640px) {
       margin-left: 21px;
     }
+    @media (max-width:320px) {
+      margin-left: 10px;
+    }
 
     &__title {
       max-width: 523px;
       width: 100%;
       margin-top: 26px;
+
+      @media (max-width:320px) {
+        font-size: 26px;
+        line-height: 32px;
+      }
     }
 
     &__text {
@@ -141,8 +196,11 @@ section.online-zoo {
 
       @media (max-width:1200px) {
         margin-top: 30px;
-        line-height: 27.5px !important;
-        max-width: 601px;
+        line-height: 27.5px;
+      }
+
+      @media (max-width:640px) {
+        max-width: 600px;
       }
     }
   }
@@ -164,6 +222,11 @@ section.online-zoo {
       @media (max-width:640px) {
         object-fit: cover;
         object-position: -10px;
+      }
+
+      @media (max-width:320px) {
+        width: 320px;
+        height: 218px;
       }
     }
   }
@@ -224,7 +287,7 @@ section.online-zoo {
 
   &-slider {
     position: absolute;
-    top: 428px;
+    top: 424px;
     left: 0px;
 
     @media (max-width:640px) {
@@ -309,6 +372,7 @@ section.online-zoo {
 
     @media (max-width:640px) {
       margin-top: 81px;
+      margin-bottom: 100px;
     }
   }
 
@@ -322,7 +386,7 @@ section.online-zoo {
       margin-bottom: 31px;
     }
 
-    @media (max-width:1200px) {
+    @media (max-width:640px) {
       margin-left: 0px;
     }
   }
@@ -351,6 +415,12 @@ section.online-zoo {
       height: 668px;
       object-fit: cover;
       object-position: 93px;
+    }
+
+    @media (max-width:640px) {
+      width: 641px;
+      height: 379px;
+      object-position: -4px;
     }
   }
 
@@ -428,7 +498,7 @@ section.online-zoo {
       margin-bottom: 32px !important;
     }
 
-    @media (max-width:6400px) {
+    @media (max-width:640px) {
       & .slider-item__image-img {
         width: 300px;
         height: 297px;
@@ -446,11 +516,11 @@ section.online-zoo {
       margin-bottom: 156px !important;
     }
 
-    @media (max-width:1200px) {
+    @media (max-width:640px) {
       max-width: 248px !important;
       margin-left: auto;
       margin-right: 27px;
-      margin-bottom: 196px !important;
+      margin-bottom: 190px !important;
     }
   }
 
@@ -459,6 +529,11 @@ section.online-zoo {
     padding-right: 36px;
     margin-top: 100px;
     margin-bottom: 150px;
+
+    @media (max-width:640px) {
+      margin-top: 49px;
+      margin-bottom: 99px;
+    }
   }
 
   &-slider__button {
@@ -470,6 +545,34 @@ section.online-zoo {
     @media (max-width:640px) {
       right: 76px;
       bottom: -7px;
+    }
+  }
+}
+
+.points-selector {
+
+  display: none;
+
+  @media (max-width:640px) {
+    margin-top: 52px;
+    display: flex;
+  }
+
+  &__item {
+    @media (max-width:640px) {
+
+      width: 8px;
+      height: 8px;
+      border: 1px solid #000000;
+      border-radius: 50%;
+
+      &:not(:first-child) {
+        margin-left: 20px;
+      }
+
+      &_active {
+        background-color: #000000;
+      }
     }
   }
 }
@@ -560,6 +663,7 @@ section.online-zoo {
 
   @media (max-width:1200px) {
     width: 48vw;
+    text-align: start;
   }
 
   @media (max-width:640px) {
@@ -641,6 +745,16 @@ section.online-zoo {
     margin-top: 49px;
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  &__middle {
+    @media (max-width:1200px) {
+      margin-top: 85px;
+    }
+
+    @media (max-width:640px) {
+      margin-top: 49px;
+    }
   }
 
   &__last {
@@ -808,7 +922,7 @@ section.online-zoo {
       margin-left: 94px;
     }
 
-    @media (max-width:1200px) {
+    @media (max-width:640px) {
       margin-top: 477px;
       margin-left: 0px;
       margin-bottom: 751px;
@@ -839,7 +953,7 @@ section.online-zoo {
     display: flex;
     flex-direction: row;
 
-    @media (max-width:1200px) {
+    @media (max-width:640px) {
       &:nth-child(2) {
         display: none;
       }
@@ -870,19 +984,19 @@ section.online-zoo {
   position: relative;
 
   @media (max-width:1200px) {
-    padding: 46px 51px 0;
-    text-align: center;
-    margin-right: 20px;
+    padding: 45px 51px 0;
   }
 
   @media (max-width:640px) {
     width: 523px;
     height: 371px;
     padding: 51px 0 0;
+    text-align: center;
+    margin-right: 20px;
   }
 
   &__commas {
-    @media (max-width:1200px) {
+    @media (max-width:640px) {
       position: absolute;
       top: 46px;
       left: 36px;
@@ -892,6 +1006,11 @@ section.online-zoo {
   &__title {
     margin-top: 34px;
     margin-bottom: 20px;
+
+    @media (max-width:1200px) {
+      margin-top: 41px;
+      margin-bottom: 22px;
+    }
 
     @media (max-width:640px) {
       max-width: 290px;
@@ -917,7 +1036,7 @@ section.online-zoo {
     position: absolute;
     bottom: 50px;
 
-    @media (max-width:1200px) {
+    @media (max-width:640px) {
       position: static;
     }
   }
