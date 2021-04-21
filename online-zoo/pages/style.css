@@ -829,14 +829,14 @@ input[type="number"] {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 980px) {
   .slider-item {
     width: 290px;
     height: 600px;
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 600px) {
   .slider-item {
     width: 300px;
   }
