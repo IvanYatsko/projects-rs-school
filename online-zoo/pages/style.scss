@@ -457,6 +457,10 @@ input[type="number"] {
     width: 290px;
     height: 600px;
   }
+  @media (max-width:320px) {
+    width: 300px;
+    
+  }
 
   &__elem {
     display: flex;

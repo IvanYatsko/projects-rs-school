@@ -121,7 +121,7 @@ section.online-zoo {
 
     @media (max-width:320px) {
       margin-top: 49px;
-      margin-bottom: 99px;
+      margin-bottom: 51px;
     }
   }
 
@@ -160,6 +160,11 @@ section.online-zoo {
       @media (max-width:640px) {
         height: 425px;
       }
+
+      @media (max-width:320px) {
+        height: 213px;
+        margin-bottom: 2px;
+      }
     }
   }
 }
@@ -174,6 +179,7 @@ section.online-zoo {
     @media (max-width:640px) {
       margin-left: 21px;
     }
+
     @media (max-width:320px) {
       margin-left: 10px;
     }
@@ -194,6 +200,14 @@ section.online-zoo {
       max-width: 560px;
       width: 100%;
 
+      &_active320 {
+        display: none;
+      }
+
+      &-work_active320 {
+        display: none;
+      }
+
       @media (max-width:1200px) {
         margin-top: 30px;
         line-height: 27.5px;
@@ -201,6 +215,23 @@ section.online-zoo {
 
       @media (max-width:640px) {
         max-width: 600px;
+      }
+
+      @media (max-width:320px) {
+        margin-top: 22px;
+        max-width: 299px;
+        height: 216px;
+        overflow: hidden;
+        display: none;
+
+        &_active320 {
+          display: block;
+        }
+
+        &-work_active320 {
+          display: block;
+          height: 269px;
+        }
       }
     }
   }
@@ -234,6 +265,11 @@ section.online-zoo {
 
 .meet-pets {
 
+  @media (max-width:320px) {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+
   &_wrapper {
     display: flex;
     flex-direction: column;
@@ -253,6 +289,10 @@ section.online-zoo {
       margin-bottom: 100px;
     }
 
+    @media (max-width:320px) {
+      margin-top: 50px;
+      margin-bottom: 14px;
+    }
   }
 
   &__title {
@@ -266,6 +306,12 @@ section.online-zoo {
     @media (max-width:640px) {
       margin-left: 0;
       max-width: 75vw;
+    }
+
+    @media (max-width:320px) {
+      font-size: 26px;
+      line-height: 32px;
+      max-width: 97vw;
     }
   }
 
@@ -282,6 +328,13 @@ section.online-zoo {
     @media (max-width:640px) {
       max-width: 95vw;
       margin-bottom: 50px;
+    }
+
+    @media (max-width:320px) {
+      font-size: 18px;
+      line-height: 27px;
+      max-width: 96vw;
+      margin-bottom: 25px;
     }
   }
 
@@ -307,6 +360,10 @@ section.online-zoo {
 
           &:nth-child(3) {
             margin-right: 0px;
+
+            @media (max-width:320px) {
+              display: none;
+            }
           }
 
           &:first-child {
@@ -336,6 +393,10 @@ section.online-zoo {
     @media (max-width:640px) {
       padding-left: 28px;
       padding-right: 26px;
+    }
+
+    @media (max-width:320px) {
+      display: none;
     }
   }
 
@@ -594,6 +655,11 @@ section.online-zoo {
     @media (max-width:640px) {
       flex-direction: column;
     }
+
+    @media (max-width:320px) {
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
   }
 
   &-form {
@@ -622,6 +688,11 @@ section.online-zoo {
       width: 363px;
     }
 
+    @media (max-width:320px) {
+      width: 299px;
+      height: 46px;
+    }
+
     &:hover {
       background: none !important;
     }
@@ -634,11 +705,22 @@ section.online-zoo {
     @media (max-width:640px) {
       padding-left: 23px;
       padding-right: 24px;
+      padding-left: 14px;
+      padding-right: 0px;
+    }
+
+    @media (max-width:320px) {
+      padding-left: 23px;
+      padding-right: 0px;
     }
   }
 
   &-form__span {
     margin-left: 14px;
+
+    @media (max-width:320px) {
+      margin-left: 1px;
+    }
   }
 
   &-form__input {
@@ -647,6 +729,13 @@ section.online-zoo {
     background-color: transparent;
     border: none;
     cursor: text;
+
+    @media (max-width:320px) {
+      font-size: 16px;
+      line-height: 20px;
+      margin-left: 4px;
+      width: 198px;
+    }
   }
 
   &-form__input::placeholder {
@@ -656,6 +745,10 @@ section.online-zoo {
   &-form__submit {
     padding-left: 25px;
     padding-right: 25px;
+
+    @media (max-width:1200px) {
+      padding-left: 16px;
+    }
   }
 }
 
@@ -674,6 +767,13 @@ section.online-zoo {
   width: 91vw;
   text-align: center;
 
+  &__title {
+    @media (max-width:320px) {
+      font-size: 26px;
+      line-height: 32px;
+    }
+  }
+
   &__text {
     max-width: 610px;
     margin-top: 20px;
@@ -684,6 +784,11 @@ section.online-zoo {
 
     @media (max-width:640px) {
       margin-bottom: 29px;
+    }
+
+    @media (max-width:320px) {
+      margin-top: 28px;
+      margin-bottom: 31px;
     }
   }
 
@@ -728,6 +833,13 @@ section.online-zoo {
       margin-top: 80px;
       margin-left: 15.5vw;
     }
+
+    @media (max-width:320px) {
+      font-size: 26px;
+      line-height: 32px;
+      margin-top: 20px;
+      margin-left: 18.5vw;
+    }
   }
 }
 
@@ -745,6 +857,15 @@ section.online-zoo {
     margin-top: 49px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 43px;
+    padding-left: 10px;
+    padding-right: 0px;
+  }
+
+  @media (max-width:320px) {
+    margin-top: 43px;
+    padding-left: 10px;
+    padding-right: 0px;
   }
 
   &__middle {
@@ -754,6 +875,10 @@ section.online-zoo {
 
     @media (max-width:640px) {
       margin-top: 49px;
+    }
+
+    @media (max-width:320px) {
+      margin-top: 44px;
     }
   }
 
@@ -801,88 +926,123 @@ section.online-zoo {
         max-width: none;
       }
 
-      @media (max-width:1200px) {
-        &-middle {
+      @media (max-width:320px) {
+        margin-top: 30px;
+        width: 89vw;
+      }
+
+
+      &-middle {
+        @media (max-width:1200px) {
           margin-top: 68px;
-
-          @media (max-width:640px) {
-            margin-top: 50px;
-          }
         }
 
-        &-last {
-          margin-top: 62px;
-
-          @media (max-width:640px) {
-            margin-top: 52px;
-          }
+        @media (max-width:640px) {
+          margin-top: 50px;
         }
-      }
-    }
+        @media (max-width:640px) {
+          width: 91vw;
+        }
 
-    &__title {
-      margin-top: 30px;
-      margin-bottom: 50px;
+      } 
 
-      @media (max-width:1200px) {
-        margin-top: 27px;
-        margin-bottom: 32px;
-        max-width: 546px;
-      }
+      &-last {
+        margin-top: 62px;
 
-      @media (max-width:640px) {
-        max-width: none;
-      }
-    }
-
-    &__image {
-      margin-bottom: -9px;
-
-      @media (max-width:1200px) {
-        width: 550px;
-        height: 358px;
-        margin-top: 44px;
-      }
-
-      @media (max-width:640px) {
-        width: 640px;
-        height: 417px;
-        margin-top: 44px;
-        margin-bottom: 0px;
-      }
-    }
-
-    &__button {
-      margin-top: 50px;
-      margin-bottom: 100px;
-      padding-left: 35px;
-      padding-right: 35px;
-
-      @media (max-width:1200px) {
-        margin-top: 124px;
-        padding-left: 49px;
-        padding-right: 47px;
-      }
-
-      @media (max-width:640px) {
-        margin: 55px auto 61px;
-        padding-left: 58px;
-        padding-right: 58px;
-
+        @media (max-width:640px) {
+          margin-top: 52px;
+        }
       }
     }
   }
 
-  &__line {
-    margin-left: 93px;
+  &__title {
+    margin-top: 30px;
+    margin-bottom: 50px;
 
     @media (max-width:1200px) {
-      margin-left: 69px;
+      margin-top: 27px;
+      margin-bottom: 32px;
+      max-width: 546px;
     }
 
     @media (max-width:640px) {
-      margin-left: 10px;
+      max-width: none;
     }
+
+    @media (max-width:320px) {
+      margin-bottom: 27px;
+    }
+  }
+
+  &__text {
+    @media (max-width:320px) {
+      display: none;
+    }
+
+    &-active {
+      display: none;
+
+      @media (max-width:320px) {
+        display: block;
+        line-height: 27.6px;
+      }
+    }
+  }
+
+  &__image {
+    margin-bottom: -9px;
+
+    @media (max-width:1200px) {
+      width: 550px;
+      height: 358px;
+      margin-top: 44px;
+    }
+
+    @media (max-width:640px) {
+      width: 640px;
+      height: 417px;
+      margin-top: 44px;
+      margin-bottom: 0px;
+    }
+
+    @media (max-width:320px) {
+      width: 320px;
+      height: 208px;
+      margin-top: 24px;
+    }
+  }
+
+  &__button {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding-left: 35px;
+    padding-right: 35px;
+
+    @media (max-width:1200px) {
+      margin-top: 124px;
+      padding-left: 49px;
+      padding-right: 47px;
+    }
+
+    @media (max-width:640px) {
+      margin: 55px auto 61px;
+      padding-left: 58px;
+      padding-right: 58px;
+
+    }
+  }
+}
+
+&__line {
+  margin-left: 93px;
+
+  @media (max-width:1200px) {
+    margin-left: 69px;
+  }
+
+  @media (max-width:640px) {
+    margin-left: 10px;
   }
 }
 
