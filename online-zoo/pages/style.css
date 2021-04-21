@@ -564,6 +564,12 @@ input[type="number"] {
   }
 }
 
+@media (max-width: 320px) {
+  .slider-item {
+    width: 300px;
+  }
+}
+
 .slider-item__elem {
   display: -webkit-box;
   display: -ms-flexbox;

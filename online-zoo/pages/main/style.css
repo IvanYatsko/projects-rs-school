@@ -139,7 +139,7 @@
 @media (max-width: 320px) {
   .online-zoo_wrapper {
     margin-top: 49px;
-    margin-bottom: 99px;
+    margin-bottom: 51px;
   }
 }
 
@@ -196,6 +196,13 @@
   }
 }
 
+@media (max-width: 320px) {
+  .online-zoo__article-work .article-image__img {
+    height: 213px;
+    margin-bottom: 2px;
+  }
+}
+
 .article-description {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -240,6 +247,14 @@
   width: 100%;
 }
 
+.article-description__text_active320 {
+  display: none;
+}
+
+.article-description__text-work_active320 {
+  display: none;
+}
+
 @media (max-width: 1200px) {
   .article-description__text {
     margin-top: 30px;
@@ -250,6 +265,23 @@
 @media (max-width: 640px) {
   .article-description__text {
     max-width: 600px;
+  }
+}
+
+@media (max-width: 320px) {
+  .article-description__text {
+    margin-top: 22px;
+    max-width: 299px;
+    height: 216px;
+    overflow: hidden;
+    display: none;
+  }
+  .article-description__text_active320 {
+    display: block;
+  }
+  .article-description__text-work_active320 {
+    display: block;
+    height: 269px;
   }
 }
 
@@ -289,6 +321,13 @@
   }
 }
 
+@media (max-width: 320px) {
+  .meet-pets {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+}
+
 .meet-pets_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -320,6 +359,13 @@
   }
 }
 
+@media (max-width: 320px) {
+  .meet-pets_wrapper {
+    margin-top: 50px;
+    margin-bottom: 14px;
+  }
+}
+
 .meet-pets__title {
   margin-bottom: 50px;
 }
@@ -335,6 +381,14 @@
   .meet-pets__title {
     margin-left: 0;
     max-width: 75vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .meet-pets__title {
+    font-size: 26px;
+    line-height: 32px;
+    max-width: 97vw;
   }
 }
 
@@ -355,6 +409,15 @@
   .meet-pets__text {
     max-width: 95vw;
     margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 320px) {
+  .meet-pets__text {
+    font-size: 18px;
+    line-height: 27px;
+    max-width: 96vw;
+    margin-bottom: 25px;
   }
 }
 
@@ -384,6 +447,15 @@
   .meet-pets-slider__items .slider-item:nth-child(3) {
     margin-right: 0px;
   }
+}
+
+@media (max-width: 640px) and (max-width: 320px) {
+  .meet-pets-slider__items .slider-item:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
   .meet-pets-slider__items .slider-item:first-child {
     display: none;
   }
@@ -411,6 +483,12 @@
   .meet-pets__button {
     padding-left: 28px;
     padding-right: 26px;
+  }
+}
+
+@media (max-width: 320px) {
+  .meet-pets__button {
+    display: none;
   }
 }
 
@@ -724,6 +802,13 @@
   }
 }
 
+@media (max-width: 320px) {
+  .donation_wrapper {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+}
+
 @media (max-width: 1200px) {
   .donation-form {
     margin-bottom: auto;
@@ -761,6 +846,13 @@
   }
 }
 
+@media (max-width: 320px) {
+  .donation-form__form {
+    width: 299px;
+    height: 46px;
+  }
+}
+
 .donation-form__form:hover {
   background: none !important;
 }
@@ -774,11 +866,26 @@
   .donation-form__item {
     padding-left: 23px;
     padding-right: 24px;
+    padding-left: 14px;
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 320px) {
+  .donation-form__item {
+    padding-left: 23px;
+    padding-right: 0px;
   }
 }
 
 .donation-form__span {
   margin-left: 14px;
+}
+
+@media (max-width: 320px) {
+  .donation-form__span {
+    margin-left: 1px;
+  }
 }
 
 .donation-form__input {
@@ -787,6 +894,15 @@
   background-color: transparent;
   border: none;
   cursor: text;
+}
+
+@media (max-width: 320px) {
+  .donation-form__input {
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 4px;
+    width: 198px;
+  }
 }
 
 .donation-form__input::-webkit-input-placeholder {
@@ -810,6 +926,12 @@
   padding-right: 25px;
 }
 
+@media (max-width: 1200px) {
+  .donation-form__submit {
+    padding-left: 16px;
+  }
+}
+
 .description {
   width: 91vw;
   text-align: center;
@@ -829,6 +951,13 @@
   }
 }
 
+@media (max-width: 320px) {
+  .description__title {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+
 .description__text {
   max-width: 610px;
   margin-top: 20px;
@@ -843,6 +972,13 @@
 @media (max-width: 640px) {
   .description__text {
     margin-bottom: 29px;
+  }
+}
+
+@media (max-width: 320px) {
+  .description__text {
+    margin-top: 28px;
+    margin-bottom: 31px;
   }
 }
 
@@ -899,6 +1035,15 @@
   }
 }
 
+@media (max-width: 320px) {
+  .pay-feed__title {
+    font-size: 26px;
+    line-height: 32px;
+    margin-top: 20px;
+    margin-left: 18.5vw;
+  }
+}
+
 .step {
   margin-top: 100px;
   display: -webkit-box;
@@ -924,6 +1069,17 @@
     margin-top: 49px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 43px;
+    padding-left: 10px;
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 320px) {
+  .step {
+    margin-top: 43px;
+    padding-left: 10px;
+    padding-right: 0px;
   }
 }
 
@@ -936,6 +1092,12 @@
 @media (max-width: 640px) {
   .step__middle {
     margin-top: 49px;
+  }
+}
+
+@media (max-width: 320px) {
+  .step__middle {
+    margin-top: 44px;
   }
 }
 
@@ -1005,6 +1167,13 @@
   }
 }
 
+@media (max-width: 320px) {
+  .step-description__block {
+    margin-top: 30px;
+    width: 89vw;
+  }
+}
+
 @media (max-width: 1200px) {
   .step-description__block-middle {
     margin-top: 68px;
@@ -1017,14 +1186,18 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .step-description__block-last {
-    margin-top: 62px;
+@media (max-width: 1200px) and (max-width: 320px) {
+  .step-description__block-middle {
+    margin-top: 29px;
   }
 }
 
-@media (max-width: 1200px) and (max-width: 640px) {
-  .step-description__block-last {
+.step-description__block-middle-last {
+  margin-top: 62px;
+}
+
+@media (max-width: 640px) {
+  .step-description__block-middle-last {
     margin-top: 52px;
   }
 }
@@ -1048,6 +1221,29 @@
   }
 }
 
+@media (max-width: 320px) {
+  .step-description__title {
+    margin-bottom: 27px;
+  }
+}
+
+@media (max-width: 320px) {
+  .step-description__text {
+    display: none;
+  }
+}
+
+.step-description__text-active {
+  display: none;
+}
+
+@media (max-width: 320px) {
+  .step-description__text-active {
+    display: block;
+    line-height: 27.6px;
+  }
+}
+
 .step-description__image {
   margin-bottom: -9px;
 }
@@ -1066,6 +1262,14 @@
     height: 417px;
     margin-top: 44px;
     margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 320px) {
+  .step-description__image {
+    width: 320px;
+    height: 208px;
+    margin-top: 24px;
   }
 }
 
