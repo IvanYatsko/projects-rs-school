@@ -20,6 +20,9 @@
             alt="logo"
           />
         </a>
+        <div class="header-burger">
+          <span class="header-burger__span"></span>
+        </div>
         <div class="header-links">
           <nav class="header-menu">
             <ul class="menu">
@@ -94,7 +97,8 @@
         </div>
       </div>
     </header>
-    <main class="for-stycky">
+
+    <main class="main-block">
       <asside class="sidebar">
         <div class="sidebar__undraw">
           <img
@@ -132,6 +136,20 @@
                 alt="animal"
               />
             </div>
+            <div
+              class="sidebar__animals-item sidebar__animals-item_min sidebar__animals-active"
+            >
+              <img
+                class="sidebar__animal sidebar__animal-min_active"
+                src="../../../assets/icons/zoos/animals-min-active/Panda.svg"
+                alt="animal"
+              />
+              <img
+                class="sidebar__animal sidebar__animal-min"
+                src="../../../assets/icons/zoos/animals-min/Panda.svg"
+                alt="animal"
+              />
+            </div>
           </a>
           <a href="../../../pages/zoos/eagle/index.html">
             <div class="sidebar__animals-item">
@@ -153,6 +171,20 @@
               <img
                 class="sidebar__animal"
                 src="../../../assets/icons/zoos/animals/Eagle.svg"
+                alt="animal"
+              />
+            </div>
+            <div
+              class="sidebar__animals-item sidebar__animals-item_min sidebar__animals-active"
+            >
+              <img
+                class="sidebar__animal sidebar__animal-min"
+                src="../../../assets/icons/zoos/animals-min-active/Eagle.svg"
+                alt="animal"
+              />
+              <img
+                class="sidebar__animal sidebar__animal-min_active"
+                src="../../../assets/icons/zoos/animals-min/Eagle.svg"
                 alt="animal"
               />
             </div>
@@ -180,6 +212,20 @@
                 alt="animal"
               />
             </div>
+            <div
+              class="sidebar__animals-item sidebar__animals-item_min sidebar__animals-active"
+            >
+              <img
+                class="sidebar__animal sidebar__animal-min"
+                src="../../../assets/icons/zoos/animals-min-active/Gorilla.svg"
+                alt="animal"
+              />
+              <img
+                class="sidebar__animal sidebar__animal-min_active"
+                src="../../../assets/icons/zoos/animals-min/Gorilla.svg"
+                alt="animal"
+              />
+            </div>
           </a>
           <a href="../../../pages/zoos/lemur/">
             <div class="sidebar__animals-item">
@@ -204,6 +250,20 @@
                 alt="animal"
               />
             </div>
+            <div
+              class="sidebar__animals-item sidebar__animals-item_min sidebar__animals-active"
+            >
+              <img
+                class="sidebar__animal sidebar__animal-min"
+                src="../../../assets/icons/zoos/animals-min-active/Lemur.svg"
+                alt="animal"
+              />
+              <img
+                class="sidebar__animal sidebar__animal-min_active"
+                src="../../../assets/icons/zoos/animals-min/Lemur.svg"
+                alt="animal"
+              />
+            </div>
           </a>
           <div class="sidebar__undraw">
             <img
@@ -215,7 +275,6 @@
         </div>
       </asside>
       <div class="page-content">
-        
         <section class="zoos page_center">
           <div class="wrapper zoos_wrapper">
             <a class="button button_orange zoos__button">
@@ -369,24 +428,6 @@
               </p>
             </div>
             <div class="did-you-know__information">
-              <a
-                href="../../map/index.html"
-                class="button did-you-know__button"
-              >
-                <span class="text text_button text_orange">VIEW map</span>
-                <img
-                  class="slider-item__button_orrange button__image"
-                  src="../../../assets/images/main/arrow-orange.svg"
-                  alt="arrow"
-                  class="button__image"
-                />
-                <img
-                  class="slider-item__button_white button__image"
-                  src="../../../assets/images/main/arrow.svg"
-                  alt="arrow"
-                  class="button__image"
-                />
-              </a>
               <img
                 class="did-you-know__image"
                 src="../../../assets/images/zoos/panda.png"
@@ -422,6 +463,24 @@
                 <span class="did-you-know_text text_size_m">Range:</span>
                 Eastern Asia
               </p>
+              <a
+                href="../../../pages/map/index.html"
+                class="button did-you-know__button"
+              >
+                <span class="text text_button text_orange">VIEW map</span>
+                <img
+                  class="slider-item__button_orange button__image"
+                  src="../../../assets/images/main/arrow-orange.svg"
+                  alt="arrow"
+                  class="button__image"
+                />
+                <img
+                  class="slider-item__button_white button__image"
+                  src="../../../assets/images/main/arrow.svg"
+                  alt="arrow"
+                  class="button__image"
+                />
+              </a>
             </div>
             <p class="did-you-know__description text text_size_s">
               Giant pandas are very unusual animals that eat almost exclusively
@@ -447,7 +506,7 @@
         <div class="footer-nav">
           <div class="logos">
             <div class="footer__logo">
-              <a href="../../../pages/main/index.html" class="">
+              <a href="../../pages/main/index.html" class="">
                 <img
                   class="logo__image"
                   src="../../../assets/images/Logo-white.svg"
@@ -481,28 +540,28 @@
           </div>
           <nav class="footer-menu">
             <ul class="menu footer-menu__list">
-              <li class="menu__item">
+              <li class="menu__item menu__item-footer">
                 <a
                   href="../../../pages/main/index.html"
                   class="menu__link text text_button text_white"
                   >About</a
                 >
               </li>
-              <li class="menu__item">
+              <li class="menu__item menu__item-footer">
                 <a
                   href="../../../pages/map/index.html"
                   class="menu__link text text_button text_white"
                   >map</a
                 >
               </li>
-              <li class="menu__item">
+              <li class="menu__item menu__item-footer">
                 <a
                   href="../../../pages/zoos/panda/index.html"
                   class="menu__link text text_button text_white"
                   >Zoos</a
                 >
               </li>
-              <li class="menu__item">
+              <li class="menu__item menu__item-footer">
                 <a
                   href="../../../pages/contacts/index.html"
                   class="menu__link text text_button text_white"
@@ -534,7 +593,7 @@
             <p class="donates__text text text_white text_size_s">© RSSchool</p>
           </div>
           <address class="social-media footer-social-media">
-            <ul class="social-media__list">
+            <ul class="social-media__list footer__social-media-list">
               <li class="social-media__item footer__social-media-item">
                 <a class="social-media__link" href="https://www.youtube.com/">
                   <img
@@ -564,6 +623,7 @@
               </li>
             </ul>
           </address>
+          <div class="donates__line line"></div>
         </div>
       </div>
     </footer>
