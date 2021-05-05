@@ -1,5 +1,6 @@
 .zoos {
   background-color: #ffffff;
+  // добавила
   overflow-y: hidden;
 
   &_wrapper {
@@ -23,6 +24,7 @@
     @media (max-width: 1060px) {
       position: relative;
       order: 1;
+      // top: 859px;
     }
 
     @media (max-width: 768px) {
@@ -278,7 +280,6 @@
   }
 
   &__undraw {
-
     position: relative;
     height: 80px;
     cursor: pointer;
@@ -306,17 +307,13 @@
       float: right;
 
       @media (max-width: 1200px) {
-        margin: 0 43%;
+        margin: 0;
         height: 15px;
         float: none;
       }
 
-      @media (max-width: 640px) {
-        margin: 21% 41%;
-      }
-
-      @media (max-width: 470px) {
-        margin: 35% 34%;
+      &-left {
+        display: none;
       }
     }
 
@@ -336,6 +333,11 @@
   }
 
   &__animals {
+    & .sidebar__undraw {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     &-item {
       display: flex;
       flex-direction: column;
@@ -362,6 +364,7 @@
         height: 50px;
       }
 
+      // Добавила
       &_min {
         display: none;
 
@@ -381,7 +384,7 @@
     }
 
     &-active {
-      cursor: default;
+      cursor: pointer;
     }
   }
 
@@ -409,6 +412,48 @@
 
         @media (max-width: 470px) {
           height: 19px;
+        }
+      }
+    }
+
+    &-description {
+      display: none;
+    }
+  }
+
+  &_active {
+    .sidebar {
+      &__undraw {
+        &_image {
+          &-left {
+            display: block;
+          }
+
+          &-right {
+            display: none;
+          }
+        }
+      }
+
+      &__animals {
+        &-item {
+          display: none;
+          width: 300px;
+        }
+
+        &-item_min {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+        }
+      }
+
+      &__animal {
+        position: unset;
+
+        &-description {
+          display: block;
+          max-width: 169px;
         }
       }
     }
@@ -462,6 +507,28 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    max-width: 1040px;
+    overflow: hidden;
+
+    @media (max-width: 1200px) {
+      max-width: 829px;
+    }
+
+    @media (max-width: 1100px) {
+      max-width: 760px;
+    }
+
+    @media (max-width: 1000px) {
+      max-width: 70vw;
+    }
+
+    @media (max-width: 950px) {
+      max-width: 68vw;
+    }
+
+    @media (max-width: 470px) {
+      max-width: 95vw;
+    }
   }
 
   &__item:not(:last-child) {
@@ -487,12 +554,12 @@
       &:last-child {
         display: none;
       }
-
       &:first-child iframe {
         border: 3px solid #f58021;
       }
     }
 
+    // добавила
     & iframe {
       @media (max-width: 1200px) {
         width: 22vw;
@@ -584,6 +651,7 @@
     overflow: hidden;
     border-radius: 5px;
     cursor: text;
+    // добавила
     overflow: hidden;
     height: 75px;
 
@@ -602,6 +670,7 @@
     }
   }
 
+  // исправила
   &-form__item {
     padding-top: 21px;
     padding-bottom: 24px;
@@ -632,6 +701,7 @@
     background-color: transparent;
     border: none;
     cursor: text;
+    // добавила
     margin-left: 3px;
 
     @media (max-width: 768px) {
@@ -664,6 +734,7 @@
   &-form__submit {
     padding-left: 25px;
     padding-right: 25px;
+    // добавила
     margin-left: 6px;
 
     @media (max-width: 470px) {
@@ -850,6 +921,7 @@
     }
   }
 
+  // изменила
   &__button {
     display: inline-flex;
     margin-left: 3.1vw;
@@ -867,6 +939,7 @@
       padding: 29px;
     }
 
+    // добавила
     & .text {
       letter-spacing: 1.6px;
     }
@@ -936,4 +1009,8 @@
       margin-bottom: 72px;
     }
   }
+}
+
+.hidden {
+  display: none;
 }
