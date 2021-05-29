@@ -1,8 +1,8 @@
 import './about-block-steps.scss';
-import { BaseComponent } from '../../../base-component';
-import { AboutBlockStep1 } from '../about-block-step1/about-block-step1';
-import { AboutBlockStep2 } from '../about-block-step2/about-block-step2';
-import { AboutBlockStep3 } from '../about-block-step3/about-block-step3';
+import { BaseComponent } from '../../../../base-component';
+import { AboutBlockStep1 } from './about-block-step1/about-block-step1';
+import { AboutBlockStep2 } from './about-block-step2/about-block-step2';
+import { AboutBlockStep3 } from './about-block-step3/about-block-step3';
 
 export class AboutBlockSteps extends BaseComponent {
   private readonly aboutBlockStep1: AboutBlockStep1;

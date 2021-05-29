@@ -1,6 +1,6 @@
 import './best-score.scss';
 import { BaseComponent } from '../../base-component';
-import { BestTable } from '../best-table/best-table';
+import { BestTable } from './best-table/best-table';
 
 export class BestScore extends BaseComponent {
   private readonly bestTable: BestTable;

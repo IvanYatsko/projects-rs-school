@@ -1,5 +1,5 @@
 import './best-item.scss';
-import { BaseComponent } from '../../base-component';
+import { BaseComponent } from '../../../../base-component';
 
 export class BestItem extends BaseComponent {
   constructor() {

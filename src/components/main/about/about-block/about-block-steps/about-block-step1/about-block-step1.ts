@@ -1,6 +1,6 @@
 import './about-block-step1.scss';
-import { BaseComponent } from '../../../base-component';
-import Register from '../../../../assets/image/register.png';
+import { BaseComponent } from '../../../../../base-component';
+import Register from '../../../../../../assets/image/register.png';
 
 export class AboutBlockStep1 extends BaseComponent {
   // private readonly aboutBlock: AboutBlock;

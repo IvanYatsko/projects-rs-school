@@ -1,5 +1,5 @@
 import './header-auth.scss';
-import { BaseComponent } from '../../base-component';
+import { BaseComponent } from '../../../base-component';
 
 export class HeaderAuth extends BaseComponent {
   constructor() {

@@ -1,5 +1,5 @@
 import './card.scss';
-import { BaseComponent } from '../../base-component';
+import { BaseComponent } from '../../../../base-component';
 
 const FLIP_CLASS = 'main-card__container_flipped';
 const CARD_ERROR = 'main__card_error';

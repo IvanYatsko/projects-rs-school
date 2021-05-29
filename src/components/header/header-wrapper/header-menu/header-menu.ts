@@ -1,7 +1,7 @@
 import './header-menu.scss';
-import { BaseComponent } from '../../base-component';
+import { BaseComponent } from '../../../base-component';
 import { BaseLink } from './base-link';
-import { Router } from '../../../shared/router';
+import { Router } from '../../../../shared/router';
 
 export class HeaderMenu extends BaseComponent {
   private readonly aboutGame: BaseLink;
@@ -32,8 +32,6 @@ export class HeaderMenu extends BaseComponent {
       .add('/setting', 'setting')
       .add('/best-score', 'best-score');
 
-    console.log('this.element', this.element);
-
-    this.element.addEventListener('click', (event: MouseEvent) => this.router.setRoute());
+    this.element.addEventListener('click', () => this.router.setRoute());
   }
 }

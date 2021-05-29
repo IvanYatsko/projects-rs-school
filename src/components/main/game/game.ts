@@ -1,7 +1,9 @@
-import { BaseComponent } from '../base-component';
-import { Card } from '../main/card/card';
-import { MainCards } from '../main/main-cards/main-cards';
-import { delay } from '../../shared/delay';
+import './game.scss';
+import { BaseComponent } from '../../base-component';
+import { Card } from './main-cards/card/card';
+import { MainCards } from './main-cards/main-cards';
+import { delay } from '../../../shared/delay';
+import { MainTimer } from './main-timer/main-timer';
 
 const FLIP_DELAY = 1000;
 export class Game extends BaseComponent {
@@ -11,15 +13,17 @@ export class Game extends BaseComponent {
 
   private isAnimation = false;
 
+  private readonly mainTimer: MainTimer;
+
   constructor() {
     super('div', ['main-game']);
     this.mainCards = new MainCards();
+    this.mainTimer = new MainTimer();
+    this.element.appendChild(this.mainTimer.element);
     this.element.appendChild(this.mainCards.element);
   }
 
   newGame(images: string[]) : void {
-    console.log('newGame');
-
     this.clearGame();
 
     const cards = images

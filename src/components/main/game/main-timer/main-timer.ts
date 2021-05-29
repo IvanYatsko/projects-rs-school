@@ -1,5 +1,5 @@
 import './main-timer.scss';
-import { BaseComponent } from '../../base-component';
+import { BaseComponent } from '../../../base-component';
 
 export class MainTimer extends BaseComponent {
   constructor() {
