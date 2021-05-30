@@ -4,6 +4,7 @@ import { Card } from './main-cards/card/card';
 import { MainCards } from './main-cards/main-cards';
 import { delay } from '../../../shared/delay';
 import { MainTimer } from './main-timer/main-timer';
+import { ImageCategoryModel } from '../../../models/image-category-model';
 
 const FLIP_DELAY = 1000;
 export class Game extends BaseComponent {
@@ -21,6 +22,14 @@ export class Game extends BaseComponent {
     this.mainTimer = new MainTimer();
     this.element.appendChild(this.mainTimer.element);
     this.element.appendChild(this.mainCards.element);
+  }
+
+  async start() : Promise<void> {
+    const res = await fetch('./images.json');
+    const categories: ImageCategoryModel[] = await res.json();
+    const cat = categories[0];
+    const images = cat.images.map((name) => `${cat.category}/${name}`);
+    this.newGame(images);
   }
 
   newGame(images: string[]) : void {

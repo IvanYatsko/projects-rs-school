@@ -7,7 +7,7 @@ export class Header extends BaseComponent {
 
   constructor() {
     super('header', ['header']);
-    
+
     this.headerWrapper = new HeaderWrapper();
 
     this.element.appendChild(this.headerWrapper.element);

@@ -22,4 +22,3 @@ export class HeaderWrapper extends BaseComponent {
     this.element.appendChild(this.headerAuth.element);
   }
 }
-
