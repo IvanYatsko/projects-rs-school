@@ -7,9 +7,9 @@ import { HeaderRight } from './header-right/header-right';
 export class HeaderWrapper extends BaseComponent {
   private readonly headerLogo: HeaderLogo;
 
-  private readonly headerMenu: HeaderMenu;
+  public readonly headerMenu: HeaderMenu;
 
-  private readonly headerRight: HeaderRight;
+  public readonly headerRight: HeaderRight;
 
   constructor() {
     super('div', ['header-wrapper']);

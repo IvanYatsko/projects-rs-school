@@ -3,7 +3,7 @@ import { BaseComponent } from '../../../base-component';
 import { Selector } from './selector/selector';
 
 export class SettingBlock extends BaseComponent {
-  private readonly selector: Selector;
+  public readonly selector: Selector;
 
   constructor(title: string, array: string[]) {
     super('div', ['setting-block']);

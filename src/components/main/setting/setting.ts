@@ -3,9 +3,9 @@ import { BaseComponent } from '../../base-component';
 import { SettingBlock } from './setting-block/setting-block';
 
 export class Setting extends BaseComponent {
-  private readonly settingBlock: SettingBlock;
+  public readonly settingBlock: SettingBlock;
 
-  private readonly settingBlockTwo: SettingBlock;
+  public readonly settingBlockTwo: SettingBlock;
 
   private readonly arrayCards: string[];
 
@@ -13,7 +13,7 @@ export class Setting extends BaseComponent {
 
   constructor() {
     super('div', ['setting']);
-    this.arrayCards = ['Animals', 'Cars', 'Fruts'];
+    this.arrayCards = ['Animals', 'Birds'];
     this.arrayType = ['4x4', '6x6', '8x8'];
     this.settingBlock = new SettingBlock('Game cards', this.arrayCards);
     this.settingBlockTwo = new SettingBlock('Difficulty', this.arrayType);

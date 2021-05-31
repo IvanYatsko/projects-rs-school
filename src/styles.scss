@@ -11,6 +11,10 @@ a {
   cursor: pointer;
 }
 
+body.lock {
+  overflow: hidden;
+}
+
 .text {
   font-family: Roboto;
   font-style: normal;
@@ -70,6 +74,10 @@ a {
   &-blue {
     color: #2196f3;
   }
+
+  &-gray {
+    color: rgba(0, 0, 0, 0.38);
+  }
 }
 
 .backgraund {
@@ -93,5 +101,10 @@ a {
   &-white {
     background: #f2f9fe;
     color: #2196f3;
+  }
+
+  &-blue {
+    color: #f2f9fe;
+    background: #2196f3;
   }
 }
