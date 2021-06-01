@@ -5,8 +5,12 @@ import { MainCards } from './main-cards/main-cards';
 import { delay } from '../../../shared/delay';
 import { MainTimer } from './main-timer/main-timer';
 import { ImageCategoryModel } from '../../../models/image-category-model';
+import { IndexedDb } from '../../../shared/indexeddb';
 
 const FLIP_DELAY = 1000;
+let successFlipped = 0;
+// const URL_SCORE = '/best-score';
+
 export class Game extends BaseComponent {
   private readonly mainCards: MainCards;
 
@@ -52,7 +56,6 @@ export class Game extends BaseComponent {
       .sort(() => Math.random() - 0.5);
 
     cards.forEach((card) => card.element.addEventListener('click', () => this.cardHandler(card)));
-
     this.mainCards.addCards(cards);
   }
 
@@ -76,9 +79,20 @@ export class Game extends BaseComponent {
       await delay(FLIP_DELAY);
       await Promise.all([this.activeCard.flipToBack(), card.flipToBack()]);
     } else {
+      successFlipped++;
       await Promise.all([this.activeCard.showSuccess(), card.showSuccess()]);
+      if (this.mainCards.cards.every((item) => item.element.classList.contains('main__card_success'))) {
+        if (!this.mainCards.timerId) throw Error('Error');
+        clearInterval(this.mainCards.timerId);
+        const timeArr = (document.querySelector('.main-timer__text') as HTMLInputElement).textContent?.split(':');
+        if (!timeArr) throw Error('Error');
+        const time = (+timeArr[0] * 60) + timeArr[1];
+        const score = (successFlipped * 100) - (+time * 10);
+        IndexedDb.addData({ score });
+        // const win = confirm('Поздравляю');
+        // if (win) window.location.hash = URL_SCORE;
+      }
     }
-
     this.activeCard = undefined;
     this.isAnimation = false;
   }
