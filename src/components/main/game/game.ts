@@ -9,7 +9,7 @@ import { IndexedDb } from '../../../shared/indexeddb';
 
 const FLIP_DELAY = 1000;
 let successFlipped = 0;
-// const URL_SCORE = '/best-score';
+const URL_SCORE = '/best-score';
 
 export class Game extends BaseComponent {
   private readonly mainCards: MainCards;
@@ -89,8 +89,8 @@ export class Game extends BaseComponent {
         const time = (+timeArr[0] * 60) + timeArr[1];
         const score = (successFlipped * 100) - (+time * 10);
         IndexedDb.addData({ score });
-        // const win = confirm('Поздравляю');
-        // if (win) window.location.hash = URL_SCORE;
+        const win = window.confirm('Поздравляю');
+        if (win) window.location.hash = URL_SCORE;
       }
     }
     this.activeCard = undefined;
