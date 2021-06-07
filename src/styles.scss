@@ -1,11 +1,204 @@
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1 {
-  font-family: Arial, Helvetica, sans-serif;
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+body {
+  background-color: #E6E6FA;
+}
+
+.title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+  color: #333333;
+}
+
+.button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+  letter-spacing: 0.4px;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12),
+    0px 6px 10px rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(#A9A9A9, #a9a9a900);
+}
+
+.navigation {
+  display: flex;
+  margin: 15px 0 30px 0;
+}
+
+.garage {
+  margin-right: 15px;
+}
+
+.settings {
+
+  &__name {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 15px;
+    color: #000000;
+    letter-spacing: 0.4px;
+    outline: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #5e606091;
+  }
+
+  &-block {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+
+    &>input {
+      margin-right: 15px;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    margin-bottom: 50px;
+
+    &>button {
+      margin-right: 15px;
+    }
+  }
+}
+
+.car {
+  margin-top: 30px;
+
+  &-settings {
+    display: flex;
+    margin-bottom: 10px;
+
+    &>button {
+      margin-right: 15px;
+    }
+  }
+
+  &-move {
+    display: flex;
+    margin-bottom: 10px;
+
+    &>button {
+      margin-right: 15px;
+    }
+  }
+
+  &-view {
+    position: relative;
+
+    &__road {
+      width: 100vw;
+      height: 5vh;
+      background: linear-gradient(#5e6060, #5e60608c);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      &>span {
+        display: block;
+        width: 3.5vw;
+        height: 0.3vh;
+        background-color: #ffffff;
+      }
+    }
+
+    &__car {
+      height: 5vh;
+      position: absolute;
+      top: 0;
+      transform: rotate(180deg);
+    }
+
+    &__flag {
+      position: absolute;
+      top: 0;
+      left: 85vw;
+      height: 5vh;
+    }
+  }
+}
+
+.main-buttons {
+  display: flex;
+  margin-top: 30px;
+
+  &>button {
+    margin-right: 15px;
+  }
+}
+
+.section {
+  width: 100vw;
+  margin-top: 4vh;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 80%;
+  margin-top: 2%;
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    background: linear-gradient(#A9A9A9, #a9a9a900);
+    height: 4vh;
+
+    &>div {
+      flex: 0 0 17%;
+    }
+  }
+
+  &-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+
+    &>div {
+      flex: 0 0 17%;
+
+      &>img {
+        height: 5vh;
+      }
+    }
+  }
 }
