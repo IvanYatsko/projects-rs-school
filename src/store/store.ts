@@ -1,0 +1,15 @@
+export default {
+  carsPage: 1,
+  cars: [{ name: 'Tesla', color: '#e6e6fa', id: 1 },
+    { name: 'BMW', color: '#fede00', id: 2 },
+    { name: 'Mersedes', color: '#6c779f', id: 3 },
+    { name: 'Ford', color: '#ef3c40', id: 4 }],
+  carsCount: 4,
+  winnersPage: 1,
+  winners: [{ id: 1, wins: 1, time: 10 }],
+  winnersCount: 1,
+  animation: {},
+  view: 'garage',
+  sortBy: null,
+  sortOrder: null,
+};
