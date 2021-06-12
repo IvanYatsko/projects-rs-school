@@ -1,7 +1,6 @@
-import { getCars } from "../api/garage/apiCar";
-import { getWinners } from "../api/winners/apiWinner";
-import { IStore } from "./store.model";
-
+import { getCars } from '../api/garage/apiCar';
+import { getWinners } from '../api/winners/apiWinner';
+import { IStore } from './store.model';
 
 const STORE: IStore = {
   carsPage: 1,
@@ -24,3 +23,5 @@ export async function initStore(): Promise<void> {
   STORE.winners = winners;
   STORE.winnersCount = +winnersCount;
 }
+
+export default STORE;

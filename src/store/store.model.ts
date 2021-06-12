@@ -1,5 +1,5 @@
-import { ICarsResponse } from "../api/garage/apiCar.model";
-import { IGetWinner } from "../api/winners/apiWinner.model";
+import { ICarsResponse } from '../api/garage/apiCar.model';
+import { IGetWinner } from '../api/winners/apiWinner.model';
 
 export interface IStore {
   carsPage: number,

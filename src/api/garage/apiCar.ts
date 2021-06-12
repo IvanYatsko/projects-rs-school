@@ -1,7 +1,7 @@
 import { GARAGE } from '../api.config';
 import { ICarsResponse, ICreateCarParams, IGetCars } from './apiCar.model';
 
-export async function getCars(page: number, limit: number = 7): Promise<IGetCars> {
+export async function getCars(page: number, limit = 7): Promise<IGetCars> {
   const response = await fetch(`${GARAGE}?_page=${page}&_limit=${limit}`);
   return {
     items: await response.json(),
