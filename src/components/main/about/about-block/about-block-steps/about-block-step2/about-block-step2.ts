@@ -3,8 +3,6 @@ import { BaseComponent } from '../../../../../base-component';
 import Setting from '../../../../../../assets/image/setting.png';
 
 export class AboutBlockStep2 extends BaseComponent {
-  // private readonly aboutBlock: AboutBlock;
-
   constructor() {
     super('div', ['about-block-step2']);
 

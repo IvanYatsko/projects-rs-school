@@ -5,6 +5,7 @@
   background: #fafafa;
 }
 .form__input {
+  position: relative;
   width: 328px;
   height: 56px;
   margin-top: 16px;
@@ -25,5 +26,23 @@
 
   &_error {
     background: rgb(244 67 54 / 35%);
+
+    & > .input-error {
+      display: block;
+    }
+  }
+}
+
+.input-error {
+  display: none;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  color: #dc4d4d;
+}
+
+.form__email {
+  & > .input-error {
+    bottom: -37px;
   }
 }

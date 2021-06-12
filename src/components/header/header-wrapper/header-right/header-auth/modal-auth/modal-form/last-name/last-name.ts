@@ -1,4 +1,3 @@
-import './last-name.scss';
 import { BaseComponent } from '../../../../../../../base-component';
 import { RenderInput } from '../render-input/render-input';
 import { Checked } from '../checked/checked';
@@ -27,7 +26,7 @@ export class LastName extends BaseComponent {
     };
     this.valid = false;
 
-    this.element.innerHTML = '<p class="text text-gray">Last Name</p>';
+    this.element.innerHTML = '<p class="text text-gray">Last Name</p><div class="input-error"></div>';
     this.element.appendChild(this.renderInput.element);
   }
 }

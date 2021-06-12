@@ -1,4 +1,3 @@
-import './email.scss';
 import { BaseComponent } from '../../../../../../../base-component';
 import { RenderInput } from '../render-input/render-input';
 import { Checked } from '../checked/checked';
@@ -26,7 +25,7 @@ export class Email extends BaseComponent {
     };
     this.valid = false;
 
-    this.element.innerHTML = '<p class="text text-gray">E-mail</p>';
+    this.element.innerHTML = '<p class="text text-gray">E-mail</p><div class="input-error"></div>';
     this.element.appendChild(this.renderInput.element);
   }
 }

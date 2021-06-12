@@ -1,0 +1,11 @@
+export const ABOUT = '/';
+export const GAME = '/game';
+export const SETTING = '/setting';
+export const BEST_SCORE = '/best-score';
+export const ABOUT_NAME = 'about';
+export const GAME_NAME = 'game';
+export const SETTING_NAME = 'setting';
+export const BEST_SCORE_NAME = 'best-score';
+export const ABOUT_PAGE = 'About Game';
+export const BEST_SCORE_PAGE = 'Best Score';
+export const SETTING_PAGE = 'Game Settings';

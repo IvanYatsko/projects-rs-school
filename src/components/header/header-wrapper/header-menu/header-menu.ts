@@ -2,6 +2,10 @@ import './header-menu.scss';
 import { BaseComponent } from '../../../base-component';
 import { BaseLink } from './base-link';
 import { Router } from '../../../../shared/router';
+import {
+  ABOUT, ABOUT_NAME, ABOUT_PAGE, BEST_SCORE, BEST_SCORE_NAME,
+  BEST_SCORE_PAGE, GAME, GAME_NAME, SETTING, SETTING_NAME, SETTING_PAGE,
+} from './header-menu.config';
 
 export class HeaderMenu extends BaseComponent {
   private readonly aboutGame: BaseLink;
@@ -15,9 +19,9 @@ export class HeaderMenu extends BaseComponent {
   constructor() {
     super('div', ['header-menu']);
     this.router = new Router();
-    this.aboutGame = new BaseLink('/#/', 'About Game');
-    this.bestScore = new BaseLink('/#/best-score', 'Best Score');
-    this.gameSettings = new BaseLink('/#/setting', 'Game Settings');
+    this.aboutGame = new BaseLink(`/#${ABOUT}`, ABOUT_PAGE);
+    this.bestScore = new BaseLink(`/#${BEST_SCORE}`, BEST_SCORE_PAGE);
+    this.gameSettings = new BaseLink(`/#${SETTING}`, SETTING_PAGE);
 
     this.element.appendChild(this.aboutGame.element);
     this.element.appendChild(this.bestScore.element);
@@ -27,10 +31,10 @@ export class HeaderMenu extends BaseComponent {
 
   addRoute(): void {
     this.router
-      .add('/', 'about')
-      .add('/game', 'game')
-      .add('/setting', 'setting')
-      .add('/best-score', 'best-score');
+      .add(ABOUT, ABOUT_NAME)
+      .add(GAME, GAME_NAME)
+      .add(SETTING, SETTING_NAME)
+      .add(BEST_SCORE, BEST_SCORE_NAME);
 
     this.element.addEventListener('click', () => this.router.setRoute());
   }

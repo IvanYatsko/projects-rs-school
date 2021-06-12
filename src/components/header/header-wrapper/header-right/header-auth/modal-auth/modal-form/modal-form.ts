@@ -45,21 +45,28 @@ export class ModalForm extends BaseComponent {
   isValid(elem : FirstName | LastName | Email) : void {
     const { value } = elem.renderInput.element as HTMLInputElement;
     let isCorrect = true;
+    let errorMessage = '';
     isCorrect = Object.keys(elem.validation).every((key) => {
       if (key === 'onlyDigit') {
         if (!Number.isNaN(Number(value.trim()))) {
+          errorMessage = 'Данные не могут состоять из цифр.';
           return false;
         }
         return true;
       } if (key === 'errorSymbols') {
         if (Object.keys(elem.validation[key]).length !== 0) {
-          return elem.validation[key].every((item) => !value.trim().includes(item));
+          const errSymb = elem.validation[key].every((item) => !value.trim().includes(item));
+          if (!errSymb) {
+            errorMessage = 'Данные используют запрещённые символы.';
+          }
+          return errSymb;
         }
         return true;
       } if (key === 'email') {
         const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!reg.test(String(value.trim()).toLowerCase())) {
+          errorMessage = 'Email должен соответствовать стандартному правилу формированя.';
           return false;
         }
         return true;
@@ -68,6 +75,7 @@ export class ModalForm extends BaseComponent {
     });
 
     if (value.trim() === '') {
+      errorMessage = 'Данные не могут быть пустыми.';
       isCorrect = false;
     }
 
@@ -79,6 +87,7 @@ export class ModalForm extends BaseComponent {
       elem.valid = false;
       elem.checked.element.remove();
       elem.element.classList.add('form__input_error');
+      (elem.element.querySelector('.input-error') as HTMLElement).innerHTML = errorMessage;
     }
 
     if (this.firstName.valid && this.lastName.valid && this.email.valid) {

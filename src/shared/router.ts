@@ -1,9 +1,10 @@
+import { ABOUT } from '../components/header/header-wrapper/header-menu/header-menu.config';
 import { RoutesModel } from '../models/routes-model';
 
 export class Router {
   private routes: RoutesModel[] = [];
 
-  public root = '/';
+  public root = ABOUT;
 
   add(path: string, name: string): Router {
     this.routes.push({ path, name });

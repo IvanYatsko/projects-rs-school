@@ -6,6 +6,7 @@ import { delay } from '../../../shared/delay';
 import { MainTimer } from './main-timer/main-timer';
 import { ImageCategoryModel } from '../../../models/image-category-model';
 import { IndexedDb } from '../../../shared/indexeddb';
+import { DIF_COLUMN, FORMULA_NUM, FORMULA_NUM2, MIN, RANDOM_NUMBER, SEC, SECONDS, VAR_CARDS } from './game.config';
 
 const FLIP_DELAY = 1000;
 let successFlipped = 0;
@@ -16,7 +17,7 @@ export class Game extends BaseComponent {
 
   private activeCard?: Card;
 
-  private isAnimation = false;
+  private isAnimation: boolean = false;
 
   private readonly mainTimer: MainTimer;
 
@@ -31,19 +32,19 @@ export class Game extends BaseComponent {
   async start(difficult : string, gameCards : string) : Promise<void> {
     const res = await fetch('./images.json');
     const categories: ImageCategoryModel[] = await res.json();
-    let cat : string[] = [];
+    let card : string[] = [];
     let categ = '';
     categories.forEach((item) => {
       if (item.category === gameCards) {
-        cat = item.images;
+        card = item.images;
         categ = item.category;
       }
     });
-    const dif = difficult.slice(0, 1);
-    const numberCards = (+dif) ** 2 / 2;
-    cat = cat.slice(0, numberCards);
+    const dif = difficult.slice(0, DIF_COLUMN);
+    const numberCards = (+dif) ** VAR_CARDS / VAR_CARDS;
+    card = card.slice(0, numberCards);
 
-    const images = cat.map((name) => `${categ}/${name}`);
+    const images = card.map((name) => `${categ}/${name}`);
     this.newGame(images, +dif);
   }
 
@@ -53,7 +54,7 @@ export class Game extends BaseComponent {
     const cards = images
       .concat(images)
       .map((url) => new Card(url, dif))
-      .sort(() => Math.random() - 0.5);
+      .sort(() => Math.random() - RANDOM_NUMBER);
 
     cards.forEach((card) => card.element.addEventListener('click', () => this.cardHandler(card)));
     this.mainCards.addCards(cards);
@@ -86,8 +87,8 @@ export class Game extends BaseComponent {
         clearInterval(this.mainCards.timerId);
         const timeArr = (document.querySelector('.main-timer__text') as HTMLInputElement).textContent?.split(':');
         if (!timeArr) throw Error('Error');
-        const time = (+timeArr[0] * 60) + timeArr[1];
-        const score = (successFlipped * 100) - (+time * 10);
+        const time = (+timeArr[MIN] * SECONDS) + timeArr[SEC];
+        const score = (successFlipped * FORMULA_NUM) - (+time * FORMULA_NUM2);
         IndexedDb.addData({ score });
         const win = window.confirm('Поздравляю');
         if (win) window.location.hash = URL_SCORE;

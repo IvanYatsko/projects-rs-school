@@ -2,7 +2,8 @@ import './main-cards.scss';
 import { BaseComponent } from '../../../base-component';
 import { Card } from './card/card';
 
-const SHOW_TIME = 5;
+const SHOW_TIME = 30;
+const MILLISECONDS = 1000;
 
 export class MainCards extends BaseComponent {
   public cards: Card[] = [];
@@ -26,7 +27,7 @@ export class MainCards extends BaseComponent {
     setTimeout(() => {
       this.cards.forEach((card) => card.flipToBack());
       this.startTimer();
-    }, SHOW_TIME * 1000);
+    }, SHOW_TIME * MILLISECONDS);
   }
 
   startTimer() :void {
@@ -35,7 +36,7 @@ export class MainCards extends BaseComponent {
     let timeValue = 0;
     const drawTimer = () => {
       if (timer == null) throw Error('Element not found');
-      timeValue += 1000;
+      timeValue += MILLISECONDS;
       const d = new Date(timeValue);
       const strTimer = `0${d.getMinutes()}:${d.getSeconds() < 10 ? `0${d.getSeconds()}` : d.getSeconds()}`;
       timer.innerHTML = strTimer;
@@ -44,6 +45,6 @@ export class MainCards extends BaseComponent {
     };
     this.timerId = setInterval(() => {
       drawTimer();
-    }, 1000);
+    }, MILLISECONDS);
   }
 }

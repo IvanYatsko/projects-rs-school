@@ -6,6 +6,7 @@ import { ModalAuth } from './header-auth/modal-auth/modal-auth';
 import { IndexedDb } from '../../../../shared/indexeddb';
 import { HeaderStartGame } from './header-start-game/header-start-game';
 import { HeaderAvatar } from './header-avatar/header-avatar';
+import { HIDDEN, LOCK } from './header-right.config';
 
 export class HeaderRight extends BaseComponent {
   public readonly headerAuth: HeaderAuth;
@@ -32,7 +33,7 @@ export class HeaderRight extends BaseComponent {
   async fillHeaderRight() : Promise<void> {
     this.element.innerHTML = '';
     const userAuth = await IndexedDb.getData('users');
-    if ((userAuth as []).length === 0) {
+    if (!(userAuth as []).length) {
       this.showAuth();
     } else {
       this.element.appendChild(this.headerStartGame.element);
@@ -69,8 +70,8 @@ export class HeaderRight extends BaseComponent {
   }
 
   togglePopup() : void {
-    this.modalAuth.element.classList.toggle('hidden');
-    this.cover.element.classList.toggle('hidden');
-    document.body.classList.toggle('lock');
+    this.modalAuth.element.classList.toggle(HIDDEN);
+    this.cover.element.classList.toggle(HIDDEN);
+    document.body.classList.toggle(LOCK);
   }
 }

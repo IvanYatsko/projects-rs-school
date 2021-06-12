@@ -1,6 +1,6 @@
-# Empty project template
+# Application Match-Match-Game:
 
-Empty project with configured webpack, typescript and es-lint
+Match-Match-Game project with configured webpack, typescript and es-lint
 
 ### Easy to use:
 
