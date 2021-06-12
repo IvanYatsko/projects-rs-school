@@ -1,7 +1,7 @@
 import { WINNERS } from '../api.config';
 import { IGetWinner, IGetWinners, IUpdateWinners } from './apiWinner.model';
 
-export async function getCars(page: number, limit = 10, sort: number, order: number): Promise<IGetWinners> {
+export async function getWinners(page: number, limit: number = 10, sort: string = 'id', order: string = 'ASC'): Promise<IGetWinners> {
   const response = await fetch(`${WINNERS}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`);
   return {
     items: await response.json(),
@@ -9,11 +9,11 @@ export async function getCars(page: number, limit = 10, sort: number, order: num
   };
 }
 
-export async function getCar(id: number): Promise<IGetWinner> {
+export async function getWinner(id: number): Promise<IGetWinner> {
   return (await fetch(`${WINNERS}/${id}`)).json();
 }
 
-export async function createCar(data: IUpdateWinners): Promise<IGetWinner> {
+export async function createWinner(data: IUpdateWinners): Promise<IGetWinner> {
   const response: Response = await fetch(WINNERS, {
     method: 'POST',
     headers: {
@@ -25,7 +25,7 @@ export async function createCar(data: IUpdateWinners): Promise<IGetWinner> {
   return response.json();
 }
 
-export async function deleteCar(id: number): Promise<number> {
+export async function deleteWinner(id: number): Promise<number> {
   const response: Response = await fetch(`${WINNERS}/${id}`, {
     method: 'DELETE',
   });
@@ -33,7 +33,7 @@ export async function deleteCar(id: number): Promise<number> {
   return response.status;
 }
 
-export async function updateCar(id: number, data: IUpdateWinners): Promise<IGetWinner> {
+export async function updateWinner(id: number, data: IUpdateWinners): Promise<IGetWinner> {
   const response: Response = await fetch(`${WINNERS}/${id}`, {
     method: 'PUT',
     headers: {

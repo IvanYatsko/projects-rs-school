@@ -1,15 +1,26 @@
-export default {
+import { getCars } from "../api/garage/apiCar";
+import { getWinners } from "../api/winners/apiWinner";
+import { IStore } from "./store.model";
+
+
+const STORE: IStore = {
   carsPage: 1,
-  cars: [{ name: 'Tesla', color: '#e6e6fa', id: 1 },
-    { name: 'BMW', color: '#fede00', id: 2 },
-    { name: 'Mersedes', color: '#6c779f', id: 3 },
-    { name: 'Ford', color: '#ef3c40', id: 4 }],
-  carsCount: 4,
+  cars: [],
+  carsCount: 0,
   winnersPage: 1,
-  winners: [{ id: 1, wins: 1, time: 10 }],
-  winnersCount: 1,
+  winners: [],
+  winnersCount: 0,
   animation: {},
   view: 'garage',
   sortBy: null,
   sortOrder: null,
 };
+
+export async function initStore(): Promise<void> {
+  const { items: cars, count: carsCount } = await getCars(1);
+  STORE.cars = cars;
+  STORE.carsCount = +carsCount;
+  const { items: winners, count: winnersCount } = await getWinners(1);
+  STORE.winners = winners;
+  STORE.winnersCount = +winnersCount;
+}
