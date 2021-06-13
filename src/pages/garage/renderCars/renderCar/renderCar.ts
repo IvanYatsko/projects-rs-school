@@ -1,5 +1,5 @@
-import { ICarsResponse } from "../../../../api/garage/apiCar.model";
-import { svgCar } from "../../../../shared/svgCar";
+import { ICarsResponse } from '../../../../api/garage/apiCar.model';
+import { svgCar } from '../../../../shared/svgCar';
 
 export function renderCar(car: ICarsResponse): string {
   return `<div class="car" id="car${car.id}">
@@ -33,5 +33,5 @@ export function renderCar(car: ICarsResponse): string {
     <img class="car-view__flag" src="./images/finish_flag.png" alt="flag" />
   </div>
 </div>
-`
+`;
 }

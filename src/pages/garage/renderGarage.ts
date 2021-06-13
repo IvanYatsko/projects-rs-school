@@ -1,4 +1,4 @@
-import { renderCars } from "./renderCars/renderCars";
+import { renderCars } from './renderCars/renderCars';
 
 export function renderGarage(): string {
   return `<div class="settings">

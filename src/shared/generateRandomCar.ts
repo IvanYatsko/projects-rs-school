@@ -1,4 +1,4 @@
-import { ICreateCarParams } from "../api/garage/apiCar.model";
+import { ICreateCarParams } from '../api/garage/apiCar.model';
 
 const models: string[] = ['Tesla', 'Mersedes', 'BMW', 'Toyota', 'Zhiguli', 'Moskvich', 'Mazda', 'Reno'];
 const names: string[] = ['S', 'ML', '6', 'X5', '3', 'Y', '5', 'G'];

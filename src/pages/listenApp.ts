@@ -4,6 +4,14 @@ import { listenGarage, visibleNavigations } from './garage/listenGarage';
 import { renderCars } from './garage/renderCars/renderCars';
 import { renderApp } from './renderApp';
 
+async function changePage() :Promise<void> {
+  const arrayCars = await getCars(STORE.carsPage);
+  STORE.cars = arrayCars.items;
+  STORE.carsCount = +arrayCars.count;
+  const nextPage = renderCars();
+  (document.getElementById('main') as HTMLElement).innerHTML = nextPage;
+}
+
 export function listenApp(): void {
   visibleNavigations();
   document.body.addEventListener('click', async (event: MouseEvent): Promise<void> => {
@@ -28,12 +36,4 @@ export function listenApp(): void {
     }
   });
   listenGarage();
-}
-
-async function changePage() :Promise<void> {
-  const arrayCars = await getCars(STORE.carsPage);
-  STORE.cars = arrayCars.items;
-  STORE.carsCount = +arrayCars.count;
-  const nextPage = renderCars();
-  (document.getElementById('main') as HTMLElement).innerHTML = nextPage;
 }
