@@ -12,6 +12,20 @@ export interface IStore {
   view: string,
   sortBy: string,
   sortOrder: string,
+  showTextWinner: string,
+  driveAnimation: IDriveAnimation,
+  saveCreate: ISaveInput,
+  saveUpdate: ISaveInput
+}
+
+export interface ISaveInput {
+  color: string,
+  value: string,
+}
+
+export interface IDriveAnimation {
+  race: boolean,
+  reset: boolean,
 }
 
 export interface IFrame {

@@ -6,5 +6,6 @@ export function renderCars(): string {
   <h3 class="title title__page">Page#<span id="page">${STORE.carsPage}</span></h3>
   <div class="cars" id="cars">
   ${STORE.cars.map((car) => renderCar(car)).join('')}
-  </div>`;
+  </div>
+  <div class="winner-element">${STORE.showTextWinner}</div>`;
 }

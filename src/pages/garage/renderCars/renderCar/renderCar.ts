@@ -13,8 +13,8 @@ export function renderCar(car: ICarsResponse): string {
     <p class="title car-settings__title">${car.name}</p>
   </div>
   <div class="car-move">
-    <button class="button car-move__a" type="button">a</button>
-    <button class="button car-move__b" type="button" disabled>b</button>
+    <button class="button car-move__a" id="start${car.id}" type="button">a</button>
+    <button class="button car-move__b" id="stop${car.id}" type="button" disabled>b</button>
   </div>
   <div class="car-view">
     <div class="car-view__road">
