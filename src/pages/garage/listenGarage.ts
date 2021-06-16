@@ -1,6 +1,7 @@
-import { createCar, getCars } from '../../api/garage/apiCar';
+import { createCar, getCars, updateCar } from '../../api/garage/apiCar';
 import { ICarsResponse, ICreateCarParams, IGetCars } from '../../api/garage/apiCar.model';
 import { generateRandomCars } from '../../shared/generateRandomCar';
+import { svgCar } from '../../shared/svgCar';
 import STORE from '../../store/store';
 import { CARS_PAGE_COUNT, DISABLED } from '../app.config';
 import { renderCar } from './renderCars/renderCar/renderCar';
@@ -25,6 +26,16 @@ export function visibleNavigations(): void {
   }
 }
 
+export async function reRendering(): Promise<void> {
+  const newCars: IGetCars = await getCars(STORE.carsPage);
+  STORE.cars = newCars.items;
+  STORE.carsCount = +newCars.count;
+  const mainBlock: HTMLElement = document.getElementById('main') as HTMLElement;
+  const newBlockCars = renderCars();
+  mainBlock.innerHTML = newBlockCars;
+  visibleNavigations();
+}
+
 export function listenGarage(): void {
   document.body.addEventListener('click', async (event: MouseEvent): Promise<void> => {
     const target = event.target as HTMLElement;
@@ -34,7 +45,6 @@ export function listenGarage(): void {
       const object: ICreateCarParams = { name: value, color };
       const newCar: ICarsResponse = await createCar(object);
       (document.getElementById('cars-count') as HTMLElement).innerHTML = `${++STORE.carsCount}`;
-
       if (STORE.cars.length <= CARS_PAGE_COUNT) {
         const garage = document.getElementById('cars');
         garage?.insertAdjacentHTML('beforeend', `${renderCar(newCar)}`);
@@ -42,18 +52,24 @@ export function listenGarage(): void {
       }
       visibleNavigations();
     }
+    if (target.classList.contains('update')) {
+      const inputUpdate: HTMLInputElement = document.getElementById('update-name') as HTMLInputElement;
+      const inputColor: HTMLInputElement = document.getElementById('update-color') as HTMLInputElement;
+      const data: ICreateCarParams = { name: inputUpdate.value, color: inputColor.value };
+      const idCar: string = inputUpdate.getAttribute('data-id') as string;
+      const updateValue: ICarsResponse = await updateCar(+idCar, data);
+      const changeCar: HTMLElement = document.getElementById(`car${updateValue.id}`) as HTMLElement;
+      const changeCarValue: HTMLElement = changeCar.querySelector('.car-settings__title') as HTMLElement;
+      changeCarValue.innerHTML = updateValue.name;
+      const changeCarColor: HTMLElement = changeCar.querySelector('.car-view__car') as HTMLElement;
+      changeCarColor.setAttribute('data-color', updateValue.color);
+      changeCarColor.innerHTML = `${svgCar(updateValue.color)}`;
+    }
     if (target.classList.contains('generate')) {
       const arrayCars: ICreateCarParams[] = generateRandomCars();
-      arrayCars.forEach(async (item: ICreateCarParams) => {
-        await createCar(item);
-      });
-      const newCars: IGetCars = await getCars(STORE.carsPage);
-      STORE.cars = newCars.items;
-      STORE.carsCount = +newCars.count;
-      const mainBlock: HTMLElement = document.getElementById('main') as HTMLElement;
-      const newBlockCars = renderCars();
-      mainBlock.innerHTML = newBlockCars;
-      visibleNavigations();
+      const createCars = arrayCars.map((item) => createCar(item));
+      await Promise.all(createCars);
+      reRendering();
     }
   });
 }

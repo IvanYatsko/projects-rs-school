@@ -10,10 +10,10 @@ export function renderGarage(): string {
   <div class="settings-block">
     <input id="update-name" class="settings__name" type="text" />
     <input id="update-color" class="setting__color" type="color" />
-    <button class="button update" type="button">update</button>
+    <button class="button update" type="button" disabled>update</button>
   </div>
   <div class="settings-buttons">
-    <button class="button race" type="button">race</button>
+    <button id="race" class="button race" type="button">race</button>
     <button class="button reset" type="button">reset</button>
     <button class="button generate" type="button">generate cars</button>
   </div>

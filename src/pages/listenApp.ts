@@ -1,6 +1,9 @@
 import { getCars } from '../api/garage/apiCar';
+import { getWinners } from '../api/winners/apiWinner';
 import STORE from '../store/store';
 import { listenGarage, visibleNavigations } from './garage/listenGarage';
+import { gameRace, removeCar } from './garage/renderCars/renderCar/listenCar';
+
 import { renderCars } from './garage/renderCars/renderCars';
 import { renderApp } from './renderApp';
 
@@ -18,6 +21,9 @@ export function listenApp(): void {
     const target = event.target as HTMLElement;
     if (target.classList.contains('winners')) {
       STORE.view = 'winner';
+      const { items: winners, count: winnersCount } = await getWinners(1);
+      STORE.winners = winners;
+      STORE.winnersCount = +winnersCount;
       renderApp();
     }
     if (target.classList.contains('garage')) {
@@ -36,4 +42,6 @@ export function listenApp(): void {
     }
   });
   listenGarage();
+  removeCar();
+  gameRace();
 }

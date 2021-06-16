@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve --env development",
-    "lint": "eslint src",
-    "lint-dev": "eslint --fix --ext .ts ."
+    "lint-dev": "eslint src",
+    "lint": "eslint --fix --ext .ts ."
   },
   "author": "Ivan Yatsko",
   "devDependencies": {

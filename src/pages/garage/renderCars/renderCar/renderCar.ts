@@ -2,7 +2,7 @@ import { ICarsResponse } from '../../../../api/garage/apiCar.model';
 import { svgCar } from '../../../../shared/svgCar';
 
 export function renderCar(car: ICarsResponse): string {
-  return `<div class="car" id="car${car.id}">
+  return `<div class="car" id="car${car.id}" data-id="${car.id}">
   <div class="car-settings">
     <button class="button car-button__select" type="button">
       select
@@ -29,7 +29,7 @@ export function renderCar(car: ICarsResponse): string {
       <span></span>
       <span></span>
     </div>
-    <picture class="car-view__car">${svgCar(car.color)}</picture>
+    <picture class="car-view__car" data-color="${car.color}">${svgCar(car.color)}</picture>
     <img class="car-view__flag" src="./images/finish_flag.png" alt="flag" />
   </div>
 </div>

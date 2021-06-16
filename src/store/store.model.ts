@@ -8,8 +8,21 @@ export interface IStore {
   winnersPage: number,
   winners: IGetWinner[],
   winnersCount: number,
-  animation: object,
+  animation: IAnimation[],
   view: string,
-  sortBy: null,
-  sortOrder: null,
+  sortBy: string,
+  sortOrder: string,
+}
+
+export interface IFrame {
+  id: number,
+  positionCar: number,
+  start: boolean,
+  finish: boolean,
+  drive: boolean
+}
+
+export interface IAnimation {
+  id: string,
+  dataAnimation: IFrame,
 }
