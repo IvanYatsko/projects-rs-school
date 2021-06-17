@@ -1,7 +1,10 @@
+import STORE from '../../store/store';
+import { renderScore } from './renderScore/renderScore';
+
 export function renderWinner(): string {
   return `<section class="section">
-  <h2 class="title title__main">Garage(<span>4</span>)</h2>
-  <h3 class="title title__page">Page#<span>1</span></h3>
+  <h2 class="title title__main">Winners(<span>${STORE.winnersCount}</span>)</h2>
+  <h3 class="title title__page">Page#<span>${STORE.winnersPage}</span></h3>
   <div class="score">
     <div class="score-header">
       <div class="score-header__text">NUMBER</div>
@@ -10,15 +13,8 @@ export function renderWinner(): string {
       <div class="score-header__text">WINS</div>
       <div class="score-header__text">BEST TIME (SECONDS)</div>
     </div>
-    <div class="score-main">
-      <div class="score-main__text">1</div>
-      <div class="score-main__text">
-        <img src="./images/car.svg" alt="car">
-      </div>
-      <div class="score-main__text">Tesla</div>
-      <div class="score-main__text">1</div>
-      <div class="score-main__text">5</div>
-    </div>
+    ${STORE.winners.map((winnerValue,
+    key) => renderScore(winnerValue, (STORE.winnersPage - 1) * 10 + key + 1)).join('')}
   </div>
 </section>`;
 }

@@ -4,5 +4,5 @@ export const DISABLED = 'disabled';
 export const MILLISECONDS = 1000;
 export const ONE_SECONDS = 1;
 export const PERCENT_ALL = 91;
-export const STOPPED: string = 'stopped';
+export const STOPPED = 'stopped';
 export const FIRST_WINS = 1;

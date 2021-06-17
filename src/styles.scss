@@ -206,11 +206,13 @@ body {
 
     &>div {
       flex: 0 0 17%;
-
-      &>img {
-        height: 5vh;
-      }
     }
+  }
+}
+
+.svg-winner {
+  &>svg {
+    width: 5vw;
   }
 }
 

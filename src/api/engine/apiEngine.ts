@@ -1,11 +1,11 @@
 import { IStartEngineResponse, ISwitchResponse } from './apiEngine.model';
 import { ENGINE } from '../api.config';
 
-export async function startStopEngine(id: number, status: string = 'started'): Promise<IStartEngineResponse> {
+export async function startStopEngine(id: number, status = 'started'): Promise<IStartEngineResponse> {
   return (await fetch(`${ENGINE}?id=${id}&status=${status}`)).json();
 }
 
-export async function switchEngine(id: number, status: string = 'drive'): Promise<ISwitchResponse> {
+export async function switchEngine(id: number, status = 'drive'): Promise<ISwitchResponse> {
   const response = await fetch(`${ENGINE}?id=${id}&status=${status}`);
   if (response.status === 500) {
     return { success: false };

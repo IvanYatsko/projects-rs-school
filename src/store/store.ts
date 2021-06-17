@@ -16,10 +16,11 @@ const STORE: IStore = {
   driveAnimation: { race: true, reset: false },
   saveCreate: { color: '', value: '' },
   saveUpdate: { color: '', value: '' },
+  winnerCars: [],
 };
 
 export async function initStore(): Promise<void> {
-  const { items: cars, count: carsCount } = await getCars(1);
+  const { items: cars, count: carsCount } = await getCars(STORE.carsPage);
   STORE.cars = cars;
   STORE.carsCount = +carsCount;
 }

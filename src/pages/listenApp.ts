@@ -1,12 +1,12 @@
 import { getCars } from '../api/garage/apiCar';
-import { getWinners } from '../api/winners/apiWinner';
 import STORE from '../store/store';
 import { DISABLED } from './app.config';
-import { listenGarage, visibleNavigations } from './garage/listenGarage';
-import { gameRace, removeCar } from './garage/renderCars/renderCar/listenCar';
+import { listenGarage } from './garage/listenGarage';
+import { gameRace, removeCar, visibleNavigations } from './garage/renderCars/renderCar/listenCar';
 
 import { renderCars } from './garage/renderCars/renderCars';
 import { renderApp } from './renderApp';
+import { listenWinners } from './winner/listenWinner';
 
 async function changePage() :Promise<void> {
   const arrayCars = await getCars(STORE.carsPage);
@@ -26,40 +26,32 @@ async function fillFields(): Promise<void> {
     }
     if (item.dataAnimation.start) {
       if (car?.querySelector('.car-move__a') as HTMLElement) {
-      (car.querySelector('.car-move__a') as HTMLElement).removeAttribute(DISABLED);
+        (car.querySelector('.car-move__a') as HTMLElement).removeAttribute(DISABLED);
       }
-    } else {
-      if (car?.querySelector('.car-move__a') as HTMLElement) {
+    } else if (car?.querySelector('.car-move__a') as HTMLElement) {
       (car.querySelector('.car-move__a') as HTMLElement).setAttribute(DISABLED, DISABLED);
-      }
     }
     if (item.dataAnimation.finish) {
       if (car?.querySelector('.car-move__b') as HTMLElement) {
-      (car.querySelector('.car-move__b') as HTMLElement).removeAttribute(DISABLED);
+        (car.querySelector('.car-move__b') as HTMLElement).removeAttribute(DISABLED);
       }
-    } else {
-      if (car?.querySelector('.car-move__b') as HTMLElement) {
+    } else if (car?.querySelector('.car-move__b') as HTMLElement) {
       (car.querySelector('.car-move__b') as HTMLElement).setAttribute(DISABLED, DISABLED);
-      }
     }
   });
   if (resAll) {
     if (document.querySelector('.reset') as HTMLElement) {
-    (document.querySelector('.reset') as HTMLElement).removeAttribute(DISABLED);
+      (document.querySelector('.reset') as HTMLElement).removeAttribute(DISABLED);
     }
-  } else {
-    if (document.querySelector('.reset') as HTMLElement) {
+  } else if (document.querySelector('.reset') as HTMLElement) {
     (document.querySelector('.reset') as HTMLElement).setAttribute(DISABLED, DISABLED);
-    }
   }
   if (raceAll) {
     if (document.querySelector('.race') as HTMLElement) {
-    (document.querySelector('.race') as HTMLElement).removeAttribute(DISABLED);
+      (document.querySelector('.race') as HTMLElement).removeAttribute(DISABLED);
     }
-  } else {
-    if (document.querySelector('.race') as HTMLElement) {
+  } else if (document.querySelector('.race') as HTMLElement) {
     (document.querySelector('.race') as HTMLElement).setAttribute(DISABLED, DISABLED);
-    }
   }
   const winnerElement: HTMLElement = document.querySelector('.winner-element') as HTMLElement;
 
@@ -71,7 +63,7 @@ async function fillFields(): Promise<void> {
     (document.getElementById('add-name') as HTMLInputElement).value = STORE.saveCreate.value;
   }
   if (document.getElementById('add-color') as HTMLInputElement) {
-  (document.getElementById('add-color') as HTMLInputElement).value = STORE.saveCreate.color;
+    (document.getElementById('add-color') as HTMLInputElement).value = STORE.saveCreate.color;
   }
 }
 
@@ -81,9 +73,7 @@ export function listenApp(): void {
     const target = event.target as HTMLElement;
     if (target.classList.contains('winners')) {
       STORE.view = 'winner';
-      const { items: winners, count: winnersCount } = await getWinners(1);
-      STORE.winners = winners;
-      STORE.winnersCount = +winnersCount;
+      await listenWinners();
       renderApp();
     }
     if (target.classList.contains('garage')) {
@@ -107,4 +97,3 @@ export function listenApp(): void {
   removeCar();
   gameRace();
 }
-

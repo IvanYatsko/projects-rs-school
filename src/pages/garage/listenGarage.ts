@@ -1,46 +1,20 @@
 import { startStopEngine, switchEngine } from '../../api/engine/apiEngine';
 import { IStartEngineResponse } from '../../api/engine/apiEngine.model';
-import { createCar, getCars, updateCar } from '../../api/garage/apiCar';
-import { ICarsResponse, ICreateCarParams, IGetCars } from '../../api/garage/apiCar.model';
+import { createCar, updateCar } from '../../api/garage/apiCar';
+import { ICarsResponse, ICreateCarParams } from '../../api/garage/apiCar.model';
 import { createWinner, getWinner, updateWinner } from '../../api/winners/apiWinner';
 import { IGetWinner, IUpdateWinners } from '../../api/winners/apiWinner.model';
 import { generateRandomCars } from '../../shared/generateRandomCar';
 import { svgCar } from '../../shared/svgCar';
 import STORE from '../../store/store';
 import { IAnimation, IFrame } from '../../store/store.model';
-import { CARS_PAGE_COUNT, DISABLED, FIRST_WINS, MILLISECONDS } from '../app.config';
-import { animationCar, cancelAnimation, emptyTextWinner, isFinish } from './renderCars/renderCar/listenCar';
+import {
+  CARS_PAGE_COUNT, DISABLED, FIRST_WINS, MILLISECONDS,
+} from '../app.config';
+import {
+  animationCar, cancelAnimation, emptyTextWinner, isFinish, reRendering, visibleNavigations,
+} from './renderCars/renderCar/listenCar';
 import { renderCar } from './renderCars/renderCar/renderCar';
-import { renderCars } from './renderCars/renderCars';
-
-export function visibleNavigations(): void {
-  const nextButton: HTMLElement = document.querySelector('.next') as HTMLElement;
-  const prevButton: HTMLElement = document.querySelector('.prev') as HTMLElement;
-
-  const lastPage = STORE.carsPage * CARS_PAGE_COUNT < STORE.carsCount;
-  if (lastPage) {
-    nextButton.removeAttribute(DISABLED);
-  } else {
-    nextButton.setAttribute(DISABLED, 'true');
-  }
-
-  const firstPage = STORE.carsPage > 1;
-  if (firstPage) {
-    prevButton.removeAttribute(DISABLED);
-  } else {
-    prevButton.setAttribute(DISABLED, 'true');
-  }
-}
-
-export async function reRendering(): Promise<void> {
-  const newCars: IGetCars = await getCars(STORE.carsPage);
-  STORE.cars = newCars.items;
-  STORE.carsCount = +newCars.count;
-  const mainBlock: HTMLElement = document.getElementById('main') as HTMLElement;
-  const newBlockCars = renderCars();
-  mainBlock.innerHTML = newBlockCars;
-  visibleNavigations();
-}
 
 export async function showWinner(time: number, car: ICarsResponse): Promise<void> {
   const winnerElement: HTMLElement = document.querySelector('.winner-element') as HTMLElement;
@@ -132,7 +106,6 @@ export function buttonsRaceReset(): void {
   document.body.addEventListener('click', async (event: MouseEvent): Promise<void> => {
     const target = event.target as HTMLElement;
     if (target.classList.contains('race')) {
-
       STORE.driveAnimation.race = false;
       target.setAttribute(DISABLED, DISABLED);
 
@@ -149,12 +122,12 @@ export function buttonsRaceReset(): void {
       const resetBut: HTMLElement = document.querySelector('.reset') as HTMLElement;
       resetBut?.setAttribute(DISABLED, DISABLED);
     }
-  })
+  });
 }
 
 export function listenGarage(): void {
   document.body.addEventListener('click', async (event: MouseEvent): Promise<void> => {
-    const target = event.target as HTMLElement;
+    const target: HTMLElement = event.target as HTMLElement;
     if (target.classList.contains('create')) {
       const { value } = (document.getElementById('add-name')) as HTMLInputElement;
       const color: string = ((document.getElementById('add-color')) as HTMLInputElement).value;

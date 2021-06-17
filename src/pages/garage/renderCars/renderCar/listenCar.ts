@@ -1,13 +1,45 @@
 import { startStopEngine, switchEngine } from '../../../../api/engine/apiEngine';
 import { IStartEngineResponse } from '../../../../api/engine/apiEngine.model';
-import { deleteCar } from '../../../../api/garage/apiCar';
+import { deleteCar, getCars } from '../../../../api/garage/apiCar';
 import { IAnimation, IFrame } from '../../../../store/store.model';
 import {
+  CARS_PAGE_COUNT,
   DISABLED, MILLISECONDS, ONE_SECONDS, PERCENT_ALL, STOPPED,
 } from '../../../app.config';
-import { reRendering } from '../../listenGarage';
 
 import STORE from '../../../../store/store';
+import { renderCars } from '../renderCars';
+import { IGetCars } from '../../../../api/garage/apiCar.model';
+import { deleteWinner } from '../../../../api/winners/apiWinner';
+
+export function visibleNavigations(): void {
+  const nextButton: HTMLElement = document.querySelector('.next') as HTMLElement;
+  const prevButton: HTMLElement = document.querySelector('.prev') as HTMLElement;
+
+  const lastPage = STORE.carsPage * CARS_PAGE_COUNT < STORE.carsCount;
+  if (lastPage) {
+    nextButton.removeAttribute(DISABLED);
+  } else {
+    nextButton.setAttribute(DISABLED, 'true');
+  }
+
+  const firstPage = STORE.carsPage > 1;
+  if (firstPage) {
+    prevButton.removeAttribute(DISABLED);
+  } else {
+    prevButton.setAttribute(DISABLED, 'true');
+  }
+}
+
+export async function reRendering(): Promise<void> {
+  const newCars: IGetCars = await getCars(STORE.carsPage);
+  STORE.cars = newCars.items;
+  STORE.carsCount = +newCars.count;
+  const mainBlock: HTMLElement = document.getElementById('main') as HTMLElement;
+  const newBlockCars = renderCars();
+  mainBlock.innerHTML = newBlockCars;
+  visibleNavigations();
+}
 
 export function removeCar(): void {
   document.body.addEventListener('click', async (event: MouseEvent): Promise<void> => {
@@ -17,6 +49,7 @@ export function removeCar(): void {
       const carParrent: HTMLElement = target.closest('.car') as HTMLElement;
       const carId: string = carParrent.getAttribute('data-id') as string;
       await deleteCar(+carId);
+      await deleteWinner(+carId);
       reRendering();
     }
 
@@ -118,7 +151,7 @@ export function gameRace(): void {
       STORE.animation.push({
         id: carParrentId,
         dataAnimation: racing,
-      })
+      });
       carParrent.querySelector('.car-move__b')?.removeAttribute(DISABLED);
       const switchEngineValue = await switchEngine(+carParrentId);
       if (!switchEngineValue.success) {
@@ -126,7 +159,7 @@ export function gameRace(): void {
       }
       racing.drive = false;
       if ((document.getElementById(`stop${carParrentId}`) as HTMLElement).getAttribute(DISABLED)) {
-        (document.getElementById(`start${carParrentId}`) as HTMLElement).removeAttribute(DISABLED)
+        (document.getElementById(`start${carParrentId}`) as HTMLElement).removeAttribute(DISABLED);
       }
       if (STORE.animation.length === 0) {
         (document.getElementById('race') as HTMLElement)?.removeAttribute(DISABLED);
