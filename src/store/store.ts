@@ -17,6 +17,8 @@ const STORE: IStore = {
   saveCreate: { color: '', value: '' },
   saveUpdate: { color: '', value: '' },
   winnerCars: [],
+  inputCreate: '',
+  colorCreate: '',
 };
 
 export async function initStore(): Promise<void> {

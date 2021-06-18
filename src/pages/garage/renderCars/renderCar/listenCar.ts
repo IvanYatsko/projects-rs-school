@@ -4,7 +4,7 @@ import { deleteCar, getCars } from '../../../../api/garage/apiCar';
 import { IAnimation, IFrame } from '../../../../store/store.model';
 import {
   CARS_PAGE_COUNT,
-  DISABLED, MILLISECONDS, ONE_SECONDS, PERCENT_ALL, STOPPED,
+  DISABLED, GARAGE_PAGE, MILLISECONDS, ONE_SECONDS, PERCENT_ALL, STOPPED, WIN_PAGE_COUNT,
 } from '../../../app.config';
 
 import STORE from '../../../../store/store';
@@ -13,21 +13,29 @@ import { IGetCars } from '../../../../api/garage/apiCar.model';
 import { deleteWinner } from '../../../../api/winners/apiWinner';
 
 export function visibleNavigations(): void {
-  const nextButton: HTMLElement = document.querySelector('.next') as HTMLElement;
-  const prevButton: HTMLElement = document.querySelector('.prev') as HTMLElement;
+  const nextButton: HTMLElement = document.getElementById('next') as HTMLElement;
+  const prevButton: HTMLElement = document.getElementById('prev') as HTMLElement;
 
-  const lastPage = STORE.carsPage * CARS_PAGE_COUNT < STORE.carsCount;
+  let lastPage = STORE.carsPage * CARS_PAGE_COUNT < STORE.carsCount;
+  if (STORE.view !== GARAGE_PAGE) {
+    lastPage = STORE.winnersPage * WIN_PAGE_COUNT < STORE.winnersCount;
+  }
+
   if (lastPage) {
     nextButton.removeAttribute(DISABLED);
   } else {
-    nextButton.setAttribute(DISABLED, 'true');
+    nextButton.setAttribute(DISABLED, DISABLED);
   }
 
-  const firstPage = STORE.carsPage > 1;
+  let firstPage = STORE.carsPage > 1;
+  if (STORE.view !== GARAGE_PAGE) {
+    firstPage = STORE.winnersPage > 1;
+  }
+
   if (firstPage) {
     prevButton.removeAttribute(DISABLED);
   } else {
-    prevButton.setAttribute(DISABLED, 'true');
+    prevButton.setAttribute(DISABLED, DISABLED);
   }
 }
 

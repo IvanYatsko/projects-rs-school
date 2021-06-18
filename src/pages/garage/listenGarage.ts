@@ -129,17 +129,25 @@ export function listenGarage(): void {
   document.body.addEventListener('click', async (event: MouseEvent): Promise<void> => {
     const target: HTMLElement = event.target as HTMLElement;
     if (target.classList.contains('create')) {
-      const { value } = (document.getElementById('add-name')) as HTMLInputElement;
-      const color: string = ((document.getElementById('add-color')) as HTMLInputElement).value;
-      const object: ICreateCarParams = { name: value, color };
-      const newCar: ICarsResponse = await createCar(object);
-      (document.getElementById('cars-count') as HTMLElement).innerHTML = `${++STORE.carsCount}`;
-      if (STORE.cars.length <= CARS_PAGE_COUNT) {
-        const garage = document.getElementById('cars');
-        garage?.insertAdjacentHTML('beforeend', `${renderCar(newCar)}`);
-        STORE.cars.push(newCar);
+      const valueCar = (document.getElementById('add-name')) as HTMLInputElement;
+      if (!valueCar.value) {
+        valueCar.classList.add('error');
+        target.setAttribute(DISABLED, DISABLED);
+      } else {
+        valueCar.classList.remove('error');
+        const color: string = ((document.getElementById('add-color')) as HTMLInputElement).value;
+        const object: ICreateCarParams = { name: valueCar.value, color };
+        const newCar: ICarsResponse = await createCar(object);
+        (document.getElementById('cars-count') as HTMLElement).innerHTML = `${++STORE.carsCount}`;
+        if (STORE.cars.length <= CARS_PAGE_COUNT) {
+          const garage = document.getElementById('cars');
+          garage?.insertAdjacentHTML('beforeend', `${renderCar(newCar)}`);
+          STORE.cars.push(newCar);
+        }
+        visibleNavigations();
+        valueCar.value = '';
+        STORE.inputCreate = '';
       }
-      visibleNavigations();
     }
     if (target.classList.contains('update')) {
       const inputUpdate: HTMLInputElement = document.getElementById('update-name') as HTMLInputElement;
@@ -160,6 +168,15 @@ export function listenGarage(): void {
       await Promise.all(createCars);
       reRendering();
     }
+  });
+  const createValue = document.getElementById('add-name') as HTMLElement;
+  createValue.addEventListener('input', (event) => {
+    (document.querySelector('.create') as HTMLElement).removeAttribute(DISABLED);
+    STORE.inputCreate = (event.target as HTMLInputElement).value;
+  });
+  const createColor = document.getElementById('add-color') as HTMLElement;
+  createColor.addEventListener('input', (event) => {
+    STORE.colorCreate = (event.target as HTMLInputElement).value;
   });
   buttonsRaceReset();
 }

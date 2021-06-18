@@ -1,7 +1,9 @@
+import STORE from '../../store/store';
 import { WINNERS } from '../api.config';
 import { IGetWinner, IGetWinners, IUpdateWinners } from './apiWinner.model';
 
-export async function getWinners(page: number, limit = 10, sort = 'id', order = 'ASC'): Promise<IGetWinners> {
+export async function getWinners(page: number = STORE.winnersPage, limit = 10,
+  sort: string = STORE.sortBy, order: string = STORE.sortOrder): Promise<IGetWinners> {
   const response = await fetch(`${WINNERS}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`);
   return {
     items: await response.json(),

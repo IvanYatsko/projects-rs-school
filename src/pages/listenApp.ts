@@ -1,6 +1,6 @@
 import { getCars } from '../api/garage/apiCar';
 import STORE from '../store/store';
-import { DISABLED } from './app.config';
+import { DISABLED, GARAGE_PAGE } from './app.config';
 import { listenGarage } from './garage/listenGarage';
 import { gameRace, removeCar, visibleNavigations } from './garage/renderCars/renderCar/listenCar';
 
@@ -65,6 +65,13 @@ async function fillFields(): Promise<void> {
   if (document.getElementById('add-color') as HTMLInputElement) {
     (document.getElementById('add-color') as HTMLInputElement).value = STORE.saveCreate.color;
   }
+
+  if (STORE.inputCreate) {
+    (document.getElementById('add-name') as HTMLInputElement).value = STORE.inputCreate;
+  }
+  if (STORE.colorCreate) {
+    (document.getElementById('add-color') as HTMLInputElement).value = STORE.colorCreate;
+  }
 }
 
 export function listenApp(): void {
@@ -74,7 +81,7 @@ export function listenApp(): void {
     if (target.classList.contains('winners')) {
       STORE.view = 'winner';
       await listenWinners();
-      renderApp();
+      visibleNavigations();
     }
     if (target.classList.contains('garage')) {
       STORE.view = 'garage';
@@ -83,13 +90,23 @@ export function listenApp(): void {
       visibleNavigations();
     }
     if (target.classList.contains('next')) {
-      ++STORE.carsPage;
-      changePage();
+      if (STORE.view === GARAGE_PAGE) {
+        ++STORE.carsPage;
+        changePage();
+      } else {
+        ++STORE.winnersPage;
+        await listenWinners();
+      }
       visibleNavigations();
     }
     if (target.classList.contains('prev')) {
-      --STORE.carsPage;
-      changePage();
+      if (STORE.view === GARAGE_PAGE) {
+        --STORE.carsPage;
+        changePage();
+      } else {
+        --STORE.winnersPage;
+        await listenWinners();
+      }
       visibleNavigations();
     }
   });

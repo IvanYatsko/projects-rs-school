@@ -13,7 +13,7 @@ a {
 }
 
 body {
-  background-color: #E6E6FA;
+  background-color: #ccccffcc;
 }
 
 .title {
@@ -224,7 +224,7 @@ body {
 }
 
 .error {
-  border: 1px solid #ec272766;
+  border: 1px solid #ff0000;
   box-shadow: 0px 3px 5px rgb(230 22 22 / 20%), 0px 1px 18px rgb(236 15 15 / 12%), 0px 6px 10px rgb(250 9 9 / 14%);
 }
 
@@ -240,7 +240,7 @@ body {
   top: 20%;
   left: calc(50% - 200px);
 
-  & > p {
+  &>p {
     font-family: "Rubik One", sans-serif;
     font-size: 25px;
     text-transform: uppercase;

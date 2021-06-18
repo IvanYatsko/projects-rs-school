@@ -8,10 +8,12 @@ export function renderApp(): void {
   <button class="button garage" type="button">to garage</button>
   <button class="button winners" type="button">to winners</button>
 </nav>
+<div id="page">
 ${(STORE.view === GARAGE_PAGE) ? renderGarage() : renderWinner()}
+</div>
 <div class="main-buttons">
-  <button class="button prev" type="button">prev</button>
-  <button class="button next" type="button">next</button>
+  <button class="button prev" id="prev" type="button">prev</button>
+  <button class="button next" id="next" type="button">next</button>
 </div>
 `;
 

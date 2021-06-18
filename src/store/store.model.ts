@@ -16,7 +16,9 @@ export interface IStore {
   driveAnimation: IDriveAnimation,
   saveCreate: ISaveInput,
   saveUpdate: ISaveInput,
-  winnerCars: ICarsResponse[]
+  winnerCars: ICarsResponse[],
+  inputCreate: string,
+  colorCreate: string,
 }
 
 export interface ISaveInput {
