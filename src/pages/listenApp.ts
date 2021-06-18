@@ -6,7 +6,7 @@ import { gameRace, removeCar, visibleNavigations } from './garage/renderCars/ren
 
 import { renderCars } from './garage/renderCars/renderCars';
 import { renderApp } from './renderApp';
-import { listenWinners } from './winner/listenWinner';
+import { listenWinners, sortScore } from './winner/listenWinner';
 
 async function changePage() :Promise<void> {
   const arrayCars = await getCars(STORE.carsPage);
@@ -96,4 +96,5 @@ export function listenApp(): void {
   listenGarage();
   removeCar();
   gameRace();
+  sortScore();
 }

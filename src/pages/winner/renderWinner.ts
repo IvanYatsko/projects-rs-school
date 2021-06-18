@@ -10,8 +10,8 @@ export function renderWinner(): string {
       <div class="score-header__text">NUMBER</div>
       <div class="score-header__text">CAR</div>
       <div class="score-header__text">NAME</div>
-      <div class="score-header__text">WINS</div>
-      <div class="score-header__text">BEST TIME (SECONDS)</div>
+      <div class="score-header__wins">WINS</div>
+      <div class="score-header__time">BEST TIME (SECONDS)</div>
     </div>
     ${STORE.winners.map((winnerValue,
     key) => renderScore(winnerValue, (STORE.winnersPage - 1) * 10 + key + 1)).join('')}
