@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>What is Git and why you should use it</h2>
+					<img src="https://codexitos.com/wp-content/uploads/2019/10/blog-What-is-github-and-why-you-should-use-it..png" alt="main-img">
+				</section>
+				<section>
+					<p>Knowing how to operate a version control system is no longer an option in the world of work. The demand for large software projects has grown exponentially, and for this reason, the use of Git is a requirement for any programmer in 2021. </p>
+				</section>
+				<section>
+					<h3>What is version control? </h3>
+					<ul>
+						<li>A system that keeps records of your changes </li>
+						<li>Allows for collaborative development</li>
+						<li>Allows you to know who made what changes and when</li>
+						<li>Allows you to revert any changes and go back to a previous state</li>
+						<li>Users keep entire code and history on their location machines</li>
+						<li>Users can make any changes without internet access (Except pushing and pulling changes from a remote server)</li>
+					</ul>
+				</section>
+				<section>
+					<h3>But what exactly is Git? </h3>
+					<img width="750px" src="https://thumb.tildacdn.com/tild6430-6566-4465-b436-343639616430/-/format/webp/git.png" alt="git">
+				</section>
+				<section>
+					<p>It is a software developed by Linus Torvalds to manage all the changes that are made to the elements of a product such as a website or an application. 
+						Without a doubt, managing git will considerably increase your value and professionalism in the job market, it is worth learning.
+						Git isn’t the only version control system, but (I think) it’s the best</p>
+				</section>
+				<section>
+					<h3>How does git work?</h3>
+					<p>Can be complicated at ﬁrst, but there are a few key concepts:</p>
+				</section>
+				<section>
+					<h3>Key Concepts: Snapshots</h3>
+					<ul>
+						<li>The way git keeps track of your code history</li>
+						<li>Essentially records what all your ﬁles look like at a given point in time</li>
+						<li>You decide when to take a snapshot, and of what ﬁles</li>
+						<li>Have the ability to go back to visit any snapshot</li>
+						<li>Your snapshots from later on will stay around, too</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Key Concepts: Commit</h3>
+					<ul>
+						<li>The act of creating a snapshot</li>
+						<li>Can be a noun or verb</li>
+						<li>“I commited code”</li>
+						<li>“I just made a new commit”</li>
+						<li>Essentially, a project is made up of a bunch of commits</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Commits contain three pieces of information:</h3>
+					<ul>
+						<li>1.  Information about how the ﬁles changed from previously</li>
+						<li>2.  A reference to the commit that came before it
+							<ul><li>Called the “parent commit”</li></ul>
+						</li>
+						<li>3.  A hash code name
+							<ul><li>Will look something like: fb2d2ec5069fc6776c80b3ad6b7cbde3cade4e</li></ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Key Concepts: Repositories</h3>
+					<ul>
+						<li>Often shortened to ‘repo’</li>
+						<li>A collection of all the ﬁles and the history of those ﬁles</li>
+						<li>Consists of all your commits</li>
+						<li>Place where all your hard work is stored</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Key Concepts: Repositories</h3>
+					<ul>
+						<li>Can live on a local machine or on a remote server (GitHub!)</li>
+						<li>The act of copying a repository from a remote server is called cloning</li>
+						<li>Cloning from a remote server allows teams to work together</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Key Concepts: Repositories</h3>
+					<ul>
+						<li>The process of downloading commits that don’t exist on your machine from a remote repository is called pulling changes</li>
+						<li>The process of adding your local changes to the remote repository is called pushing changes</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Key Concepts: Branches</h3>
+					<ul>
+						<li>All commits in git live on some branch</li>
+						<li>But there can be many, many branches</li>
+						<li>The main branch in a project is called the master branch</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Hosting</h3>
+					<p>Because all work that we care about should be backed up and to facilitate collaboration with
+						your coauthors, you probably want to host your repositories on the cloud. By far the largest
+						host of open-source repositories is GitHub, and it has worked very hard to make its interface
+						easy to use. Gitlab can also be a good option. It lets you host an unlimited number of free
+						repositories.</p>
+				</section>
+				<section>
+					<p>To upload our example project, you first want to create a blank repository on the host.
+						Once you have done that, you can return to your terminal and tell your local machine about
+						your host:</p>
+					<ul>
+						<li>git remote add origin //remote repository URL</li>
+						<li>git push -u origin/master</li>
+					</ul>
+				</section>
+				<section>
+					<p>In the future, you will treem the remote branch origin/master as a branch that you want
+						to keep master roughly up to date with. To retrieve changes from the remote to the local,
+						you need to first fetch them (download them) and then merge them into the current branch:</p>
+					<ul>
+						<li>git fetch origin</li>
+						<li>git merge origin master</li>
+					</ul>
+				</section>
+				<section>
+					<p>To save keystrokes, Git provides the shortcut git pull which runs these two commands.
+						To push changes from the local to the remote, you can use git push, but you must pull first.
+						So to get the two branches back in sync, we can run these commands:</p>
+					<ul>
+						<li>git pull</li>
+						<li>git push</li>
+					</ul>
+				</section>
+				<section>
+					<h2>That's all</h2>
+					<img width="600px" src="https://i.redd.it/3orpjiv12pq41.jpg" alt="humor">
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
