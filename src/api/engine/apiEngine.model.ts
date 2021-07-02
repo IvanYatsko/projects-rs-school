@@ -4,5 +4,5 @@ export interface IStartEngineResponse {
 }
 
 export interface ISwitchResponse {
-  success: boolean,
+  isSuccess: boolean,
 }

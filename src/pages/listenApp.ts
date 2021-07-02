@@ -16,42 +16,30 @@ async function changePage() :Promise<void> {
   (document.getElementById('main') as HTMLElement).innerHTML = nextPage;
 }
 
-async function fillFields(): Promise<void> {
-  const raceAll: boolean = STORE.driveAnimation.race;
-  const resAll: boolean = STORE.driveAnimation.reset;
-  STORE.animation.forEach((item) => {
-    const car: HTMLElement = document.getElementById(`car${item.id}`) as HTMLElement;
-    if (car?.querySelector('.car-view__car') as HTMLElement) {
-      (car?.querySelector('.car-view__car') as HTMLElement).style.left = `${item.dataAnimation.positionCar}%`;
-    }
-    if (item.dataAnimation.start) {
-      if (car?.querySelector('.car-move__a') as HTMLElement) {
-        (car.querySelector('.car-move__a') as HTMLElement).removeAttribute(DISABLED);
-      }
-    } else if (car?.querySelector('.car-move__a') as HTMLElement) {
-      (car.querySelector('.car-move__a') as HTMLElement).setAttribute(DISABLED, DISABLED);
-    }
-    if (item.dataAnimation.finish) {
-      if (car?.querySelector('.car-move__b') as HTMLElement) {
-        (car.querySelector('.car-move__b') as HTMLElement).removeAttribute(DISABLED);
-      }
-    } else if (car?.querySelector('.car-move__b') as HTMLElement) {
-      (car.querySelector('.car-move__b') as HTMLElement).setAttribute(DISABLED, DISABLED);
-    }
-  });
+function setDisabled(className: string, doc: HTMLElement | Document = document) {
+  (doc.querySelector(className) as HTMLElement).setAttribute(DISABLED, DISABLED);
+}
+
+function removeDisabled(className: string, doc: HTMLElement | Document = document) {
+  (doc.querySelector(className) as HTMLElement).removeAttribute(DISABLED);
+}
+
+function resAllFill() {
+  const raceAll: boolean = STORE.driveAnimation.isRace;
+  const resAll: boolean = STORE.driveAnimation.isReset;
   if (resAll) {
     if (document.querySelector('.reset') as HTMLElement) {
-      (document.querySelector('.reset') as HTMLElement).removeAttribute(DISABLED);
+      removeDisabled('.reset');
     }
   } else if (document.querySelector('.reset') as HTMLElement) {
-    (document.querySelector('.reset') as HTMLElement).setAttribute(DISABLED, DISABLED);
+    setDisabled('.reset');
   }
   if (raceAll) {
     if (document.querySelector('.race') as HTMLElement) {
-      (document.querySelector('.race') as HTMLElement).removeAttribute(DISABLED);
+      removeDisabled('.race');
     }
   } else if (document.querySelector('.race') as HTMLElement) {
-    (document.querySelector('.race') as HTMLElement).setAttribute(DISABLED, DISABLED);
+    setDisabled('.race');
   }
   const winnerElement: HTMLElement = document.querySelector('.winner-element') as HTMLElement;
 
@@ -72,6 +60,30 @@ async function fillFields(): Promise<void> {
   if (STORE.colorCreate) {
     (document.getElementById('add-color') as HTMLInputElement).value = STORE.colorCreate;
   }
+}
+
+async function fillFields(): Promise<void> {
+  STORE.animation.forEach((item) => {
+    const car: HTMLElement = document.getElementById(`car${item.id}`) as HTMLElement;
+    if (car?.querySelector('.car-view__car') as HTMLElement) {
+      (car?.querySelector('.car-view__car') as HTMLElement).style.left = `${item.dataAnimation.positionCar}%`;
+    }
+    if (item.dataAnimation.isStart) {
+      if (car?.querySelector('.car-move__a') as HTMLElement) {
+        removeDisabled('.car-move__a', car);
+      }
+    } else if (car?.querySelector('.car-move__a') as HTMLElement) {
+      setDisabled('.car-move__a', car);
+    }
+    if (item.dataAnimation.isFinish) {
+      if (car?.querySelector('.car-move__b') as HTMLElement) {
+        removeDisabled('.car-move__b', car);
+      }
+    } else if (car?.querySelector('.car-move__b') as HTMLElement) {
+      setDisabled('.car-move__b', car);
+    }
+  });
+  resAllFill();
 }
 
 export function listenApp(): void {

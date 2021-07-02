@@ -35,11 +35,3 @@ export function sortScore(): void {
     }
   });
 }
-
-// async function changePageWinnerr() :Promise<void> {
-//   const arrayCars = await getWinners(STORE.winnersPage);
-//   STORE.winners = arrayCars.items;
-//   STORE.carsCount = +arrayCars.count;
-//   const nextPage = renderCars();
-//   (document.getElementById('main') as HTMLElement).innerHTML = nextPage;
-// }

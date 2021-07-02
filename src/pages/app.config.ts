@@ -7,3 +7,4 @@ export const ONE_SECONDS = 1;
 export const PERCENT_ALL = 91;
 export const STOPPED = 'stopped';
 export const FIRST_WINS = 1;
+export const TO_FIXED_NUMBER = 2;

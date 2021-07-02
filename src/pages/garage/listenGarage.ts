@@ -9,7 +9,7 @@ import { svgCar } from '../../shared/svgCar';
 import STORE from '../../store/store';
 import { IAnimation, IFrame } from '../../store/store.model';
 import {
-  CARS_PAGE_COUNT, DISABLED, FIRST_WINS, MILLISECONDS,
+  CARS_PAGE_COUNT, DISABLED, FIRST_WINS, MILLISECONDS, TO_FIXED_NUMBER,
 } from '../app.config';
 import {
   animationCar, cancelAnimation, emptyTextWinner, isFinish, reRendering, visibleNavigations,
@@ -48,43 +48,37 @@ export async function promisesAll(promises: Promise<IStartEngineResponse>[]): Pr
   let isWinner = false;
   Promise.all(promises).then((response) => {
     response.forEach(async (item, key) => {
-      STORE.driveAnimation.reset = true;
+      STORE.driveAnimation.isReset = true;
       const dataAnimation: IFrame = await animationCar(`${STORE.cars[key].id}`, item.distance, item.velocity);
       const carEl: HTMLElement = document.getElementById(`car${STORE.cars[key].id}`) as HTMLElement;
       (document.querySelector('.reset') as HTMLElement)?.removeAttribute(DISABLED);
       (carEl?.querySelector('.car-move__b') as HTMLElement)?.removeAttribute(DISABLED);
 
-      STORE.animation.push({
-        id: `${STORE.cars[key].id}`,
-        dataAnimation,
-      });
-
-      const { success } = await switchEngine(STORE.cars[key].id);
+      STORE.animation.push({ id: `${STORE.cars[key].id}`, dataAnimation });
+      const { isSuccess } = await switchEngine(STORE.cars[key].id);
       const isStopActive: string = (document.getElementById(`stop${STORE.cars[key].id}`) as
       HTMLElement)?.getAttribute(DISABLED) as string;
-
       STORE.animation = STORE.animation.map((elem: IAnimation) => {
         if (+elem.id === STORE.cars[key].id) {
-          elem.dataAnimation.drive = false;
+          elem.dataAnimation.isDrive = false;
         }
         return elem;
       });
-
       if ((document.getElementById(`stop${STORE.cars[key].id}`) as HTMLElement)?.getAttribute(DISABLED)) {
         (document.getElementById(`start${STORE.cars[key].id}`) as HTMLElement)?.removeAttribute(DISABLED);
       }
 
       const isAllFinish: boolean = isFinish();
-      if (!success) {
+      if (isSuccess === false) {
         cancelAnimationFrame(dataAnimation.id);
       } else if (!isWinner && !isStopActive && !isAllFinish) {
         isWinner = true;
-        const time: number = +(item.distance / item.velocity / MILLISECONDS).toFixed(2);
+        const time: number = +(item.distance / item.velocity / MILLISECONDS).toFixed(TO_FIXED_NUMBER);
         await showWinner(time, STORE.cars[key]);
         await addWinner(time, STORE.cars[key]);
       }
-      if (STORE.animation.length === 0 && isAllFinish) {
-        STORE.driveAnimation.race = true;
+      if (!STORE.animation.length && isAllFinish) {
+        STORE.driveAnimation.isRace = true;
         (document.querySelector('.race') as HTMLElement)?.removeAttribute(DISABLED);
       }
     });
@@ -96,7 +90,7 @@ export function resetAll(): void {
   STORE.animation.forEach(async (item) => {
     cancelAnimation(item.id, item.dataAnimation.id);
     (document.getElementById(`stop${item.id}`) as HTMLElement)?.setAttribute(DISABLED, DISABLED);
-    if (!item.dataAnimation.drive) {
+    if (!item.dataAnimation.isDrive) {
       (document.getElementById(`start${item.id}`) as HTMLElement)?.removeAttribute(DISABLED);
     }
   });
@@ -106,7 +100,7 @@ export function buttonsRaceReset(): void {
   document.body.addEventListener('click', async (event: MouseEvent): Promise<void> => {
     const target = event.target as HTMLElement;
     if (target.classList.contains('race')) {
-      STORE.driveAnimation.race = false;
+      STORE.driveAnimation.isRace = false;
       target.setAttribute(DISABLED, DISABLED);
 
       const promises: Promise<IStartEngineResponse>[] = STORE.cars.map((item) => {
@@ -117,7 +111,7 @@ export function buttonsRaceReset(): void {
       await promisesAll(promises);
     }
     if (target.classList.contains('reset')) {
-      STORE.driveAnimation.reset = false;
+      STORE.driveAnimation.isReset = false;
       resetAll();
       const resetBut: HTMLElement = document.querySelector('.reset') as HTMLElement;
       resetBut?.setAttribute(DISABLED, DISABLED);
@@ -125,29 +119,33 @@ export function buttonsRaceReset(): void {
   });
 }
 
+async function createGarageCar(target: HTMLElement) {
+  const valueCar = (document.getElementById('add-name')) as HTMLInputElement;
+  if (!valueCar.value) {
+    valueCar.classList.add('error');
+    target.setAttribute(DISABLED, DISABLED);
+  } else {
+    valueCar.classList.remove('error');
+    const color: string = ((document.getElementById('add-color')) as HTMLInputElement).value;
+    const object: ICreateCarParams = { name: valueCar.value, color };
+    const newCar: ICarsResponse = await createCar(object);
+    (document.getElementById('cars-count') as HTMLElement).innerHTML = `${++STORE.carsCount}`;
+    if (STORE.cars.length <= CARS_PAGE_COUNT) {
+      const garage = document.getElementById('cars');
+      garage?.insertAdjacentHTML('beforeend', `${renderCar(newCar)}`);
+      STORE.cars.push(newCar);
+    }
+    visibleNavigations();
+    valueCar.value = '';
+    STORE.inputCreate = '';
+  }
+}
+
 export function listenGarage(): void {
   document.body.addEventListener('click', async (event: MouseEvent): Promise<void> => {
     const target: HTMLElement = event.target as HTMLElement;
     if (target.classList.contains('create')) {
-      const valueCar = (document.getElementById('add-name')) as HTMLInputElement;
-      if (!valueCar.value) {
-        valueCar.classList.add('error');
-        target.setAttribute(DISABLED, DISABLED);
-      } else {
-        valueCar.classList.remove('error');
-        const color: string = ((document.getElementById('add-color')) as HTMLInputElement).value;
-        const object: ICreateCarParams = { name: valueCar.value, color };
-        const newCar: ICarsResponse = await createCar(object);
-        (document.getElementById('cars-count') as HTMLElement).innerHTML = `${++STORE.carsCount}`;
-        if (STORE.cars.length <= CARS_PAGE_COUNT) {
-          const garage = document.getElementById('cars');
-          garage?.insertAdjacentHTML('beforeend', `${renderCar(newCar)}`);
-          STORE.cars.push(newCar);
-        }
-        visibleNavigations();
-        valueCar.value = '';
-        STORE.inputCreate = '';
-      }
+      createGarageCar(target);
     }
     if (target.classList.contains('update')) {
       const inputUpdate: HTMLInputElement = document.getElementById('update-name') as HTMLInputElement;

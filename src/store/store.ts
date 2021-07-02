@@ -13,7 +13,7 @@ const STORE: IStore = {
   sortBy: 'id',
   sortOrder: 'ASC',
   showTextWinner: '',
-  driveAnimation: { race: true, reset: false },
+  driveAnimation: { isRace: true, isReset: false },
   saveCreate: { color: '', value: '' },
   saveUpdate: { color: '', value: '' },
   winnerCars: [],

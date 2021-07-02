@@ -27,16 +27,16 @@ export interface ISaveInput {
 }
 
 export interface IDriveAnimation {
-  race: boolean,
-  reset: boolean,
+  isRace: boolean,
+  isReset: boolean,
 }
 
 export interface IFrame {
   id: number,
   positionCar: number,
-  start: boolean,
-  finish: boolean,
-  drive: boolean
+  isStart: boolean,
+  isFinish: boolean,
+  isDrive: boolean
 }
 
 export interface IAnimation {

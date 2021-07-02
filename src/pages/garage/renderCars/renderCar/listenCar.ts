@@ -83,7 +83,7 @@ export function removeCar(): void {
 export async function animationCar(car: string, distance: number, velocity: number): Promise<IFrame> {
   const startTime: number = new Date().getTime();
   const animFrameId: IFrame = {
-    id: 0, positionCar: 0, start: false, finish: true, drive: true,
+    id: 0, positionCar: 0, isStart: false, isFinish: true, isDrive: true,
   };
   animFrameId.id = requestAnimationFrame(function animate() {
     const currTime: number = new Date().getTime();
@@ -138,8 +138,8 @@ export async function cancelAnimation(carId: string, animatId: number): Promise<
   STORE.animation = STORE.animation.filter((item) => item.id !== carId);
 
   const isAllFinish: boolean = isFinish();
-  if (STORE.animation.length === 0 && isAllFinish) {
-    STORE.driveAnimation.race = true;
+  if (!STORE.animation.length && isAllFinish) {
+    STORE.driveAnimation.isRace = true;
     initialSettings();
   }
 }
@@ -162,14 +162,14 @@ export function gameRace(): void {
       });
       carParrent.querySelector('.car-move__b')?.removeAttribute(DISABLED);
       const switchEngineValue = await switchEngine(+carParrentId);
-      if (!switchEngineValue.success) {
+      if (!switchEngineValue.isSuccess) {
         cancelAnimationFrame(racing.id);
       }
-      racing.drive = false;
+      racing.isDrive = false;
       if ((document.getElementById(`stop${carParrentId}`) as HTMLElement).getAttribute(DISABLED)) {
         (document.getElementById(`start${carParrentId}`) as HTMLElement).removeAttribute(DISABLED);
       }
-      if (STORE.animation.length === 0) {
+      if (!STORE.animation.length) {
         (document.getElementById('race') as HTMLElement)?.removeAttribute(DISABLED);
       }
     }
@@ -179,7 +179,7 @@ export function gameRace(): void {
       const carParrentId: string = carParrent.getAttribute('data-id') as string;
       const findIdStore: IAnimation = STORE.animation.find((item) => item.id === carParrentId) as IAnimation;
       cancelAnimation(carParrentId, findIdStore.dataAnimation.id);
-      if (!findIdStore.dataAnimation.drive) {
+      if (!findIdStore.dataAnimation.isDrive) {
         ((document.getElementById(`start${carParrentId}`) as HTMLElement).removeAttribute(DISABLED));
       }
     }

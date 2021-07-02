@@ -1,4 +1,5 @@
 import STORE from '../../store/store';
+import { FIRST_WINS, WIN_PAGE_COUNT } from '../app.config';
 import { renderScore } from './renderScore/renderScore';
 
 export function renderWinner(): string {
@@ -14,7 +15,7 @@ export function renderWinner(): string {
       <div class="score-header__time">BEST TIME (SECONDS)<span>⇳</span></div>
     </div>
     ${STORE.winners.map((winnerValue,
-    key) => renderScore(winnerValue, (STORE.winnersPage - 1) * 10 + key + 1)).join('')}
+    key) => renderScore(winnerValue, (STORE.winnersPage - FIRST_WINS) * WIN_PAGE_COUNT + key + FIRST_WINS)).join('')}
   </div>
 </section>`;
 }
