@@ -15,11 +15,11 @@ const listCards: ICardsState = {
 export const cardsReducer = (state: ICardsState = listCards, action: IAction): ICardsState => {
     switch(action.type) {
         case CHOOSE_MAIN_PAGE:
-            return {...state, page: typePage.MAIN_PAGE, isShowLeftMenu: false}
+            return {...state, page: typePage.MAIN_PAGE, isShowLeftMenu: false, indexCategory: null}
         case CHOOSE_STATISTIC_PAGE:
-            return {...state, page: typePage.STATISTIC_PAGE, isShowLeftMenu: false}
+            return {...state, page: typePage.STATISTIC_PAGE, isShowLeftMenu: false, indexCategory: null}
         case CHOOSE_CATEGORY_PAGE:
-            return {...state, page: typePage.CATEGORIES_PAGE, isShowLeftMenu: false}
+            return {...state, page: typePage.CATEGORIES_PAGE, isShowLeftMenu: false, indexCategory: action.payload}
         case VIEW_LEFT_MENU:
             return {...state, isShowLeftMenu: !state.isShowLeftMenu}
         case CHOOSE_INDEX_CATEGORY:

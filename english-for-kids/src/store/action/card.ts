@@ -6,8 +6,8 @@ export function chooseMainPage() {
 export function chooseStatisticPage() {
     return { type: CHOOSE_STATISTIC_PAGE }
 }
-export function chooseCategoryPage() {
-    return { type: CHOOSE_CATEGORY_PAGE }
+export function chooseCategoryPage(index: number) {
+    return { type: CHOOSE_CATEGORY_PAGE, payload: index }
 }
 export function viewLeftMenu() {
     return { type: VIEW_LEFT_MENU }
