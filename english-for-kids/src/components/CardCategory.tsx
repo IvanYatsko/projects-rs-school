@@ -5,12 +5,12 @@ import { FIRST_ELEM, ICardCategory } from "./components.module";
 import { NavLink } from "react-router-dom";
 
 export const CardCategory: React.FC<ICardCategory> = ({item, index}: ICardCategory) => {
-  const {listCards} = useTypedSelector(state => state.cards);
+  const {listCards, isModePlay} = useTypedSelector(state => state.cards);
   const {chooseCategoryPage} = useActions();
 
   return (
     <>
-    <NavLink to="/category" className="main-category" onClick={chooseCategoryPage.bind(null, index)}>
+    <NavLink to="/category" className={`main-category ${isModePlay && 'play'}`} onClick={chooseCategoryPage.bind(null, index)}>
       <div className="main-card main-category__image">
         <img className="category-image" src={`./assets/${listCards[index][FIRST_ELEM].image}`} alt="category" />
       </div>

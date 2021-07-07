@@ -1,5 +1,5 @@
 import { cards, listcards } from "../../cards";
-import { CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_INDEX_CATEGORY, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, HADE_MENU, IAction, ICardsState, typePage, VIEW_LEFT_MENU } from "./cardsReducer.module"
+import { CHANGE_ARR_CARDS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_INDEX_CATEGORY, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, HADE_MENU, IAction, ICardsState, typePage, VIEW_LEFT_MENU } from "./cardsReducer.module"
 
 const listCards: ICardsState = {
     categoryCards: cards,
@@ -28,6 +28,8 @@ export const cardsReducer = (state: ICardsState = listCards, action: IAction): I
             return {...state, isModePlay: !state.isModePlay}
         case HADE_MENU:
             return {...state, isShowLeftMenu: false}
+        case CHANGE_ARR_CARDS:
+            return {...state, arrGameWords: action.payload}
 
 
         default:

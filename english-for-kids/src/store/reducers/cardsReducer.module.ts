@@ -5,6 +5,7 @@ export const VIEW_LEFT_MENU = 'VIEW_LEFT_MENU';
 export const CHOOSE_INDEX_CATEGORY = 'CHOOSE_INDEX_CATEGORY';
 export const CHANGE_STATUS_GAME = 'CHANGE_STATUS_GAME';
 export const HADE_MENU = 'HADE_MENU';
+export const CHANGE_ARR_CARDS = 'CHANGE_ARR_CARDS';
 
 export interface ICardsState {
     categoryCards: string[];
