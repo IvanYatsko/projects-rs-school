@@ -9,5 +9,5 @@ export interface ICardCategory {
 
 export interface ICard {
   item: ICards;
-  index: number;
+  changeDisplayState(): void;
 }

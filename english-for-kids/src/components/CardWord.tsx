@@ -1,10 +1,11 @@
 import React, {useState} from "react"
-import { listcards } from "../cards";
+import { useHistory } from "react-router-dom";
+import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { ICards } from "../store/reducers/cardsReducer.module";
+import { ICards, Stars } from "../store/reducers/cardsReducer.module";
 import { ICard } from "./components.module"
 
-function listenAudio(audioSrc: string): void {
+export function listenAudio(audioSrc: string): void {
   const src = `./assets/${audioSrc}`;
   const audio = new Audio();
   audio.src = src;
@@ -12,13 +13,49 @@ function listenAudio(audioSrc: string): void {
   audio.play();
 }
 
-export const Card: React.FC<ICard> = ({item, index}: ICard) => {
+export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
   const [getRotate, setRotate] = useState(false);
-  const {isModePlay} = useTypedSelector(state => state.cards);
+  const [getBlur, setBlur] = useState(false);
+  const history = useHistory();
+  const {changeArrCards,changeArrStars,chooseMainPage,changeModeGame} = useActions();
+  const {isModePlay,arrGameWords,arrStars} = useTypedSelector(state => state.cards);
+
+  function finishGame() {
+    if (!arrStars.filter((elem) => elem === 'star').length) {
+      listenAudio('audio/success.mp3');
+    } else {
+      listenAudio('audio/failure.mp3');
+    }
+    setTimeout(() => {
+      history.push('/');
+      changeArrStars([]);
+      chooseMainPage();
+      changeModeGame();
+    },3000)
+  }
 
   function listenCard(item: ICards) {
     if (isModePlay) {
-
+      if (arrGameWords.length) {
+        if (item.audioSrc === arrGameWords[0].audioSrc) {
+          arrGameWords.shift();
+          changeArrCards([...arrGameWords]);
+          listenAudio('audio/correct.mp3');
+          setBlur(true);
+          arrStars.push(Stars.STAR_WIN);
+          changeArrStars(arrStars);
+          if (!arrGameWords.length) {
+            changeDisplayState();
+            finishGame();
+          }
+        } else {
+          if (arrGameWords.find(elem => item.word === elem.word)) {
+            listenAudio('audio/error.mp3');
+            arrStars.push(Stars.STAR);
+            changeArrStars(arrStars);
+          }
+        }
+      }
     } else {
       listenAudio(item.audioSrc)
     }
@@ -30,7 +67,7 @@ export const Card: React.FC<ICard> = ({item, index}: ICard) => {
       <div className="main-card">
         <div className="main-category main-card__front">
           <div className={`main-card main-category__image ${isModePlay && 'play'}`}>
-            <img className="category-image" src={`./assets/${item.image}`} alt="category" onClick={listenCard.bind(null, item)} />
+            <img className={`category-image ${getBlur && 'blur'}`} src={`./assets/${item.image}`} alt="category" onClick={listenCard.bind(null, item)} />
           </div>
           <div className="main-category__title">
             <p className="text text-title" onClick={listenCard.bind(null, item)}>{item.word}</p>

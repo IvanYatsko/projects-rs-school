@@ -1,4 +1,4 @@
-import {  CHANGE_ARR_CARDS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, ICards, VIEW_LEFT_MENU } from "../reducers/cardsReducer.module";
+import {  CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, ICards, Stars, VIEW_LEFT_MENU } from "../reducers/cardsReducer.module";
 
 export function chooseMainPage() {
     return { type: CHOOSE_MAIN_PAGE }
@@ -17,4 +17,7 @@ export function changeModeGame() {
 }
 export function changeArrCards(arr: ICards[]) {
     return { type: CHANGE_ARR_CARDS, payload: arr}
+}
+export function changeArrStars(arr: Stars[]) {
+    return { type: CHANGE_ARR_STARS, payload: arr}
 }

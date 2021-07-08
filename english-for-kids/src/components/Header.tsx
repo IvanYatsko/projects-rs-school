@@ -5,7 +5,7 @@ import { BurgerMenu } from "./BurgerMenu"
 
 export const Header: React.FC = () => {
   const {viewLeftMenu,changeModeGame} = useActions();
-  const {isShowLeftMenu} = useTypedSelector(state => state.cards);
+  const {isShowLeftMenu,isModePlay} = useTypedSelector(state => state.cards);
 
 
   return (
@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
       </div>
       <BurgerMenu />
       <label className="switch">
-        <input type="checkbox" onChange={changeModeGame} />
+        <input type="checkbox" checked={isModePlay} onChange={changeModeGame} />
         <span className="switch-slider" data-on="Train" data-off="Play"></span>
         <span className="switch-handle"></span>
       </label>
