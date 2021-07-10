@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
 
 
   return (
-    <header className="header">
+  <header className="header">
     <div className="header-container">
       <div className={`header-burger ${isShowLeftMenu && 'active'}`} id="header-burger" onClick={viewLeftMenu}>
         <span className="header-burger__span"></span>
