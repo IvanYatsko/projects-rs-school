@@ -1,38 +1,9 @@
-import React from "react"
-import { useEffect } from "react";
-import { useActions } from "../hooks/useActions";
+import React from "react";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { listCards } from "../store/reducers/cardsReducer";
-import { IFieldItem } from "../store/reducers/statisticReducer.module";
-import { DetailsWord } from "./DetailsWord"
-
-export function createArrField(): IFieldItem[] {
-  const arrField: IFieldItem[] = [];
-  listCards.listCards.forEach((item, index) => {
-    item.forEach((elem) => {
-      arrField.push({
-        category: listCards.categoryCards[index],
-        word: elem.word,
-        translation: elem.translation,
-        trained: 0,
-        correct: 0,
-        incorrect: 0,
-        errors: 0,
-      })
-    })
-  })
-  return arrField;
-}
+import { DetailsWord } from "./DetailsWord";
 
 export const Statistics: React.FC = () => {
-  const newArrField: IFieldItem[] = createArrField();
-
-  const {addStatisticField} = useActions();
   const {field} = useTypedSelector(state => state.statistic);
-
-  useEffect(() => {
-    addStatisticField(newArrField);
-  }, []);
 
   return (
   <>

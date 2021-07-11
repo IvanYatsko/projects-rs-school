@@ -1,6 +1,6 @@
-import { ADD_STATISTIC_FIELD, IFieldItem } from "../reducers/statisticReducer.module";
+import { CHANGE_STATISTIC_FIELD, IFieldItem } from "../reducers/statisticReducer.module";
 
 
-export function addStatisticField(array: IFieldItem[]) {
-  return { type: ADD_STATISTIC_FIELD, payload: array }
+export function changeStatisticField(array: IFieldItem[]) {
+  return { type: CHANGE_STATISTIC_FIELD, payload: array };
 }

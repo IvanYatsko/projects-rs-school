@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { ICards, Stars } from "../store/reducers/cardsReducer.module";
-import { ICard } from "./components.module"
+import { Counter, ICard } from "./components.module"
 
 export function listenAudio(audioSrc: string): void {
   const src = `./assets/${audioSrc}`;
@@ -17,8 +17,34 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
   const [getRotate, setRotate] = useState(false);
   const [getBlur, setBlur] = useState(false);
   const history = useHistory();
-  const {changeArrCards,changeArrStars,chooseMainPage,changeModeGame} = useActions();
+  const {changeArrCards,changeArrStars,chooseMainPage,changeModeGame,changeStatisticField} = useActions();
   const {isModePlay,arrGameWords,arrStars} = useTypedSelector(state => state.cards);
+  const {field} = useTypedSelector(state => state.statistic);
+
+  function eventCounter(counter: string) {
+    const changeField = field.map(elem => {
+      if (elem.word === item.word) {
+        switch (counter) {
+          case Counter.Trained:
+            elem.trained++;
+            return elem;
+          case Counter.Correct:
+            elem.correct++;
+            elem.errors = Math.round((100/(elem.correct + elem.incorrect) * elem.correct));
+            return elem;
+          case Counter.Incorrect:
+            elem.incorrect++;
+            elem.errors = Math.round((100/(elem.correct + elem.incorrect) * elem.correct));
+            return elem;
+          case Counter.Errors:
+            elem.errors++;
+            return elem;
+        }
+      }
+      return elem;
+    })
+    return changeField;
+  }
 
   function finishGame() {
     if (!arrStars.filter((elem) => elem === 'star').length) {
@@ -44,6 +70,8 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
           setBlur(true);
           arrStars.push(Stars.STAR_WIN);
           changeArrStars(arrStars);
+          const correctCounter = eventCounter(Counter.Correct);
+          changeStatisticField(correctCounter);
           if (!arrGameWords.length) {
             changeDisplayState();
             finishGame();
@@ -53,11 +81,15 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
             listenAudio('audio/error.mp3');
             arrStars.push(Stars.STAR);
             changeArrStars(arrStars);
+            const inCorrectCounter = eventCounter(Counter.Incorrect);
+            changeStatisticField(inCorrectCounter);
           }
         }
       }
     } else {
-      listenAudio(item.audioSrc)
+      listenAudio(item.audioSrc);
+      const trainedCounter = eventCounter(Counter.Trained);
+      changeStatisticField(trainedCounter);
     }
   }
 

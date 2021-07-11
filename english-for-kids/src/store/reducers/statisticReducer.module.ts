@@ -1,4 +1,4 @@
-export const ADD_STATISTIC_FIELD: string = 'ADD_STATISTIC_FIELD';
+export const CHANGE_STATISTIC_FIELD: string = 'CHANGE_STATISTIC_FIELD';
 
 export interface IlistStatistic {
   field: IFieldItem[];

@@ -17,3 +17,10 @@ export interface IDetailsWord {
   item: IFieldItem;
   index: number;
 }
+
+export enum Counter {
+  Trained = 'trained',
+  Correct = 'correct',
+  Incorrect = 'incorrect',
+  Errors = 'errors',
+}
