@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
@@ -45,6 +46,10 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
     })
     return changeField;
   }
+
+  useEffect(() => {
+    localStorage.setItem('arrStatistic', JSON.stringify(field));
+  }, [field])
 
   function finishGame() {
     if (!arrStars.filter((elem) => elem === 'star').length) {
