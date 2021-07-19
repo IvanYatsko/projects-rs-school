@@ -156,6 +156,10 @@ fragment {
     margin-top: 48px;
     display: flex;
     justify-content: space-between;
+
+    &>h2 {
+      width: 50%;
+    }
   }
 
   &-burger {
@@ -202,15 +206,14 @@ fragment {
       bottom: 0;
     }
 
-    &_active {
+    &.active {
       & .header-burger__span {
         transform: scale(0);
       }
 
       &::before {
-        background-color: #ffffff;
         transform: rotate(45deg);
-        top: 14px;
+        top: 12px;
       }
 
       &::after {

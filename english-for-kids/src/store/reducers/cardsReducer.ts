@@ -1,5 +1,5 @@
 import { cards, listcards } from "../../cards";
-import { CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_INDEX_CATEGORY, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, HADE_MENU, IAction, ICardsState, typePage, VIEW_LEFT_MENU } from "./cardsReducer.module"
+import { CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_INDEX_CATEGORY, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, FALSE_LEFT_MENU, HADE_MENU, IAction, ICardsState, typePage, VIEW_LEFT_MENU } from "./cardsReducer.module"
 
 export const listCards: ICardsState = {
     categoryCards: cards,
@@ -22,6 +22,8 @@ export const cardsReducer = (state: ICardsState = listCards, action: IAction): I
             return {...state, page: typePage.CATEGORIES_PAGE, isShowLeftMenu: false, indexCategory: action.payload, arrGameWords: []}
         case VIEW_LEFT_MENU:
             return {...state, isShowLeftMenu: !state.isShowLeftMenu}
+        case FALSE_LEFT_MENU:
+            return {...state, isShowLeftMenu: false}
         case CHOOSE_INDEX_CATEGORY:
             return {...state, indexCategory: action.payload}
         case CHANGE_STATUS_GAME:
