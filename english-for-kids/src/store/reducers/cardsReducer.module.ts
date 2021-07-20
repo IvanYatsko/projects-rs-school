@@ -1,13 +1,13 @@
-export const CHOOSE_MAIN_PAGE = 'CHOOSE_MAIN_PAGE';
-export const CHOOSE_STATISTIC_PAGE = 'CHOOSE_STATISTIC_PAGE';
-export const CHOOSE_CATEGORY_PAGE = 'CHOOSE_CATEGORY_PAGE';
-export const VIEW_LEFT_MENU = 'VIEW_LEFT_MENU';
-export const FALSE_LEFT_MENU = 'FALSE_LEFT_MENU';
-export const CHOOSE_INDEX_CATEGORY = 'CHOOSE_INDEX_CATEGORY';
-export const CHANGE_STATUS_GAME = 'CHANGE_STATUS_GAME';
-export const HADE_MENU = 'HADE_MENU';
-export const CHANGE_ARR_CARDS = 'CHANGE_ARR_CARDS';
-export const CHANGE_ARR_STARS = 'CHANGE_ARR_STARS';
+export const CHOOSE_MAIN_PAGE: string = 'CHOOSE_MAIN_PAGE';
+export const CHOOSE_STATISTIC_PAGE: string = 'CHOOSE_STATISTIC_PAGE';
+export const CHOOSE_CATEGORY_PAGE: string = 'CHOOSE_CATEGORY_PAGE';
+export const VIEW_LEFT_MENU: string = 'VIEW_LEFT_MENU';
+export const FALSE_LEFT_MENU: string = 'FALSE_LEFT_MENU';
+export const CHOOSE_INDEX_CATEGORY: string = 'CHOOSE_INDEX_CATEGORY';
+export const CHANGE_STATUS_GAME: string = 'CHANGE_STATUS_GAME';
+export const HADE_MENU: string = 'HADE_MENU';
+export const CHANGE_ARR_CARDS: string = 'CHANGE_ARR_CARDS';
+export const CHANGE_ARR_STARS: string = 'CHANGE_ARR_STARS';
 
 export interface ICardsState {
     categoryCards: string[];

@@ -5,7 +5,7 @@ import { typePage } from "../store/reducers/cardsReducer.module";
 
 export const BurgerMenu: React.FC = () => {
   const {categoryCards, page, indexCategory} = useTypedSelector(state => state.cards);
-  const {chooseMainPage, chooseStatisticPage, chooseCategoryPage} = useActions();
+  const {chooseMainPage, chooseStatisticPage, chooseCategoryPage, viewLoginWindow} = useActions();
 
   return (
     <nav className="menu">
@@ -23,9 +23,9 @@ export const BurgerMenu: React.FC = () => {
         <li className="menu-list__item">
           <NavLink to="/statistics" className={`menu-list__link ${page === typePage.STATISTIC_PAGE && 'choose'} text text-button text-white`} onClick={chooseStatisticPage}>Statistics</NavLink>
         </li>
-
-
       </ul>
+      <button className="button button-green text text-title button-burger" onClick={viewLoginWindow}>Login</button>
+
     </nav>
   )
 }
