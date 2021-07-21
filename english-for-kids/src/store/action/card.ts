@@ -1,4 +1,5 @@
-import {  CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, FALSE_LEFT_MENU, IAction, ICards, Stars, VIEW_LEFT_MENU } from "../reducers/cardsReducer.module";
+import { Dispatch } from "redux";
+import {  CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, FALSE_LEFT_MENU, GET_CARDS, GET_CATEGORIES, IAction, ICards, links, Stars, VIEW_LEFT_MENU } from "../reducers/cardsReducer.module";
 
 export function chooseMainPage(): IAction {
     return { type: CHOOSE_MAIN_PAGE }
@@ -23,4 +24,26 @@ export function changeArrCards(arr: ICards[]): IAction {
 }
 export function changeArrStars(arr: Stars[]): IAction {
     return { type: CHANGE_ARR_STARS, payload: arr}
+}
+
+export function getCards(): (dispatch: Dispatch<IAction>) => Promise<void> {
+  return async (dispatch: Dispatch<IAction>) => {
+    try {
+      const response: Response = await fetch(links.cards);
+      dispatch({type: GET_CARDS, payload: (await response.json())});
+    } catch (e) {
+      throw Error(e);
+    }
+  }
+}
+
+export function getCategories(): (dispatch: Dispatch<IAction>) => Promise<void> {
+  return async (dispatch: Dispatch<IAction>) => {
+    try {
+      const response: Response = await fetch(links.categories);
+      dispatch({type: GET_CATEGORIES, payload: (await response.json())});
+    } catch (e) {
+      throw Error(e);
+    }
+  }
 }

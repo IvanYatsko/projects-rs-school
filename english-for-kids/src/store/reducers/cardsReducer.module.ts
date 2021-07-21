@@ -8,6 +8,8 @@ export const CHANGE_STATUS_GAME: string = 'CHANGE_STATUS_GAME';
 export const HADE_MENU: string = 'HADE_MENU';
 export const CHANGE_ARR_CARDS: string = 'CHANGE_ARR_CARDS';
 export const CHANGE_ARR_STARS: string = 'CHANGE_ARR_STARS';
+export const GET_CARDS: string = 'GET_CARDS';
+export const GET_CATEGORIES: string = 'GET_CATEGORIES';
 
 export interface ICardsState {
     categoryCards: string[];
@@ -41,4 +43,11 @@ export interface ICardsState {
   export interface IAction {
     type: string;
     payload?: any;
+  }
+
+  export enum links {
+    categories = 'https://blooming-reef-80159.herokuapp.com/api/categories',
+    cards = 'https://blooming-reef-80159.herokuapp.com/api/cards',
+    admin = 'https://blooming-reef-80159.herokuapp.com/api/admin',
+    static = 'https://blooming-reef-80159.herokuapp.com/',
   }

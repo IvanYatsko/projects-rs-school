@@ -1,36 +1,65 @@
-import React from "react"
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom";
+import { useActions } from "../hooks/useActions"
+import { ADMIN, IInputValue } from "./components.module";
+
+export function useInputValue(defaultValue: string = ''): IInputValue {
+  const [value, setValue] = useState(defaultValue);
+
+  return {
+    value,
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value),
+  }
+}
 
 export const ModalWindow: React.FC = () => {
+  const loginInput: IInputValue = useInputValue();
+  const passwordInput: IInputValue = useInputValue();
+  const {viewLoginWindow,changeIsAdmin} = useActions();
+  const [getPrompt, setPrompt] = useState(false);
+  const history = useHistory();
+
+  function changeRoute(event: React.FormEvent): void {
+    event.preventDefault();
+    if (loginInput.value === ADMIN && passwordInput.value === ADMIN) {
+      changeIsAdmin(true);
+      history.push('/admin');
+      viewLoginWindow(false);
+      setPrompt(false);
+    } else {
+      setPrompt(true);
+    }
+  }
 
   return (
-  <div className="modal">
+  <div className="modal" onSubmit={changeRoute}>
     <div className="modal-dialog">
       <div className="modal-content">
         <div className="modal-header">
-          <h5 className="modal-title">Modal title</h5>
-          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 className="modal-title">Login</h5>
+          <button type="button" className="close" aria-label="Close" onClick={() => viewLoginWindow(false)}>
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div className="modal-body">
-        <form>
+        <form >
           <div className="mb-3">
-            <label className="form-label">Email address</label>
-            <input type="email" className="form-control" />
-            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+            <label className="form-label">Login</label>
+            <input type="text" className="form-control" {...loginInput} />
           </div>
           <div className="mb-3">
             <label className="form-label">Password</label>
-            <input type="password" className="form-control" />
+            <input type="password" className="form-control" {...passwordInput} />
           </div>
-          <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" />
-            <label className="form-check-label">Check me out</label>
+          <div className={`mb-3 row ${getPrompt && 'text-danger font-weight-bold'}`}>
+            <div className="form-text col-sm-5">Login: admin</div>
+            <div className="form-text col-sm-5">Password: admin</div>
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <div className="modal-footer">
+            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="button" className="btn btn-secondary" onClick={() => viewLoginWindow(false)}>Close</button>
+          </div>
         </form>
-        </div>
-        <div className="modal-footer">
-          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" className="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

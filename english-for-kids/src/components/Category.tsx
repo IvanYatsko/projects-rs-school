@@ -3,6 +3,7 @@ import { useTypedSelector } from "../hooks/useTypedSelector"
 import { Card, listenAudio } from "./CardWord"
 import { useHistory } from "react-router-dom"
 import { useActions } from "../hooks/useActions"
+import { links } from "../store/reducers/cardsReducer.module"
 
 export const Category: React.FC = () => {
   const {listCards,indexCategory,arrGameWords,isModePlay,arrStars} = useTypedSelector(state => state.cards);
@@ -49,27 +50,27 @@ export const Category: React.FC = () => {
   <main className={`main ${getIsFinish && "disabled"}`}>
     <div className="main-star">
       {arrStars.map((item, index) => {
-        return (<img src={`./assets/img/${item}.svg`} alt={`${index}`} key={index} />);
+        return (<img src={`${links.static}img/${item}.svg`} alt={`${index}`} key={index} />);
       })}
     </div>
     <div className="main-container">
       {listCards[indexCategory].map((item, index) => <Card changeDisplayState={changeDisplayState} item={item} key={index} />)}
     </div>
     <button className={`button button-green ${arrGameWords.length && 'button-circle'} text text-title  ${!isModePlay && 'disabled'}`} onClick={clickButton}>
-    {(arrGameWords.length)? <img src="./assets/img/repeat.svg" alt="repeat" /> : 'Start Game'}
+    {(arrGameWords.length)? <img src={`${links.static}img/repeat.svg`} alt="repeat" /> : 'Start Game'}
     </button>
   </main>
   {
     getIsFinish && !arrStars.filter((elem) => elem === 'star').length &&
     <div className="position">
-      <img src="./assets/img/success.jpg" alt="success" />
+      <img src={`${links.static}img/success.jpg`} alt="success" />
     </div>
   }
   {
     getIsFinish && arrStars.filter((elem) => elem === 'star').length &&
     <div className="position">
       <h2>Errors: {arrStars.filter((elem) => elem === 'star').length}</h2>
-      <img src="./assets/img/failure.jpg" alt="failure" />
+      <img src={`${links.static}img/failure.jpg`} alt="failure" />
     </div>
   }
   </>

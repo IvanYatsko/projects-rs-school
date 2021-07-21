@@ -2,11 +2,9 @@ import React from "react"
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector"
 import { CardCategory } from "./CardCategory"
-import { ModalWindow } from "./ModalWindow";
 
 export const Main: React.FC = () => {
-  const {categoryCards,isShowLeftMenu} = useTypedSelector(state => state.cards);
-  const {modalView} = useTypedSelector(state => state.admin);
+  const {categoryCards,isShowLeftMenu,listCards} = useTypedSelector(state => state.cards);
   const {falseLeftMenu} = useActions();
 
   function valueFalseLeftMenuInMain() {
@@ -19,9 +17,16 @@ export const Main: React.FC = () => {
   <>
   <main className="main" onClick={valueFalseLeftMenuInMain}>
     <div className="main-container">
-      {categoryCards.map((item, index) => <CardCategory item={item} key={index} index={index} />)}
+    {
+      listCards.length && categoryCards.length
+      ?
+      categoryCards.map((item, index) => <CardCategory item={item} key={index} index={index} />)
+      :
+      <div className="d-flex justify-content-center">
+        <h2>Loading...</h2>
+      </div>
+    }
     </div>
-    {modalView && <ModalWindow />}
   </main>
   </>
   )

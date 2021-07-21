@@ -1,9 +1,8 @@
-import { cards, listcards } from "../../cards";
-import { CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_INDEX_CATEGORY, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, FALSE_LEFT_MENU, HADE_MENU, IAction, ICardsState, typePage, VIEW_LEFT_MENU } from "./cardsReducer.module"
+import { CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_INDEX_CATEGORY, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, FALSE_LEFT_MENU, GET_CARDS, GET_CATEGORIES, HADE_MENU, IAction, ICardsState, typePage, VIEW_LEFT_MENU } from "./cardsReducer.module"
 
 export const listCards: ICardsState = {
-    categoryCards: cards,
-    listCards: listcards,
+    categoryCards: [],
+    listCards: [],
     indexCategory: null,
     isModePlay: false,
     isShowLeftMenu: false,
@@ -34,6 +33,10 @@ export const cardsReducer = (state: ICardsState = listCards, action: IAction): I
             return {...state, arrGameWords: action.payload}
         case CHANGE_ARR_STARS:
             return {...state, arrStars: action.payload}
+        case GET_CARDS:
+            return {...state, listCards: action.payload}
+        case GET_CATEGORIES:
+            return {...state, categoryCards: action.payload}
 
 
         default:

@@ -24,7 +24,7 @@ export const BurgerMenu: React.FC = () => {
           <NavLink to="/statistics" className={`menu-list__link ${page === typePage.STATISTIC_PAGE && 'choose'} text text-button text-white`} onClick={chooseStatisticPage}>Statistics</NavLink>
         </li>
       </ul>
-      <button className="button button-green text text-title button-burger" onClick={viewLoginWindow}>Login</button>
+      <button className="button button-green text text-title button-burger" onClick={() => viewLoginWindow(true)}>Login</button>
 
     </nav>
   )

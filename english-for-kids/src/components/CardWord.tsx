@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { ICards, Stars } from "../store/reducers/cardsReducer.module";
+import { ICards, links, Stars } from "../store/reducers/cardsReducer.module";
 import { Counter, ICard } from "./components.module"
 
 export function listenAudio(audioSrc: string): void {
-  const src = `./assets/${audioSrc}`;
+  const src = `${links.static}${audioSrc}`;
   const audio = new Audio();
   audio.src = src;
   audio.currentTime = 0;
@@ -104,11 +104,11 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
       <div className="main-card">
         <div className="main-category main-card__front">
           <div className={`main-card main-category__image ${isModePlay && 'play'}`}>
-            <img className={`category-image ${getBlur && 'blur'}`} src={`./assets/${item.image}`} alt="category" onClick={listenCard.bind(null, item)} />
+            <img className={`category-image ${getBlur && 'blur'}`} src={`${links.static}${item.image}`} alt="category" onClick={listenCard.bind(null, item)} />
           </div>
           <div className="main-category__title">
             <p className="text text-title" onClick={listenCard.bind(null, item)}>{item.word}</p>
-            <img className={`main-category__rotate ${isModePlay && 'disabled'}`} src="./assets/image/rotate.png" alt="rotate" onClick={setRotate.bind(null, true)} />
+            <img className={`main-category__rotate ${isModePlay && 'disabled'}`} src={`${links.static}image/rotate.png`} alt="rotate" onClick={setRotate.bind(null, true)} />
           </div>
         </div>
         <div className="main-card__back text text-title">{item.translation}</div>
