@@ -568,14 +568,55 @@ fragment {
   margin-bottom: 27px;
   overflow: hidden;
 
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+
+    & .form-label {
+      margin-right: 10px;
+    }
+
+    &_select {
+      &>p {
+        color: #888888;
+        font-size: 0.6em;
+        max-width: 100px !important;
+      }
+
+      &>input[type="file"] {
+        opacity: 0;
+        position: absolute;
+      }
+    }
+  }
+
   &__buttons {
     justify-content: space-evenly;
+
+    &>button:first-child {
+      margin-right: 10px;
+    }
   }
 
   &__body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+
+    & p,
+    & label {
+      margin-bottom: 0;
+    }
+
+    &>img {
+      height: 100px;
+      width: 150px;
+      object-fit: cover;
+    }
   }
 
   &__cross {

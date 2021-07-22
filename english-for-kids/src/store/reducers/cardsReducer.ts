@@ -1,4 +1,4 @@
-import { CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_INDEX_CATEGORY, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, FALSE_LEFT_MENU, GET_CARDS, GET_CATEGORIES, HADE_MENU, IAction, ICardsState, typePage, VIEW_LEFT_MENU } from "./cardsReducer.module"
+import { CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_INDEX_CATEGORY, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, DELETE_CARD, DELETE_CATEGORY, FALSE_LEFT_MENU, GET_CARDS, GET_CATEGORIES, HADE_MENU, IAction, ICardsState, typePage, VIEW_LEFT_MENU } from "./cardsReducer.module"
 
 export const listCards: ICardsState = {
     categoryCards: [],
@@ -37,6 +37,13 @@ export const cardsReducer = (state: ICardsState = listCards, action: IAction): I
             return {...state, listCards: action.payload}
         case GET_CATEGORIES:
             return {...state, categoryCards: action.payload}
+        case DELETE_CARD:
+            state.listCards[action.payload.indexCategory].splice(action.payload.indexCard, 1);
+            return {...state}
+        case DELETE_CATEGORY:
+            state.categoryCards.splice(action.payload, 1);
+            state.listCards.splice(action.payload, 1);
+            return {...state}
 
 
         default:

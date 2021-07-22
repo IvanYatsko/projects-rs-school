@@ -13,6 +13,7 @@ export const Header: React.FC = () => {
   function leaveAdminPage() {
     chooseMainPage();
     changeIsAdmin(false);
+    sessionStorage.setItem('isAdmin', '');
   }
 
   function valueFalseLeftMenu() {

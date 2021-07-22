@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import {  CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, FALSE_LEFT_MENU, GET_CARDS, GET_CATEGORIES, IAction, ICards, links, Stars, VIEW_LEFT_MENU } from "../reducers/cardsReducer.module";
+import {  CHANGE_ARR_CARDS, CHANGE_ARR_STARS, CHANGE_STATUS_GAME, CHOOSE_CATEGORY_PAGE, CHOOSE_MAIN_PAGE, CHOOSE_STATISTIC_PAGE, DELETE_CARD, DELETE_CATEGORY, FALSE_LEFT_MENU, GET_CARDS, GET_CATEGORIES, IAction, ICards, links, Stars, VIEW_LEFT_MENU } from "../reducers/cardsReducer.module";
 
 export function chooseMainPage(): IAction {
     return { type: CHOOSE_MAIN_PAGE }
@@ -42,6 +42,32 @@ export function getCategories(): (dispatch: Dispatch<IAction>) => Promise<void> 
     try {
       const response: Response = await fetch(links.categories);
       dispatch({type: GET_CATEGORIES, payload: (await response.json())});
+    } catch (e) {
+      throw Error(e);
+    }
+  }
+}
+
+export function deleteCard(indexCategory: number, indexCard: number): (dispatch: Dispatch<IAction>) => Promise<void> {
+  return async (dispatch: Dispatch<IAction>) => {
+    try {
+      await fetch(`${links.cards}/${indexCategory}/${indexCard}`, {
+        method: 'DELETE',
+      });
+      dispatch({type: DELETE_CARD, payload: {indexCategory, indexCard}});
+    } catch (e) {
+      throw Error(e);
+    }
+  }
+}
+
+export function deleteCategory(index: number): (dispatch: Dispatch<IAction>) => Promise<void> {
+  return async (dispatch: Dispatch<IAction>) => {
+    try {
+      await fetch(`${links.categories}/${index}`, {
+        method: 'DELETE',
+      });
+      dispatch({type: DELETE_CATEGORY, payload: index});
     } catch (e) {
       throw Error(e);
     }

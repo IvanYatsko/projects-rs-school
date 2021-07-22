@@ -10,6 +10,8 @@ export const CHANGE_ARR_CARDS: string = 'CHANGE_ARR_CARDS';
 export const CHANGE_ARR_STARS: string = 'CHANGE_ARR_STARS';
 export const GET_CARDS: string = 'GET_CARDS';
 export const GET_CATEGORIES: string = 'GET_CATEGORIES';
+export const DELETE_CARD: string = 'DELETE_CARD';
+export const DELETE_CATEGORY: string = 'DELETE_CATEGORY';
 
 export interface ICardsState {
     categoryCards: string[];

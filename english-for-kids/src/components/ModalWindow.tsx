@@ -26,6 +26,7 @@ export const ModalWindow: React.FC = () => {
       history.push('/admin');
       viewLoginWindow(false);
       setPrompt(false);
+      sessionStorage.setItem('isAdmin', '1');
     } else {
       setPrompt(true);
     }

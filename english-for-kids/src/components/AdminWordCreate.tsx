@@ -1,17 +1,17 @@
 import { useState } from "react"
 import { links } from "../store/reducers/cardsReducer.module"
-import { AdminCategoryChange } from "./AdminCategoryChange";
+import { AdminWordChange } from "./AdminWordChange";
 
-export const AdminCardCreate: React.FC = () => {
+export const AdminWordCreate: React.FC = () => {
   const [getChange, setChange] = useState(false);
 
-  function closeChangeCategory(): void {
+  function closeChange() {
     setChange(false);
   }
 
   return (
     <>
-      {getChange && <AdminCategoryChange closeChangeCategory={closeChangeCategory} />}
+      {getChange && <AdminWordChange closeChangeWord={closeChange} />}
       <div className="card admin-category">
         <div className="card-body admin-category__body" onClick={() => setChange(true)}>
           <h3>Animals</h3>

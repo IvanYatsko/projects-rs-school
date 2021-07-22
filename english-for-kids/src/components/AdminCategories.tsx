@@ -2,7 +2,6 @@ import { Redirect } from "react-router-dom"
 import { useTypedSelector } from "../hooks/useTypedSelector"
 import { AdminCardCategory } from "./AdminCardCategory"
 import { AdminCardCreate } from "./AdminCardCreate"
-import { AdminCategoryChange } from "./AdminCategoryChange"
 
 export const AdminCategories: React.FC = () => {
   const {isAdmin} = useTypedSelector(state => state.admin);
@@ -18,7 +17,6 @@ export const AdminCategories: React.FC = () => {
         {
           categoryCards.map((item, index) => <AdminCardCategory item={item} key={index} index={index} />)
         }
-        {<AdminCategoryChange />}
         {<AdminCardCreate />}
       </div>
     </main>

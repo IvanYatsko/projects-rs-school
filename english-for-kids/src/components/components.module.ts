@@ -9,6 +9,16 @@ export interface ICardCategory {
   index: number;
 }
 
+export interface IChangeCategory {
+  closeChangeCategory(): void;
+  item?: string;
+  index?: number;
+}
+
+export interface IChangeWord {
+  closeChangeWord(): void;
+}
+
 export interface ICard {
   item: ICards;
   changeDisplayState(): void;
