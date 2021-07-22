@@ -72,7 +72,7 @@ export const AdminWordChange: React.FC<IChangeWord> = ({closeChangeWord, item, i
         <div className="admin-category__row">
           <p>Sound:</p>
           <div className="admin-category__row_select">
-            <input className="btn btn-outline-success" type="file" />
+            <input className="btn btn-outline-success" type="file" onChange={onloadSound} />
             <div className="btn btn-outline-success">Select file</div>
             <p>{getSound}</p>
           </div>
@@ -80,7 +80,7 @@ export const AdminWordChange: React.FC<IChangeWord> = ({closeChangeWord, item, i
         <div className="admin-category__row">
           <p>Image: </p>
           <div className="admin-category__row_select">
-            <input className="btn btn-outline-success" type="file" />
+            <input className="btn btn-outline-success" type="file" onChange={onloadImg} />
             <div className="btn btn-outline-success">Select file</div>
             <p>{getImage}</p>
           </div>

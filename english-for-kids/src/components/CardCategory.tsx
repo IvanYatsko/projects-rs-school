@@ -13,7 +13,7 @@ export const CardCategory: React.FC<ICardCategory> = ({item, index}: ICardCatego
     <>
     <NavLink to="/category" className={`main-category ${isModePlay && 'play'}`} onClick={chooseCategoryPage.bind(null, index)}>
       <div className="main-card main-category__image">
-        <img className="category-image" src={`${links.static}${listCards[index][FIRST_ELEM].image}`} alt="category" />
+        <img className="category-image" src={`${listCards[index] && listCards[index][FIRST_ELEM]?.image.startsWith('data:') ? '' : links.static}${listCards[index][FIRST_ELEM]?.image ? listCards[index][FIRST_ELEM].image : 'img/unknown-img.jpg'}`} alt="category" />
       </div>
       <div className="main-category__title">
         <p className="text text-number">{item}</p>

@@ -568,6 +568,17 @@ fragment {
   margin-bottom: 27px;
   overflow: hidden;
 
+  &__sound {
+    position: relative;
+
+    &_img {
+      height: 24px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
   &__row {
     display: flex;
     flex-direction: row;

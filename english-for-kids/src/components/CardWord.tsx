@@ -7,7 +7,7 @@ import { ICards, links, Stars } from "../store/reducers/cardsReducer.module";
 import { Counter, ICard } from "./components.module"
 
 export function listenAudio(audioSrc: string): void {
-  const src = `${links.static}${audioSrc}`;
+  const src: string = `${audioSrc.startsWith('data:') ? '' : links.static}${audioSrc}`;
   const audio = new Audio();
   audio.src = src;
   audio.currentTime = 0;
@@ -104,7 +104,7 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
       <div className="main-card">
         <div className="main-category main-card__front">
           <div className={`main-card main-category__image ${isModePlay && 'play'}`}>
-            <img className={`category-image ${getBlur && 'blur'}`} src={`${links.static}${item.image}`} alt="category" onClick={listenCard.bind(null, item)} />
+            <img className={`category-image ${getBlur && 'blur'}`} src={`${item.image.startsWith('data:') ? '' : links.static}${item.image ? item.image : 'img/unknown-img.jpg'}`} alt="category" onClick={listenCard.bind(null, item)} />
           </div>
           <div className="main-category__title">
             <p className="text text-title" onClick={listenCard.bind(null, item)}>{item.word}</p>

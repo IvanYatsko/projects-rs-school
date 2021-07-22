@@ -5,8 +5,8 @@ import { AdminCardWord } from "./AdminCardWord";
 import { AdminWordCreate } from "./AdminWordCreate";
 
 export const AdminWordPage: React.FC = () => {
-  const {listCards,categoryCards} = useTypedSelector(state => state.cards);
-  const {indexCategory} = useTypedSelector(state => state.admin);
+  const { listCards, categoryCards } = useTypedSelector(state => state.cards);
+  const { indexCategory } = useTypedSelector(state => state.admin);
 
   if (indexCategory === null) {
     return (<Redirect to='/admin' />);
