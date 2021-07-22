@@ -15,14 +15,15 @@ export function useInputValue(defaultValue: string = ''): IInputValue {
 export const ModalWindow: React.FC = () => {
   const loginInput: IInputValue = useInputValue();
   const passwordInput: IInputValue = useInputValue();
-  const {viewLoginWindow,changeIsAdmin} = useActions();
-  const [getPrompt, setPrompt] = useState(false);
+  const { viewLoginWindow, changeIsAdmin, setFetchAuth } = useActions();
+  const [ getPrompt, setPrompt ] = useState(false);
   const history = useHistory();
 
   function changeRoute(event: React.FormEvent): void {
     event.preventDefault();
     if (loginInput.value === ADMIN && passwordInput.value === ADMIN) {
       changeIsAdmin(true);
+      setFetchAuth(true);
       history.push('/admin');
       viewLoginWindow(false);
       setPrompt(false);

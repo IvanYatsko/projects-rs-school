@@ -12,6 +12,10 @@ export const GET_CARDS: string = 'GET_CARDS';
 export const GET_CATEGORIES: string = 'GET_CATEGORIES';
 export const DELETE_CARD: string = 'DELETE_CARD';
 export const DELETE_CATEGORY: string = 'DELETE_CATEGORY';
+export const CREATE_CARD: string = 'CREATE_CARD';
+export const CREATE_CATEGORY: string = 'CREATE_CATEGORY';
+export const UPDATE_CARD: string = 'UPDATE_CARD';
+export const UPDATE_CATEGORY: string = 'UPDATE_CATEGORY';
 
 export interface ICardsState {
     categoryCards: string[];

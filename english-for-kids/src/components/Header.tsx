@@ -6,13 +6,14 @@ import { BurgerMenu } from "./BurgerMenu"
 import { ADMIN } from "./components.module";
 
 export const Header: React.FC = () => {
-  const {viewLeftMenu,changeModeGame,falseLeftMenu,chooseMainPage,changeIsAdmin} = useActions();
-  const {isShowLeftMenu,isModePlay} = useTypedSelector(state => state.cards);
-  const {pathname} = useLocation();
+  const { viewLeftMenu, changeModeGame, falseLeftMenu, chooseMainPage, changeIsAdmin, setFetchAuth } = useActions();
+  const { isShowLeftMenu, isModePlay } = useTypedSelector(state => state.cards);
+  const { pathname } = useLocation();
 
   function leaveAdminPage() {
     chooseMainPage();
     changeIsAdmin(false);
+    setFetchAuth(false);
     sessionStorage.setItem('isAdmin', '');
   }
 

@@ -17,6 +17,8 @@ export interface IChangeCategory {
 
 export interface IChangeWord {
   closeChangeWord(): void;
+  item?: ICards;
+  index?: number;
 }
 
 export interface ICard {
@@ -37,6 +39,11 @@ export enum Counter {
 }
 
 export interface IInputValue {
-  value: string,
-  onChange(event: React.ChangeEvent<HTMLInputElement>): void,
+  value: string;
+  onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+}
+
+export interface IAdminCardWord {
+  item: ICards;
+  index: number;
 }

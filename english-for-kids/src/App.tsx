@@ -14,11 +14,12 @@ import { AdminWordPage } from './components/AdminWordPage';
 
 function App() {
   const {modalView} = useTypedSelector(state => state.admin);
-  const {getCards,getCategories} = useActions();
+  const {getCards,getCategories, getIsAdmin} = useActions();
 
   useEffect(() => {
     getCards();
     getCategories();
+    getIsAdmin();
   }, []);
 
   return (

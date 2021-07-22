@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useTypedSelector } from "../hooks/useTypedSelector"
 import { AdminCardWord } from "./AdminCardWord";
@@ -18,7 +19,7 @@ export const AdminWordPage: React.FC = () => {
         {
           listCards?.length && categoryCards?.length
           ?
-          listCards[indexCategory as number].map((item, index) => <AdminCardWord key={index} />)
+          listCards[indexCategory as number].map((item, index) => <AdminCardWord key={index} index={index} item={item} />)
           :
           <div className="d-flex justify-content-center">
             <h2>Loading...</h2>

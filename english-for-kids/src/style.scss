@@ -610,6 +610,9 @@ fragment {
     & p,
     & label {
       margin-bottom: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      align-self: normal;
     }
 
     &>img {
