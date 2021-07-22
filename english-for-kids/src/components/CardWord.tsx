@@ -7,11 +7,13 @@ import { ICards, links, Stars } from "../store/reducers/cardsReducer.module";
 import { Counter, ICard } from "./components.module"
 
 export function listenAudio(audioSrc: string): void {
-  const src: string = `${audioSrc.startsWith('data:') ? '' : links.static}${audioSrc}`;
-  const audio = new Audio();
-  audio.src = src;
-  audio.currentTime = 0;
-  audio.play();
+  if (audioSrc) {
+    const src: string = `${audioSrc.startsWith('data:') ? '' : links.static}${audioSrc}`;
+    const audio = new Audio();
+    audio.src = src;
+    audio.currentTime = 0;
+    audio.play();
+  }
 }
 
 export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
