@@ -18,42 +18,42 @@ export const UPDATE_CARD: string = 'UPDATE_CARD';
 export const UPDATE_CATEGORY: string = 'UPDATE_CATEGORY';
 
 export interface ICardsState {
-    categoryCards: string[];
-    listCards: ICards[][];
-    indexCategory: number | null;
-    isModePlay: boolean;
-    isShowLeftMenu: boolean;
-    arrGameWords: ICards[];
-    arrStars: Stars[];
-    page: typePage;
-  }
+  categoryCards: string[];
+  listCards: ICards[][];
+  indexCategory: number | null;
+  isModePlay: boolean;
+  isShowLeftMenu: boolean;
+  arrGameWords: ICards[];
+  arrStars: Stars[];
+  page: typePage;
+}
 
-  export interface ICards {
-    word: string;
-    translation: string;
-    image: string;
-    audioSrc: string;
-  }
+export interface ICards {
+  word: string;
+  translation: string;
+  image: string;
+  audioSrc: string;
+}
 
-  export enum Stars {
-    STAR = 'star',
-    STAR_WIN = 'star-win',
-  }
+export enum Stars {
+  STAR = 'star',
+  STAR_WIN = 'star-win',
+}
 
-  export enum typePage {
-    CATEGORIES_PAGE = 'CATEGORIES_PAGE',
-    MAIN_PAGE = 'MAIN_PAGE',
-    STATISTIC_PAGE = 'STATISTIC_PAGE',
-  }
+export enum typePage {
+  CATEGORIES_PAGE = 'CATEGORIES_PAGE',
+  MAIN_PAGE = 'MAIN_PAGE',
+  STATISTIC_PAGE = 'STATISTIC_PAGE',
+}
 
-  export interface IAction {
-    type: string;
-    payload?: any;
-  }
+export interface IAction {
+  type: string;
+  payload?: any;
+}
 
-  export enum links {
-    categories = 'https://blooming-reef-80159.herokuapp.com/api/categories',
-    cards = 'https://blooming-reef-80159.herokuapp.com/api/cards',
-    admin = 'https://blooming-reef-80159.herokuapp.com/api/admin',
-    static = 'https://blooming-reef-80159.herokuapp.com/',
-  }
+export enum links {
+  categories = 'https://blooming-reef-80159.herokuapp.com/api/categories',
+  cards = 'https://blooming-reef-80159.herokuapp.com/api/cards',
+  admin = 'https://blooming-reef-80159.herokuapp.com/api/admin',
+  static = 'https://blooming-reef-80159.herokuapp.com/',
+}

@@ -399,10 +399,9 @@ fragment {
       height: 280px;
       margin-bottom: 27px;
       cursor: pointer;
-      perspective: 400px;
+      perspective: 700px;
       border-radius: 7px;
       margin-right: 27px;
-
 
       &:hover>* {
         box-shadow: 4px 15px 25px #333333, 0px 3px 4px #333333,
@@ -528,10 +527,6 @@ fragment {
   display: none !important;
 }
 
-.blur {
-  filter: blur(5px);
-}
-
 .position {
   margin-top: 100px;
   margin-bottom: 100px;
@@ -646,5 +641,18 @@ fragment {
     &:hover {
       transform: scale(1.3);
     }
+  }
+}
+
+.blur {
+  filter: blur(5px);
+
+  &.main-card__container:hover>* {
+    cursor: no-drop;
+    box-shadow: none !important;
+  }
+
+  & .category-image {
+    cursor: no-drop;
   }
 }

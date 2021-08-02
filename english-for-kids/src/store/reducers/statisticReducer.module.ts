@@ -1,6 +1,14 @@
 export const CHANGE_STATISTIC_FIELD: string = 'CHANGE_STATISTIC_FIELD';
 export const SORT_STATISTIC_FIELD: string = 'SORT_STATISTIC_FIELD';
+export const WORDCHOOSE: string = 'choose';
+export const WORDPLAY: string = 'play';
+export const WORDSTAR: string = 'star';
+export const WORDFLIPPED: string = 'flipped';
+export const WORDBLUR: string = 'blur';
+export const WORDDISABLED: string = 'disabled';
 export const VALUE_ZERO: number = 0;
+export const VALUE_HUNDRED: number = 100;
+export const THREESECONDS: number = 3000;
 
 export interface IlistStatistic {
   field: IFieldItem[];

@@ -1,31 +1,70 @@
-import { useTypedSelector } from "../hooks/useTypedSelector"
 import { NavLink } from "react-router-dom";
+
+import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useActions } from "../hooks/useActions";
 import { typePage } from "../store/reducers/cardsReducer.module";
+import { WORDCHOOSE } from "../store/reducers/statisticReducer.module";
 
 export const BurgerMenu: React.FC = () => {
-  const {categoryCards, page, indexCategory} = useTypedSelector(state => state.cards);
-  const {chooseMainPage, chooseStatisticPage, chooseCategoryPage, viewLoginWindow} = useActions();
+  const { categoryCards, page, indexCategory } = useTypedSelector(
+    (state) => state.cards
+  );
+  const {
+    chooseMainPage,
+    chooseStatisticPage,
+    chooseCategoryPage,
+    viewLoginWindow,
+  } = useActions();
 
   return (
     <nav className="menu">
       <ul className="menu-list">
         <li className="menu-list__item">
-          <NavLink to="/" className={`menu-list__link ${page === typePage.MAIN_PAGE && 'choose'} text text-button text-white`} onClick={chooseMainPage}>Main</NavLink>
+          <NavLink
+            to="/"
+            className={`menu-list__link ${
+              page === typePage.MAIN_PAGE && WORDCHOOSE
+            } text text-button text-white`}
+            onClick={chooseMainPage}
+          >
+            Main
+          </NavLink>
         </li>
         {categoryCards.map((item, index) => {
           return (
-          <li key={index} className="menu-list__item">
-            <NavLink to="/category" className={`menu-list__link ${page === typePage.CATEGORIES_PAGE && indexCategory === index && 'choose'} text text-button text-white`} onClick={chooseCategoryPage.bind(null, index)}>{item}</NavLink>
-          </li>)
-          })
-        }
+            <li key={index} className="menu-list__item">
+              <NavLink
+                to="/category"
+                className={`menu-list__link ${
+                  page === typePage.CATEGORIES_PAGE &&
+                  indexCategory === index &&
+                  WORDCHOOSE
+                } text text-button text-white`}
+                onClick={() => chooseCategoryPage(index)}
+              >
+                {item}
+              </NavLink>
+            </li>
+          );
+        })}
         <li className="menu-list__item">
-          <NavLink to="/statistics" className={`menu-list__link ${page === typePage.STATISTIC_PAGE && 'choose'} text text-button text-white`} onClick={chooseStatisticPage}>Statistics</NavLink>
+          <NavLink
+            to="/statistics"
+            className={`menu-list__link ${
+              page === typePage.STATISTIC_PAGE && WORDCHOOSE
+            } text text-button text-white`}
+            onClick={chooseStatisticPage}
+          >
+            Statistics
+          </NavLink>
         </li>
       </ul>
-      <button className="button button-green text text-title button-burger" onClick={() => viewLoginWindow(true)}>Login</button>
-
+      <button
+        className="button button-green text text-title button-burger"
+        onClick={() => viewLoginWindow(true)}
+      >
+        Login
+      </button>
     </nav>
-  )
-}
+  );
+};

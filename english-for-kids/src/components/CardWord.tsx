@@ -1,14 +1,25 @@
-import React, {useState} from "react"
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { ICards, links, Stars } from "../store/reducers/cardsReducer.module";
-import { Counter, ICard } from "./components.module"
+import {
+  THREESECONDS,
+  VALUE_HUNDRED,
+  WORDBLUR,
+  WORDDISABLED,
+  WORDFLIPPED,
+  WORDPLAY,
+  WORDSTAR,
+} from "../store/reducers/statisticReducer.module";
+import { Counter, ICard } from "./components.module";
 
 export function listenAudio(audioSrc: string): void {
   if (audioSrc) {
-    const src: string = `${audioSrc.startsWith('data:') ? '' : links.static}${audioSrc}`;
+    const src: string = `${
+      audioSrc.startsWith("data:") ? "" : links.static
+    }${audioSrc}`;
     const audio = new Audio();
     audio.src = src;
     audio.currentTime = 0;
@@ -16,16 +27,24 @@ export function listenAudio(audioSrc: string): void {
   }
 }
 
-export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
+export const Card: React.FC<ICard> = ({ item, changeDisplayState }: ICard) => {
   const [getRotate, setRotate] = useState(false);
   const [getBlur, setBlur] = useState(false);
   const history = useHistory();
-  const {changeArrCards,changeArrStars,chooseMainPage,changeModeGame,changeStatisticField} = useActions();
-  const {isModePlay,arrGameWords,arrStars} = useTypedSelector(state => state.cards);
-  const {field} = useTypedSelector(state => state.statistic);
+  const {
+    changeArrCards,
+    changeArrStars,
+    chooseMainPage,
+    changeModeGame,
+    changeStatisticField,
+  } = useActions();
+  const { isModePlay, arrGameWords, arrStars } = useTypedSelector(
+    (state) => state.cards
+  );
+  const { field } = useTypedSelector((state) => state.statistic);
 
   function eventCounter(counter: string) {
-    const changeField = field.map(elem => {
+    const changeField = field.map((elem) => {
       if (elem.word === item.word) {
         switch (counter) {
           case Counter.Trained:
@@ -33,11 +52,15 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
             return elem;
           case Counter.Correct:
             elem.correct++;
-            elem.errors = Math.round((100/(elem.correct + elem.incorrect) * elem.correct));
+            elem.errors = Math.round(
+              (VALUE_HUNDRED / (elem.correct + elem.incorrect)) * elem.correct
+            );
             return elem;
           case Counter.Incorrect:
             elem.incorrect++;
-            elem.errors = Math.round((100/(elem.correct + elem.incorrect) * elem.correct));
+            elem.errors = Math.round(
+              (VALUE_HUNDRED / (elem.correct + elem.incorrect)) * elem.correct
+            );
             return elem;
           case Counter.Errors:
             elem.errors++;
@@ -45,26 +68,26 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
         }
       }
       return elem;
-    })
+    });
     return changeField;
   }
 
   useEffect(() => {
-    localStorage.setItem('arrStatistic', JSON.stringify(field));
-  }, [field])
+    localStorage.setItem("arrStatistic", JSON.stringify(field));
+  }, [field]);
 
   function finishGame() {
-    if (!arrStars.filter((elem) => elem === 'star').length) {
-      listenAudio('audio/success.mp3');
+    if (!arrStars.filter((elem) => elem === WORDSTAR).length) {
+      listenAudio("audio/success.mp3");
     } else {
-      listenAudio('audio/failure.mp3');
+      listenAudio("audio/failure.mp3");
     }
     setTimeout(() => {
-      history.push('/');
+      history.push("/");
       changeArrStars([]);
       chooseMainPage();
       changeModeGame();
-    },3000)
+    }, THREESECONDS);
   }
 
   function listenCard(item: ICards) {
@@ -73,7 +96,7 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
         if (item.audioSrc === arrGameWords[0].audioSrc) {
           arrGameWords.shift();
           changeArrCards([...arrGameWords]);
-          listenAudio('audio/correct.mp3');
+          listenAudio("audio/correct.mp3");
           setBlur(true);
           arrStars.push(Stars.STAR_WIN);
           changeArrStars(arrStars);
@@ -84,8 +107,8 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
             finishGame();
           }
         } else {
-          if (arrGameWords.find(elem => item.word === elem.word)) {
-            listenAudio('audio/error.mp3');
+          if (arrGameWords.find((elem) => item.word === elem.word)) {
+            listenAudio("audio/error.mp3");
             arrStars.push(Stars.STAR);
             changeArrStars(arrStars);
             const inCorrectCounter = eventCounter(Counter.Incorrect);
@@ -101,21 +124,47 @@ export const Card: React.FC<ICard> = ({item, changeDisplayState}: ICard) => {
   }
 
   return (
-    <>
-    <div className={`main-card__container ${getRotate && 'flipped'}`} onMouseLeave={setRotate.bind(null, false)}>
+    <div
+      className={`main-card__container ${getRotate && WORDFLIPPED} ${
+        getBlur && WORDBLUR
+      }`}
+      onMouseLeave={setRotate.bind(null, false)}
+    >
       <div className="main-card">
         <div className="main-category main-card__front">
-          <div className={`main-card main-category__image ${isModePlay && 'play'}`}>
-            <img className={`category-image ${getBlur && 'blur'}`} src={`${item.image.startsWith('data:') ? '' : links.static}${item.image ? item.image : 'img/unknown-img.jpg'}`} alt="category" onClick={listenCard.bind(null, item)} />
+          <div
+            className={`main-card main-category__image ${
+              isModePlay && WORDPLAY
+            }`}
+          >
+            <img
+              className="category-image"
+              src={`${item.image.startsWith("data:") ? "" : links.static}${
+                item.image ? item.image : "img/unknown-img.jpg"
+              }`}
+              alt="category"
+              onClick={listenCard.bind(null, item)}
+            />
           </div>
           <div className="main-category__title">
-            <p className="text text-title" onClick={listenCard.bind(null, item)}>{item.word}</p>
-            <img className={`main-category__rotate ${isModePlay && 'disabled'}`} src={`${links.static}image/rotate.png`} alt="rotate" onClick={setRotate.bind(null, true)} />
+            <p
+              className="text text-title"
+              onClick={listenCard.bind(null, item)}
+            >
+              {item.word}
+            </p>
+            <img
+              className={`main-category__rotate ${isModePlay && WORDDISABLED}`}
+              src={`${links.static}image/rotate.png`}
+              alt="rotate"
+              onClick={setRotate.bind(null, true)}
+            />
           </div>
         </div>
-        <div className="main-card__back text text-title">{item.translation}</div>
+        <div className="main-card__back text text-title">
+          {item.translation}
+        </div>
       </div>
     </div>
-    </>
-  )
-}
+  );
+};
