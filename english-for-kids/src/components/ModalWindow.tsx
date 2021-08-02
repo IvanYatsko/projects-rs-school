@@ -15,7 +15,7 @@ export function useInputValue(defaultValue: string = ''): IInputValue {
 export const ModalWindow: React.FC = () => {
   const loginInput: IInputValue = useInputValue();
   const passwordInput: IInputValue = useInputValue();
-  const { viewLoginWindow, changeIsAdmin, setFetchAuth } = useActions();
+  const { viewLoginWindow, changeIsAdmin, setFetchAuth, chooseMainPage } = useActions();
   const [ getPrompt, setPrompt ] = useState(false);
   const history = useHistory();
 
@@ -25,12 +25,13 @@ export const ModalWindow: React.FC = () => {
       changeIsAdmin(true);
       setFetchAuth(true);
       history.push('/admin');
-      viewLoginWindow(false);
       setPrompt(false);
       sessionStorage.setItem('isAdmin', '1');
     } else {
       setPrompt(true);
+      chooseMainPage();
     }
+    viewLoginWindow(false);
   }
 
   return (
