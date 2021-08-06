@@ -8,7 +8,9 @@ export const WORDBLUR: string = 'blur';
 export const WORDDISABLED: string = 'disabled';
 export const VALUE_ZERO: number = 0;
 export const VALUE_HUNDRED: number = 100;
+export const PAUZE_SECONDS: number = 500;
 export const THREESECONDS: number = 3000;
+export const RANDOM_NUMBER: number = 0.5;
 
 export interface IlistStatistic {
   field: IFieldItem[];

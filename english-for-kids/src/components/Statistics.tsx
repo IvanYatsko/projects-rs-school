@@ -27,67 +27,56 @@ export const Statistics: React.FC = () => {
   }
 
   return (
-    <>
-      <main className="main">
-        <button
-          type="button"
-          className="btn btn-outline-primary button-reset"
-          onClick={resetField}
-        >
-          Reset
-        </button>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th
-                scope="col"
-                onClick={() => listenTitle(StatisticTitle.CATEGORY)}
-              >
-                Category
-              </th>
-              <th scope="col" onClick={() => listenTitle(StatisticTitle.WORD)}>
-                Word
-              </th>
-              <th
-                scope="col"
-                onClick={() => listenTitle(StatisticTitle.TRANSLATION)}
-              >
-                Translation
-              </th>
-              <th
-                scope="col"
-                onClick={() => listenTitle(StatisticTitle.TRAINED)}
-              >
-                Trained
-              </th>
-              <th
-                scope="col"
-                onClick={() => listenTitle(StatisticTitle.CORRECT)}
-              >
-                Correct
-              </th>
-              <th
-                scope="col"
-                onClick={() => listenTitle(StatisticTitle.INCORRECT)}
-              >
-                Incorrect
-              </th>
-              <th
-                scope="col"
-                onClick={() => listenTitle(StatisticTitle.ERRORS)}
-              >
-                Errors, %
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {field.map((item, index) => (
-              <DetailsWord item={item} index={index} key={index} />
-            ))}
-          </tbody>
-        </table>
-      </main>
-    </>
+    <main className="main">
+      <button
+        type="button"
+        className="btn btn-outline-primary button-reset"
+        onClick={resetField}
+      >
+        Reset
+      </button>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th
+              scope="col"
+              onClick={() => listenTitle(StatisticTitle.CATEGORY)}
+            >
+              Category
+            </th>
+            <th scope="col" onClick={() => listenTitle(StatisticTitle.WORD)}>
+              Word
+            </th>
+            <th
+              scope="col"
+              onClick={() => listenTitle(StatisticTitle.TRANSLATION)}
+            >
+              Translation
+            </th>
+            <th scope="col" onClick={() => listenTitle(StatisticTitle.TRAINED)}>
+              Trained
+            </th>
+            <th scope="col" onClick={() => listenTitle(StatisticTitle.CORRECT)}>
+              Correct
+            </th>
+            <th
+              scope="col"
+              onClick={() => listenTitle(StatisticTitle.INCORRECT)}
+            >
+              Incorrect
+            </th>
+            <th scope="col" onClick={() => listenTitle(StatisticTitle.ERRORS)}>
+              Errors, %
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {field.map((item, index) => (
+            <DetailsWord item={item} index={index} key={index} />
+          ))}
+        </tbody>
+      </table>
+    </main>
   );
 };

@@ -5,6 +5,7 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { Card, listenAudio } from "./CardWord";
 import { useActions } from "../hooks/useActions";
 import { links } from "../store/reducers/cardsReducer.module";
+import { PAUZE_SECONDS, RANDOM_NUMBER } from "../store/reducers/statisticReducer.module";
 
 export const Category: React.FC = () => {
   const { listCards, indexCategory, arrGameWords, isModePlay, arrStars } =
@@ -18,7 +19,7 @@ export const Category: React.FC = () => {
   }
 
   function sayWord(audioSrc: string) {
-    setTimeout(() => listenAudio(audioSrc), 500);
+    setTimeout(() => listenAudio(audioSrc), PAUZE_SECONDS);
   }
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export const Category: React.FC = () => {
   if (indexCategory === null) {
     // ! - не подходит, т.к. indexCategory может быть = 0
     history.push("/");
-    return <></>;
+    return null;
   }
 
   function clickButton() {
@@ -39,7 +40,7 @@ export const Category: React.FC = () => {
         return <></>;
       }
       let newRandomArr = [...listCards[indexCategory]];
-      newRandomArr.sort(() => Math.random() - 0.5);
+      newRandomArr.sort(() => Math.random() - RANDOM_NUMBER);
       changeArrCards(newRandomArr);
     } else {
       sayWord(arrGameWords[0].audioSrc);
