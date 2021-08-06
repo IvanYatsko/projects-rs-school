@@ -45,6 +45,7 @@ export const cardsReducer = (
         isShowLeftMenu: false,
         indexCategory: null,
         arrGameWords: [],
+        arrStars: [],
       };
     case CHOOSE_STATISTIC_PAGE:
       return {
@@ -53,6 +54,7 @@ export const cardsReducer = (
         isShowLeftMenu: false,
         indexCategory: null,
         arrGameWords: [],
+        arrStars: [],
       };
     case CHOOSE_CATEGORY_PAGE:
       return {
@@ -61,6 +63,7 @@ export const cardsReducer = (
         isShowLeftMenu: false,
         indexCategory: action.payload,
         arrGameWords: [],
+        arrStars: [],
       };
     case VIEW_LEFT_MENU:
       return { ...state, isShowLeftMenu: !state.isShowLeftMenu };
@@ -69,11 +72,16 @@ export const cardsReducer = (
     case CHOOSE_INDEX_CATEGORY:
       return { ...state, indexCategory: action.payload };
     case CHANGE_STATUS_GAME:
-      return { ...state, isModePlay: !state.isModePlay, arrGameWords: [] };
+      return {
+        ...state,
+        isModePlay: !state.isModePlay,
+        arrGameWords: [],
+        arrStars: [],
+      };
     case HADE_MENU:
       return { ...state, isShowLeftMenu: false };
     case CHANGE_ARR_CARDS:
-      return { ...state, arrGameWords: action.payload };
+      return { ...state, arrGameWords: action.payload, arrStars: [] };
     case CHANGE_ARR_STARS:
       return { ...state, arrStars: action.payload };
     case GET_CARDS:

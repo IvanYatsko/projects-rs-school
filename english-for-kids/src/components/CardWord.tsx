@@ -43,6 +43,12 @@ export const Card: React.FC<ICard> = ({ item, changeDisplayState }: ICard) => {
   );
   const { field } = useTypedSelector((state) => state.statistic);
 
+  useEffect(() => {
+    if (!arrStars.length) {
+      setBlur(false);
+    }
+  }, [arrStars]);
+
   function eventCounter(counter: string) {
     const changeField = field.map((elem) => {
       if (elem.word === item.word) {
