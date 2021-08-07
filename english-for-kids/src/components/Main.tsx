@@ -17,20 +17,18 @@ export const Main: React.FC = () => {
   }
 
   return (
-    <>
-      <main className="main" onClick={valueFalseLeftMenuInMain}>
-        <div className="main-container">
-          {listCards.length && categoryCards.length ? (
-            categoryCards.map((item, index) => (
-              <CardCategory item={item} key={index} index={index} />
-            ))
-          ) : (
-            <div className="d-flex justify-content-center">
-              <h2>Loading...</h2>
-            </div>
-          )}
-        </div>
-      </main>
-    </>
+    <main className="main" onClick={valueFalseLeftMenuInMain}>
+      <div className="main-container">
+        {listCards.length && categoryCards.length ? (
+          categoryCards.map((item, index) => (
+            <CardCategory item={item} key={index} index={index} />
+          ))
+        ) : (
+          <div className="d-flex justify-content-center">
+            <h2>Loading...</h2>
+          </div>
+        )}
+      </div>
+    </main>
   );
 };

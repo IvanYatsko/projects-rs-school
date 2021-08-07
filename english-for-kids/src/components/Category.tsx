@@ -5,7 +5,11 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { Card, listenAudio } from "./CardWord";
 import { useActions } from "../hooks/useActions";
 import { links } from "../store/reducers/cardsReducer.module";
-import { PAUZE_SECONDS, RANDOM_NUMBER } from "../store/reducers/statisticReducer.module";
+import {
+  PAUZE_SECONDS,
+  RANDOM_NUMBER,
+  STAR,
+} from "../store/reducers/statisticReducer.module";
 
 export const Category: React.FC = () => {
   const { listCards, indexCategory, arrGameWords, isModePlay, arrStars } =
@@ -37,7 +41,7 @@ export const Category: React.FC = () => {
   function clickButton() {
     if (!arrGameWords.length) {
       if (indexCategory === null) {
-        return <></>;
+        return null;
       }
       let newRandomArr = [...listCards[indexCategory]];
       newRandomArr.sort(() => Math.random() - RANDOM_NUMBER);
@@ -83,14 +87,14 @@ export const Category: React.FC = () => {
           )}
         </button>
       </main>
-      {getIsFinish && !arrStars.filter((elem) => elem === "star").length && (
+      {getIsFinish && !arrStars.filter((elem) => elem === STAR).length && (
         <div className="position">
           <img src={`${links.static}img/success.jpg`} alt="success" />
         </div>
       )}
-      {getIsFinish && arrStars.filter((elem) => elem === "star").length && (
+      {getIsFinish && arrStars.filter((elem) => elem === STAR).length && (
         <div className="position">
-          <h2>Errors: {arrStars.filter((elem) => elem === "star").length}</h2>
+          <h2>Errors: {arrStars.filter((elem) => elem === STAR).length}</h2>
           <img src={`${links.static}img/failure.jpg`} alt="failure" />
         </div>
       )}

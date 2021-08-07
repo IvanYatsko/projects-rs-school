@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
         className="footer-link__git text text-title"
         href="https://github.com/IvanYatsko"
       >
-        Github_author
+        Github_IvanYatsko
       </a>
       <h2 className="footer-title text text-title">2021</h2>
       <a className="footer-link__logo" href="https://rs.school/js/">

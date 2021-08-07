@@ -6,6 +6,7 @@ export const WORDSTAR: string = 'star';
 export const WORDFLIPPED: string = 'flipped';
 export const WORDBLUR: string = 'blur';
 export const WORDDISABLED: string = 'disabled';
+export const STAR: string = "star";
 export const VALUE_ZERO: number = 0;
 export const VALUE_HUNDRED: number = 100;
 export const PAUZE_SECONDS: number = 500;
